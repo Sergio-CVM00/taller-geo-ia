@@ -1,0 +1,16 @@
+# Descargas temporales del script de preparación
+.cache_descargas/
+
+# Entornos virtuales de Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Salidas que genera cada alumno durante el taller
+# (cada uno crea las suyas; no se versionan)
+fotos_mapa.csv
+mapa.html
+
+# Material interno de los presentadores (no se publica)
+presentadores/

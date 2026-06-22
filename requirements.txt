@@ -1,0 +1,11 @@
+# Librerías que usa el proyecto del taller.
+# En la preparación previa (00-ANTES-DEL-TALLER, Paso 5) creamos un entorno con
+# uv e instalamos esto dentro de él:
+#   uv venv
+#   uv pip install -r requirements.txt
+# (Antigravity también puede instalarlas solo si se lo pides en un prompt.)
+
+Pillow          # leer los metadatos (EXIF/GPS) de las fotos
+pandas          # crear y manejar la tabla (CSV)
+folium          # dibujar el mapa interactivo (HTML)
+pillow-heif      # SOLO si usas fotos .HEIC de iPhone (Día 2)
