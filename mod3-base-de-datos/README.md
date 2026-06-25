@@ -60,9 +60,13 @@ Un solo main.py, sin subcarpetas, comentado en español, paso a paso. (LÍMITES)
 1. Aparece un archivo **`lugares.db`** en la carpeta del módulo.
 2. En la página de pruebas **`/docs`** (la dirección será algo como
    `http://localhost:8731/docs`), `GET /lugares` devuelve los **18 lugares**.
-3. **El momento clave:** añade un lugar con `POST /lugares`. Luego **dile al agente:
-   "para el servidor y vuelve a arrancarlo"**. Pide otra vez `GET /lugares`: tu lugar
-   **sigue ahí**. 🎉
+3. **El momento clave:** en `/docs`, abre **`POST /lugares`** → *Try it out*, pega
+   este ejemplo y dale a *Execute*:
+   ```json
+   { "id": 19, "nombre": "Mi lugar de prueba", "lat": 38.65, "lon": -0.10, "categoria": "Prueba", "descripcion": "Este lo he añadido yo", "foto": "" }
+   ```
+   Luego **dile al agente: "para el servidor y vuelve a arrancarlo"**. Pide otra vez
+   `GET /lugares`: tu lugar **sigue ahí**. 🎉
 
 ## Si algo falla 🆘
 

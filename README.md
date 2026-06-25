@@ -72,6 +72,6 @@ el agente los usa por ti.
 
 ---
 
-📷 Las fotos y coordenadas de ejemplo son de **B. Zaragozí (Alicante, 2010)** —
+📷 Las fotos y coordenadas de ejemplo son de **B. Zaragozí (Alicante)** —
 gracias por compartirlas. Los materiales del taller son de uso libre. Los detalles
 están en [`ATRIBUCION-DATOS.md`](ATRIBUCION-DATOS.md).

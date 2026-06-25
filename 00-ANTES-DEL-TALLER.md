@@ -16,6 +16,12 @@ antes (16:30) para ayudarte.
 2. Instálalo como cualquier programa.
 3. **En Windows** puede salir *"Windows protegió tu PC"*. Es normal: pulsa
    **"Más información"** → **"Ejecutar de todas formas"**.
+4. **En Mac** puede decir *"no se puede abrir porque es de un desarrollador no
+   identificado"*. También es normal: ve a *Ajustes del Sistema → Privacidad y
+   seguridad* y pulsa **"Abrir de todas formas"**.
+5. ¿Tu portátil te pide una **contraseña de administrador** que no tienes (típico en
+   equipos de la universidad)? No te preocupes: **tráelo el día 29 y lo instalamos
+   juntos**.
 
 ### Paso 2 — Instala Google Chrome
 Antigravity usa Chrome para algunas funciones. Si no lo tienes:
@@ -35,6 +41,9 @@ Antigravity te pedirá iniciar sesión con Google.
 2. **Descomprime** el ZIP y guárdalo en un sitio fácil (por ejemplo, el Escritorio):
    - **Windows:** clic derecho en el archivo `.zip` → *Extraer todo* → *Extraer*.
    - **Mac:** doble clic en el `.zip` y se descomprime solo.
+
+> 🆘 ¿No encuentras el enlace o algo se resiste? No te agobies: lo descargamos juntos
+> al empezar — abrimos la sala a las **16:30** del día 29.
 
 > 💡 ¿Sabes clonar con Git? También vale: acabas con la misma carpeta `taller-geo-ia`.
 
