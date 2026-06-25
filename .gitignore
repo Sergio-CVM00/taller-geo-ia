@@ -1,16 +1,25 @@
-# Descargas temporales del script de preparación
+# Cachés y temporales
 .cache_descargas/
 
-# Entornos virtuales de Python
+# Entornos y dependencias de Python (backend)
 .venv/
 venv/
 __pycache__/
 *.pyc
 
-# Salidas que genera cada alumno durante el taller
-# (cada uno crea las suyas; no se versionan)
-fotos_mapa.csv
-mapa.html
+# Dependencias y builds de Node/React (frontend)
+node_modules/
+dist/
+build/
+
+# Base de datos local que genera cada alumno (Módulo 3)
+*.db
+*.sqlite
+*.sqlite3
+
+# Variables de entorno / secretos
+.env
+.env.*
 
 # Material interno de los presentadores (no se publica)
 presentadores/

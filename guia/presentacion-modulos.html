@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Los tres módulos · Taller Vibe Coding</title>
+<script>
+/* Resolutor de tema antes de pintar: ?theme= → localStorage(archify-theme) → sistema */
+(function () {
+  try {
+    var p = new URLSearchParams(location.search).get('theme');
+    var s = localStorage.getItem('archify-theme');
+    var t = p || s || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+})();
+</script>
+<style>
+  :root[data-theme="dark"] {
+    --bg:#020617; --grid:#1e293b; --fg:#e2e8f0; --muted:#94a3b8;
+    --card:#0b1220; --card-border:#1e293b; --shadow:rgba(0,0,0,.5);
+    --emerald:#34d399; --cyan:#22d3ee; --violet:#a78bfa; --amber:#fbbf24; --rose:#fb7185; --orange:#fb923c;
+  }
+  :root[data-theme="light"] {
+    --bg:#f8fafc; --grid:#e2e8f0; --fg:#0f172a; --muted:#475569;
+    --card:#ffffff; --card-border:#cbd5e1; --shadow:rgba(15,23,42,.12);
+    --emerald:#059669; --cyan:#0891b2; --violet:#7c3aed; --amber:#d97706; --rose:#e11d48; --orange:#ea580c;
+  }
+  * { box-sizing:border-box; }
+  html, body { height:100%; margin:0; }
+  body {
+    font-family:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color:var(--fg); background-color:var(--bg);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:40px 40px;
+    overflow:hidden;
+  }
+  .deck { height:100dvh; display:flex; flex-direction:column; padding:clamp(.8rem,2.5vh,1.6rem) clamp(1rem,4vw,3rem); }
+
+  /* ---- barra superior: stepper + controles ---- */
+  .bar { flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+  .stepper { display:flex; gap:clamp(.4rem,1vw,.9rem); flex-wrap:wrap; }
+  .pill {
+    display:flex; align-items:center; gap:.5em;
+    padding:.4em .85em; border:1px solid var(--card-border); border-radius:999px;
+    font-size:clamp(.65rem,1.4vw,.85rem); color:var(--muted); background:var(--card);
+    white-space:nowrap; transition:all .25s ease;
+  }
+  .pill .dot { width:.7em; height:.7em; border-radius:50%; background:var(--muted); opacity:.5; flex:none; }
+  .pill.revealed { color:var(--fg); border-color:var(--accent); }
+  .pill.revealed .dot { background:var(--accent); opacity:1; box-shadow:0 0 8px var(--accent); }
+  .pill.current { background:color-mix(in srgb, var(--accent) 14%, var(--card)); }
+  .pill .name { display:none; }
+  .pill.revealed .name { display:inline; }
+  .pill.locked .lock { opacity:.7; }
+
+  .controls { display:flex; gap:.5rem; flex:none; }
+  .btn {
+    font-family:inherit; cursor:pointer; color:var(--fg); background:var(--card);
+    border:1px solid var(--card-border); border-radius:8px; padding:.45em .7em;
+    font-size:clamp(.7rem,1.5vw,.9rem); line-height:1; transition:border-color .2s;
+  }
+  .btn:hover { border-color:var(--fg); }
+
+  /* ---- escenario ---- */
+  .stage { flex:1 1 auto; min-height:0; display:flex; align-items:center; justify-content:center; overflow:auto; }
+  .slide { display:none; width:100%; max-width:1180px; gap:clamp(1.5rem,4vw,3.5rem); align-items:center; }
+  .slide.active { display:flex; animation:fade .45s ease; }
+  @keyframes fade { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+  .slide .col-text { flex:1 1 46%; min-width:0; }
+  .slide .col-diagram { flex:1 1 54%; min-width:0; }
+
+  .eyebrow { color:var(--accent); font-size:clamp(.75rem,1.8vw,1rem); letter-spacing:.18em; font-weight:700; }
+  h1 { font-size:clamp(2rem,7vw,4.2rem); line-height:1.02; margin:.15em 0 .1em; letter-spacing:-.02em; }
+  .tagline { font-size:clamp(1rem,2.6vw,1.5rem); color:var(--muted); margin:0 0 1.1em; }
+  ul.points { list-style:none; padding:0; margin:0 0 1.2em; }
+  ul.points li { position:relative; padding-left:1.6em; margin-bottom:.55em; font-size:clamp(.85rem,1.9vw,1.12rem); line-height:1.45; }
+  ul.points li::before { content:"▹"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+  code { background:color-mix(in srgb, var(--accent) 16%, transparent); padding:0 .35em; border-radius:4px; font-size:.92em; }
+  .goal {
+    display:inline-flex; align-items:flex-start; gap:.5em; padding:.7em 1em;
+    border-left:3px solid var(--accent); background:color-mix(in srgb, var(--accent) 10%, var(--card));
+    border-radius:0 8px 8px 0; font-size:clamp(.82rem,1.9vw,1.1rem);
+  }
+  .chips { margin-top:1em; display:flex; gap:.5rem; flex-wrap:wrap; }
+  .chip { font-size:clamp(.65rem,1.4vw,.85rem); padding:.35em .7em; border-radius:999px; border:1px solid var(--accent); color:var(--accent); }
+  .indep { margin-top:.9em; font-size:clamp(.7rem,1.5vw,.9rem); color:var(--muted); }
+
+  /* ---- diagrama de arquitectura (acumulativo) ---- */
+  .flow { display:flex; align-items:stretch; justify-content:center; gap:.4rem; flex-wrap:wrap; }
+  .node {
+    flex:1 1 0; min-width:115px; max-width:230px; background:var(--card); border:1.5px solid var(--card-border);
+    border-radius:14px; padding:clamp(.7rem,1.6vw,1.1rem) .8rem; text-align:center;
+    box-shadow:0 6px 18px var(--shadow); opacity:.55; transition:all .35s ease;
+  }
+  .node .ico { font-size:clamp(1.4rem,3.6vw,2.4rem); line-height:1; }
+  .node .label { font-weight:700; font-size:clamp(.78rem,1.7vw,1.02rem); margin-top:.35em; }
+  .node .sub { color:var(--muted); font-size:clamp(.62rem,1.3vw,.78rem); margin-top:.2em; word-break:break-word; }
+  .node.on { opacity:1; }
+  .node.hero { border-color:var(--accent); opacity:1; box-shadow:0 0 0 1px var(--accent), 0 8px 26px color-mix(in srgb, var(--accent) 35%, transparent); }
+  .node.hero .ico { color:var(--accent); }
+  .badge { display:inline-block; margin-top:.5em; font-size:.6rem; letter-spacing:.12em; font-weight:700; color:var(--bg); background:var(--accent); padding:.2em .6em; border-radius:999px; }
+  .arrow { align-self:center; color:var(--muted); font-size:clamp(1rem,2.6vw,1.8rem); flex:none; padding:0 .1em; }
+
+  /* ---- pie: navegación ---- */
+  .nav { flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; gap:1rem; color:var(--muted); font-size:clamp(.7rem,1.5vw,.9rem); }
+  .nav .hint { opacity:.8; }
+  .counter { font-variant-numeric:tabular-nums; }
+
+  @media (max-width:760px) {
+    body { overflow:auto; }
+    .deck { height:auto; min-height:100dvh; }
+    .slide { flex-direction:column; align-items:flex-start; }
+    .slide .col-diagram { width:100%; }
+    .arrow { transform:rotate(90deg); }
+    .flow { flex-direction:column; align-items:stretch; }
+    .node { max-width:none; }
+  }
+  @media print {
+    body { overflow:visible; background:white; }
+    .deck { height:auto; }
+    .bar .controls, .nav { display:none; }
+    .slide { display:flex !important; page-break-after:always; min-height:90vh; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <header class="bar">
+    <div class="stepper" id="stepper">
+      <span class="pill" data-accent="var(--emerald)"><span class="dot"></span><span>Módulo 1</span><span class="name"> · Frontend</span></span>
+      <span class="pill" data-accent="var(--violet)"><span class="dot"></span><span>Módulo 2</span><span class="name"> · Backend</span><span class="lock"> 🔒</span></span>
+      <span class="pill" data-accent="var(--amber)"><span class="dot"></span><span>Módulo 3</span><span class="name"> · Base de datos</span><span class="lock"> 🔒</span></span>
+    </div>
+    <div class="controls">
+      <button class="btn" id="theme" title="Cambiar tema (t)">◐ Tema</button>
+      <button class="btn" id="full" title="Pantalla completa (f)">⛶ Pantalla</button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+
+    <!-- ===== MÓDULO 1 ===== -->
+    <section class="slide active" style="--accent:var(--emerald)">
+      <div class="col-text">
+        <div class="eyebrow">MÓDULO 1 · DÍA 1</div>
+        <h1>El frontend</h1>
+        <p class="tagline">La cara visible: tu mapa en el navegador.</p>
+        <ul class="points">
+          <li>Una página web con un <strong>mapa interactivo</strong> (un archivo HTML que abres con doble clic).</li>
+          <li>Cada lugar de <code>datos/lugares.json</code> → un marcador.</li>
+          <li>Pulsas un marcador y ves su nombre y descripción.</li>
+        </ul>
+        <div class="goal">🎯 Un mapa con 18 puntos reales, vivo en tu navegador.</div>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">Leaflet</span></div>
+        <p class="indep">🧩 Módulo independiente — parte de <code>datos/lugares.json</code>.</p>
+      </div>
+      <div class="col-diagram">
+        <div class="flow">
+          <div class="node on"><div class="ico">🧑</div><div class="label">Tú</div><div class="sub">abres la web</div></div>
+          <span class="arrow">→</span>
+          <div class="node hero"><div class="ico">🗺️</div><div class="label">Mapa</div><div class="sub">Un archivo HTML en el navegador</div><span class="badge">NUEVO</span></div>
+          <span class="arrow">→</span>
+          <div class="node on"><div class="ico">📄</div><div class="label">Datos</div><div class="sub">datos/lugares.json</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MÓDULO 2 ===== -->
+    <section class="slide" style="--accent:var(--violet)">
+      <div class="col-text">
+        <div class="eyebrow">MÓDULO 2 · DÍA 2</div>
+        <h1>El backend</h1>
+        <p class="tagline">La lógica del servidor: una API que sirve los lugares.</p>
+        <ul class="points">
+          <li>Un <strong>servidor</strong> con Python + FastAPI.</li>
+          <li><code>GET /lugares</code> entrega la lista; <code>POST /lugares</code> añade uno.</li>
+          <li>Se prueba solo, en <code>/docs</code> — sin necesitar el mapa.</li>
+        </ul>
+        <div class="goal">🎯 Una API viva en localhost, con su documentación automática.</div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span></div>
+        <p class="indep">🧩 Módulo independiente — también parte de <code>datos/lugares.json</code>.</p>
+      </div>
+      <div class="col-diagram">
+        <div class="flow">
+          <div class="node on"><div class="ico">🗺️</div><div class="label">Mapa</div><div class="sub">el frontend</div></div>
+          <span class="arrow">→</span>
+          <div class="node hero"><div class="ico">⚙️</div><div class="label">API</div><div class="sub">FastAPI (servidor)</div><span class="badge">NUEVO</span></div>
+          <span class="arrow">→</span>
+          <div class="node on"><div class="ico">📄</div><div class="label">Datos</div><div class="sub">datos/lugares.json</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MÓDULO 3 ===== -->
+    <section class="slide" style="--accent:var(--amber)">
+      <div class="col-text">
+        <div class="eyebrow">MÓDULO 3 · DÍA 2</div>
+        <h1>La base de datos</h1>
+        <p class="tagline">La memoria: los lugares no se pierden.</p>
+        <ul class="points">
+          <li>Una base de datos <strong>SQLite</strong> (un archivo <code>lugares.db</code>).</li>
+          <li>Crear, ver y <strong>borrar</strong> lugares — y persisten al reiniciar.</li>
+          <li>SQLite ya viene con Python: nada que instalar.</li>
+        </ul>
+        <div class="goal">🎯 Tu app recuerda. Ciclo completo: se ve · funciona · recuerda.</div>
+        <div class="chips"><span class="chip">SQLite</span></div>
+        <p class="indep">🧩 Módulo independiente · <strong>Imagínalo → pídeselo → inténtalo.</strong></p>
+      </div>
+      <div class="col-diagram">
+        <div class="flow">
+          <div class="node on"><div class="ico">🗺️</div><div class="label">Mapa</div><div class="sub">el frontend</div></div>
+          <span class="arrow">→</span>
+          <div class="node on"><div class="ico">⚙️</div><div class="label">API</div><div class="sub">FastAPI</div></div>
+          <span class="arrow">→</span>
+          <div class="node hero"><div class="ico">💾</div><div class="label">Base de datos</div><div class="sub">SQLite · lugares.db</div><span class="badge">NUEVO</span></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="nav">
+    <button class="btn" id="prev">← Anterior</button>
+    <span class="hint">← → para navegar · F pantalla completa · sin spoilers: cada módulo aparece al llegar</span>
+    <span class="counter" id="counter">1 / 3</span>
+    <button class="btn" id="next">Siguiente →</button>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var pills  = Array.prototype.slice.call(document.querySelectorAll('#stepper .pill'));
+  var counter = document.getElementById('counter');
+  var i = (function () {
+    var s = parseInt(new URLSearchParams(location.search).get('slide'), 10);
+    return (s >= 1 && s <= slides.length) ? s - 1 : 0;
+  })();
+
+  pills.forEach(function (p) { p.style.setProperty('--accent', p.dataset.accent); });
+
+  function render() {
+    slides.forEach(function (s, n) { s.classList.toggle('active', n === i); });
+    pills.forEach(function (p, n) {
+      p.classList.toggle('revealed', n <= i);   // sólo se desvela hasta el módulo actual
+      p.classList.toggle('current', n === i);
+      p.classList.toggle('locked', n > i);
+    });
+    counter.textContent = (i + 1) + ' / ' + slides.length;
+  }
+  function go(n) { i = Math.max(0, Math.min(slides.length - 1, n)); render(); }
+
+  document.getElementById('next').addEventListener('click', function (e) { e.stopPropagation(); go(i + 1); });
+  document.getElementById('prev').addEventListener('click', function (e) { e.stopPropagation(); go(i - 1); });
+  document.getElementById('stage').addEventListener('click', function () { go(i + 1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(i + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
+    else if (e.key === 'Home') { go(0); }
+    else if (e.key === 'End') { go(slides.length - 1); }
+    else if (e.key.toLowerCase() === 'f') { toggleFull(); }
+    else if (e.key.toLowerCase() === 't') { toggleTheme(); }
+  });
+
+  function toggleTheme() {
+    var t = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+    try { localStorage.setItem('archify-theme', t); } catch (e) {}
+  }
+  function toggleFull() {
+    if (!document.fullscreenElement) { (document.documentElement.requestFullscreen || function(){}).call(document.documentElement); }
+    else if (document.exitFullscreen) { document.exitFullscreen(); }
+  }
+  document.getElementById('theme').addEventListener('click', function (e) { e.stopPropagation(); toggleTheme(); });
+  document.getElementById('full').addEventListener('click', function (e) { e.stopPropagation(); toggleFull(); });
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+[
+  {
+    "id": 1,
+    "nombre": "Camino entre cultivos de ladera",
+    "lat": 38.625263,
+    "lon": -0.131852,
+    "categoria": "Camino o construcción rural",
+    "descripcion": "Carretera con quitamiedos junto a un cultivo de frutales y vegetación en la ladera del fondo.",
+    "foto": "fotos_ejemplo/DSC01684.JPG"
+  },
+  {
+    "id": 2,
+    "nombre": "Bancales de frutales en ladera",
+    "lat": 38.638875,
+    "lon": -0.134108,
+    "categoria": "Bancales / terrazas",
+    "descripcion": "Ladera cultivada con frutales, escalonada en bancales sostenidos por muros de piedra seca.",
+    "foto": "fotos_ejemplo/DSC01923.JPG"
+  },
+  {
+    "id": 3,
+    "nombre": "Cítricos tras una valla de piedra",
+    "lat": 38.638955,
+    "lon": -0.134095,
+    "categoria": "Almendros o frutales",
+    "descripcion": "Cítricos con frutos amarillos tras una valla metálica, sobre un margen de piedra.",
+    "foto": "fotos_ejemplo/DSC01924.JPG"
+  },
+  {
+    "id": 4,
+    "nombre": "Frutales jóvenes con muretes de piedra",
+    "lat": 38.638998,
+    "lon": -0.134045,
+    "categoria": "Almendros o frutales",
+    "descripcion": "Plantación de frutales jóvenes sobre suelo seco, con muretes de piedra y montañas verdes al fondo.",
+    "foto": "fotos_ejemplo/DSC01925.JPG"
+  },
+  {
+    "id": 5,
+    "nombre": "Frutales con vegetación seca",
+    "lat": 38.59288,
+    "lon": -0.062098,
+    "categoria": "Almendros o frutales",
+    "descripcion": "Frutales junto a un terreno con vegetación seca y herbácea entre los árboles.",
+    "foto": "fotos_ejemplo/DSC02256.JPG"
+  },
+  {
+    "id": 6,
+    "nombre": "Olivo junto a un muro de piedra seca",
+    "lat": 38.59288,
+    "lon": -0.062098,
+    "categoria": "Olivar",
+    "descripcion": "Olivo grande junto a un muro de piedra seca, sobre suelo claro y pedregoso.",
+    "foto": "fotos_ejemplo/DSC02257.JPG"
+  },
+  {
+    "id": 7,
+    "nombre": "Frutal en bancales de piedra seca",
+    "lat": 38.59288,
+    "lon": -0.062098,
+    "categoria": "Bancales / terrazas",
+    "descripcion": "Frutal en un bancal delimitado por muros de piedra seca dispuestos en terrazas.",
+    "foto": "fotos_ejemplo/DSC02258.JPG"
+  },
+  {
+    "id": 8,
+    "nombre": "Frutal tras valla, suelo desnudo",
+    "lat": 38.657793,
+    "lon": -0.101605,
+    "categoria": "Almendros o frutales",
+    "descripcion": "Frutal tras una valla metálica con portón, sobre suelo de tierra desnuda.",
+    "foto": "fotos_ejemplo/DSC02588.JPG"
+  },
+  {
+    "id": 9,
+    "nombre": "Cultivo de frutales junto a la ladera",
+    "lat": 38.657793,
+    "lon": -0.101605,
+    "categoria": "Almendros o frutales",
+    "descripcion": "Cultivo de frutales tras valla y murete de piedra, con la ladera al fondo.",
+    "foto": "fotos_ejemplo/DSC02589.JPG"
+  },
+  {
+    "id": 10,
+    "nombre": "Frutales con la montaña al fondo",
+    "lat": 38.657908,
+    "lon": -0.101631,
+    "categoria": "Almendros o frutales",
+    "descripcion": "Frutales tras una valla metálica sobre suelo seco, con una montaña difuminada al fondo.",
+    "foto": "fotos_ejemplo/DSC02590.JPG"
+  },
+  {
+    "id": 11,
+    "nombre": "Frutales junto a un camino",
+    "lat": 38.657948,
+    "lon": -0.10166,
+    "categoria": "Bancales / terrazas",
+    "descripcion": "Frutales sobre un margen de piedra seca cubierto de hierba seca, junto a un camino.",
+    "foto": "fotos_ejemplo/DSC02591.JPG"
+  },
+  {
+    "id": 12,
+    "nombre": "Bancales cultivados y casas rurales",
+    "lat": 38.658143,
+    "lon": -0.101758,
+    "categoria": "Cultivo en uso",
+    "descripcion": "Vista, a través de una valla, de bancales cultivados con frutales y construcciones rurales.",
+    "foto": "fotos_ejemplo/DSC02592.JPG"
+  },
+  {
+    "id": 13,
+    "nombre": "Hilera de frutales ante el matorral",
+    "lat": 38.668517,
+    "lon": -0.11724,
+    "categoria": "Almendros o frutales",
+    "descripcion": "Hilera de frutales sobre suelo seco, con una ladera de matorral al fondo.",
+    "foto": "fotos_ejemplo/DSC02664.JPG"
+  },
+  {
+    "id": 14,
+    "nombre": "Matorral y árboles sobre el valle",
+    "lat": 38.669493,
+    "lon": -0.118918,
+    "categoria": "Matorral / regeneración",
+    "descripcion": "Árboles dispersos sobre suelo pedregoso con vegetación seca y vistas a un valle cultivado.",
+    "foto": "fotos_ejemplo/DSC02669.JPG"
+  },
+  {
+    "id": 15,
+    "nombre": "Frutales y muro con flores",
+    "lat": 38.63712,
+    "lon": -0.11702,
+    "categoria": "Vista de valle o ladera",
+    "descripcion": "Frutales y un muro de piedra con flores, con montañas al fondo del valle.",
+    "foto": "fotos_ejemplo/DSC02775.JPG"
+  },
+  {
+    "id": 16,
+    "nombre": "Bancales escalonados de piedra seca",
+    "lat": 38.63712,
+    "lon": -0.11702,
+    "categoria": "Bancales / terrazas",
+    "descripcion": "Muros de piedra seca escalonados en bancales, con frutales y vegetación seca encima.",
+    "foto": "fotos_ejemplo/DSC02776.JPG"
+  },
+  {
+    "id": 17,
+    "nombre": "Panorámica del valle cultivado",
+    "lat": 38.63712,
+    "lon": -0.11702,
+    "categoria": "Vista de valle o ladera",
+    "descripcion": "Panorámica de un valle con laderas cubiertas de cultivos de frutales y construcciones dispersas.",
+    "foto": "fotos_ejemplo/DSC02777.JPG"
+  },
+  {
+    "id": 18,
+    "nombre": "Frutales bajo malla en bancales",
+    "lat": 38.63712,
+    "lon": -0.11702,
+    "categoria": "Cultivo en uso",
+    "descripcion": "Cultivo de frutales cubierto con malla protectora, sobre bancales de piedra seca.",
+    "foto": "fotos_ejemplo/DSC02778.JPG"
+  }
+]

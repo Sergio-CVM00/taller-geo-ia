@@ -1,97 +1,80 @@
-# Chuleta para llevarte 🧠
+# 🧭 Chuleta del taller — para llevar
 
-Un resumen de todo lo del taller. Guárdalo: es lo que necesitas para seguir
-usando la IA en tu trabajo **sin nosotros al lado**.
+Una hoja para consultar cuando una palabra te suene rara o algo no salga.
+**No hay que memorizar nada.**
 
----
+## Las ideas clave
 
-## 1. ¿Qué es esto de la IA? (en una frase)
-Programas que han "leído" enormes cantidades de texto y código y, a partir de
-ahí, **predicen la mejor respuesta** a lo que les pides. No "piensan" como
-nosotros; son muy buenos completando y transformando.
+- **Vibe coding / "programar hablando":** tú no escribes código; le **dices en
+  español** a un agente de IA lo que quieres y él lo escribe y lo ejecuta. Tú
+  diriges, miras y decides.
+- **Agente (Antigravity):** el asistente de IA que **escribe y ejecuta** por ti. Le
+  hablas en su panel de chat.
+- **Prompt:** lo que le escribes al agente. Un buen prompt tiene **5 ingredientes**:
+  - **Papel** — qué rol toma ("eres un desarrollador que me ayuda paso a paso").
+  - **Contexto** — dónde estás y con qué datos ("en datos/lugares.json hay…").
+  - **Tarea** — qué quieres ("un mapa con un marcador por cada lugar").
+  - **Formato** — cómo lo quieres ("un solo archivo HTML", "coméntalo en español").
+  - **Límites** — qué NO hacer ("sin añadir cosas que no haya pedido").
 
-**Los asistentes que oirás nombrar** (todos hacen cosas parecidas):
-- **ChatGPT** (OpenAI) · **Gemini** (Google) · **Claude** (Anthropic).
-- Existen modelos *abiertos* (Llama, Kimi, GLM…) que se pueden instalar uno
-  mismo, pero para tu día a día los de arriba te sobran.
-- En este taller usamos **Gemini dentro de Antigravity**.
+## Las palabras que oirás
 
----
+- **Frontend / "la cara":** la parte que se ve en el navegador. Aquí, el **mapa**.
+- **Backend / servidor:** la parte que no se ve y hace el trabajo. Como un
+  **camarero** que espera peticiones y responde.
+- **API:** el **menú** del camarero: la lista de cosas que puedes pedirle (p. ej.
+  "dame los lugares", "guarda este lugar").
+- **Base de datos (SQLite):** la **memoria que no se borra**. Un archivo donde los
+  datos se guardan de verdad y siguen ahí aunque apagues el programa.
+- **localhost:** **tu propio ordenador**. Una dirección como `http://localhost:8722`
+  es una página que vive en tu máquina, no en internet.
+- **/docs:** una página de **pruebas** que el servidor crea solo; un formulario
+  naranja para probar la API **sin escribir código**.
+- **JSON:** una forma sencilla de guardar datos en texto (lo que hay en
+  `lugares.json`). No tienes que editarlo.
+- **Leaflet:** la librería (un trozo de programa ya hecho) que **dibuja el mapa**.
+- **Carpeta del taller:** la carpeta `taller-geo-ia` que descargaste.
 
-## 2. Prompt engineering — cómo pedir las cosas
-Un buen prompt lleva **5 ingredientes**:
+## Palabras de los Módulos 2 y 3 (Python)
 
-| Ingrediente | Ejemplo |
+No tienes que saber usarlas: **el agente las maneja por ti**. Solo para que no te
+asusten si aparecen:
+
+- **uv:** el programa que prepara Python para el proyecto. El agente lo usa por ti.
+- **Entorno virtual (`.venv`):** una "cajita" aislada de Python para este proyecto, así
+  no toca el resto de tu ordenador. El agente la crea sola.
+- **uvicorn:** el programa que **arranca el servidor**. El agente lo lanza por ti.
+- **FastAPI / Pydantic:** piezas de Python para montar la API. Si salen en un error,
+  **pégaselo al agente**: él lo arregla.
+- **CDN:** un sitio de internet desde donde se carga una librería ya hecha (por eso el
+  mapa del Módulo 1 necesita wifi).
+- **ngrok:** una herramienta que el agente puede usar para que tu app se vea **desde
+  internet** un rato (para enseñársela a un compañero).
+- **Cuota:** las peticiones gratis que tienes con el agente. Un buen prompt gasta menos.
+
+## Dos hábitos que valen oro
+
+- 🩹 **Pega el error entero al agente.** Si algo falla, copia el mensaje completo y
+  pégaselo: **pegar el error es darle contexto**, y con contexto lo arregla.
+- 🧹 **Tarea nueva → chat nuevo.** Al empezar otro módulo, abre un **chat nuevo** en
+  Antigravity: el agente arranca despejado (y gastas menos cuota).
+
+## Qué verás al abrir Antigravity
+
+La ventana principal con un **panel de chat** (donde le escribes) y, al cargar la
+carpeta `taller-geo-ia`, sus archivos a un lado. Si te pide iniciar sesión, usa tu
+cuenta **personal `@gmail.com`** (la `@us.es` no vale).
+
+## Si algo no sale (lo más común)
+
+| Lo que ves | Qué hacer |
 |---|---|
-| **Papel** | "Eres un asistente que me ayuda a..." |
-| **Contexto** | "Tengo una carpeta con fotos .JPG que tienen GPS..." |
-| **Tarea** (en pasos) | "1. Lee... 2. Calcula... 3. Guarda..." |
-| **Formato** | "...un CSV con las columnas archivo, latitud, longitud" |
-| **Límites** | "Usa solo Pillow y pandas. Si falla, avisa." |
+| El **mapa sale en blanco** | Casi siempre es la **wifi** (Leaflet viene de internet). Comprueba la conexión y díselo al agente. |
+| Los **puntos salen en el mar** | Coordenadas mal leídas: dile *"los puntos salen en el mar, revísalo"*. |
+| Sale un **error** en rojo | Cópialo entero y pégaselo al agente. |
+| Dice algo de **CORS** | Es un bloqueo de seguridad rutinario; dile *"arréglalo en la API"*. No es culpa tuya. |
+| El **servidor no arranca** | Pega el error; suele faltar instalar algo: dile *"prepáralo con uv pip install"*. |
+| **No puedes entrar** en Antigravity | Usa una cuenta **`@gmail.com` personal**, no la `@us.es`. |
 
-> 🔴 **Flojo:** *"hazme algo con las fotos"*
-> 🟢 **Bueno:** los 5 ingredientes juntos.
-
-**Reglas de oro:** sé concreto · da ejemplos · di el formato que quieres ·
-pide que te explique antes de actuar · itera con frases pequeñas.
-
----
-
-## 3. Context engineering — qué "sabe" la IA en cada momento
-La IA solo conoce **lo que hay en la conversación** (su "ventana de contexto").
-No ve tu pantalla ni se acuerda de otra conversación.
-
-- 🟢 **Contexto limpio:** lo que le das es relevante a la tarea de ahora
-  (el error que salió, el archivo correcto, el objetivo claro).
-- 🔴 **Contexto sucio:** mezcla de cosas viejas, intentos fallidos y temas
-  distintos → la IA se confunde y responde peor.
-
-**Reglas prácticas:**
-- ¿Cambias de tarea? → **abre una conversación nueva**.
-- ¿Error? → **pega el error entero**; es contexto valiosísimo.
-- Dale **el nombre exacto** de archivos y carpetas.
-- No le hagas adivinar lo que tú ya sabes.
-
----
-
-## 4. ¿Qué es un agente (o "harness")?
-Un asistente normal solo *habla*. Un **agente** además **actúa en tu ordenador**:
-crea y edita archivos, abre la terminal, ejecuta programas, instala librerías.
-Antigravity es un agente. Por eso pudo escribir *y ejecutar* tu programa.
-
-> ⚠️ Como actúa de verdad, **revisa lo que hace** antes de aceptar cambios
-> grandes. Tú mandas: puedes aceptar o rechazar.
-
-> 💡 **Truco de profesional:** un proyecto puede incluir un archivo `AGENTS.md`
-> con reglas que el agente **lee solo** al abrir la carpeta (en qué idioma
-> responder, qué entorno usar, qué librerías...). Este taller trae uno: por eso
-> el asistente "ya sabe" responder en español y usar el entorno correcto sin que
-> se lo recuerdes. Es *ingeniería de contexto* hecha permanente.
-
----
-
-## 5. 🚀 Qué puedes hacer AHORA en tu trabajo
-Lo que hiciste (carpeta → procesar → resultado) se aplica a muchísimo:
-
-- 📂 **Renombrar u organizar** cientos de archivos por fecha, lugar o nombre.
-- 🗺️ **Poner en un mapa** cualquier Excel/CSV que tenga coordenadas o direcciones.
-- 📄 **Sacar una tabla** de un PDF (informes, boletines) a Excel.
-- 🖼️ **Redimensionar o convertir** imágenes en lote (incl. HEIC → JPG).
-- 🛰️ **Recortar o renombrar** capas/imágenes para tus análisis.
-- 📊 **Limpiar y graficar** una hoja de cálculo desordenada.
-- 🌐 **Descargar datos** de una web y guardarlos en una tabla.
-- 📝 Convertir formatos: shapefile ↔ GeoJSON ↔ CSV, etc.
-
----
-
-## 🎯 Tu reto
-Elige **una tarea repetitiva y aburrida** que hagas a mano en tus estudios o
-trabajo. Esta semana, ábrela en Antigravity y pídesela con los 5 ingredientes.
-Aunque no salga a la primera, **lo habrás intentado tú solo/a**. Ese es el
-objetivo de todo esto. 💪
-
----
-
-### Para seguir
-- Antigravity: https://antigravity.google
-- Gemini: https://gemini.google · ChatGPT: https://chat.openai.com · Claude: https://claude.ai
+> El límite ya no es saber programar; es lo que te atrevas a imaginar.
+> **Imagínalo → pídeselo → inténtalo.**
