@@ -51,9 +51,8 @@ Hazlo lo más simple posible: sin frameworks, comentado en español. No abras ni
 servidor ni añadas cosas que no haya pedido. Al final dime qué archivo abrir. (LÍMITES)
 ```
 
-> 🔋 **Truco de cuota** (la *cuota* son las peticiones gratis que tienes con el
-> agente): pensar el prompt antes de enviarlo gasta menos que reintentar a ciegas. Un
-> buen prompt vale por diez.
+> 🎯 **Truco:** pensar bien el prompt antes de enviarlo funciona mucho mejor que
+> reintentar a ciegas. Un buen prompt vale por diez.
 
 ## Cómo saber que va bien ✅
 

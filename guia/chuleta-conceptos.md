@@ -29,14 +29,13 @@ Una hoja para consultar cuando una palabra te suene rara o algo no salga.
 - **CDN:** un sitio de internet desde donde se carga una librería ya hecha (por eso el
   mapa necesita wifi).
 - **Carpeta del taller:** la carpeta `taller-geo-ia` que descargaste.
-- **Cuota:** las peticiones gratis que tienes con el agente. Un buen prompt gasta menos.
 
 ## Dos hábitos que valen oro
 
 - 🩹 **Pega el error entero al agente.** Si algo falla, copia el mensaje completo y
   pégaselo: **pegar el error es darle contexto**, y con contexto lo arregla.
 - 🧹 **Tarea nueva → chat nuevo.** Al empezar otra cosa, abre un **chat nuevo** en
-  Antigravity: el agente arranca despejado (y gastas menos cuota).
+  Antigravity: el agente arranca despejado y se centra en lo nuevo.
 
 ## Qué verás al abrir Antigravity
 

@@ -58,7 +58,8 @@ el agente los usa por ti.
 - 🗺️ **`mod1-frontend/`** — Día 1: el mapa.
 - 📊 **`datos/`** — los 18 lugares de ejemplo.
 - 📸 **`fotos_ejemplo/`** — las fotos de esos lugares.
-- 🧭 **`guia/`** — la chuleta de conceptos y los prompts.
+- 📝 **`prompts/`** — los prompts listos para copiar y pegar (un `.txt` por paso).
+- 🧭 **`guia/`** — la chuleta de conceptos y la guía.
 
 ---
 
