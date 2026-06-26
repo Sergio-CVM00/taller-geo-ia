@@ -19,7 +19,8 @@ Una hoja para consultar cuando una palabra te suene rara o algo no salga.
 
 ## Las palabras que oirás
 
-- **Frontend / "la cara":** la parte que se ve en el navegador. Aquí, el **mapa**.
+- **GEOIA:** la app que construyes en el taller — un **mapa de lugares** (de *Geo* + *IA*).
+- **Frontend / "la cara":** la parte que se ve en el navegador. Aquí, el **mapa** de GEOIA.
 - **Marcador:** cada punto del mapa. Al pulsarlo se abre un **popup** con el nombre y
   la descripción del lugar.
 - **JSON:** una forma sencilla de guardar datos en texto (lo que hay en

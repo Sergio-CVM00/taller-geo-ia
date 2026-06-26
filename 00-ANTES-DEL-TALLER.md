@@ -1,8 +1,9 @@
 # ⚠️ ANTES DEL TALLER — léelo y hazlo en casa
 
-Para no perder tiempo el primer día, **tienes que llegar con esto preparado**.
-Son unos 15–20 minutos. Si te atascas, no pasa nada: abriremos la sala 30 minutos
-antes (16:30) para ayudarte.
+En el taller construirás **GEOIA**, tu primera app web (un mapa de lugares), hablando
+en español con una IA. Para no perder tiempo el primer día, **tienes que llegar con
+esto preparado**. Son unos 15–20 minutos. Si te atascas, no pasa nada: abriremos la
+sala 30 minutos antes (16:30) para ayudarte.
 
 > Necesitas: tu **portátil** (Windows o Mac), el **cargador** y conexión a internet.
 

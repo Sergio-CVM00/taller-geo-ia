@@ -5,12 +5,12 @@
 
 ---
 
-## ¿Qué vas a construir?
+## ¿Qué vas a construir? — **GEOIA**
 
-Una **app web de verdad**: un **mapa interactivo** con lugares marcados que, poco a
-poco, aprende a **guardar** los tuyos. Y lo importante: **no vas a escribir ni una
-sola línea de código.** Le hablas en español a un asistente de IA (**Google
-Antigravity**) y él lo programa por ti. Tú **diriges, miras y decides.**
+**GEOIA** (de *Geo* + *IA*), una **app web de verdad**: un **mapa interactivo** con
+lugares marcados que, poco a poco, aprende a **guardar** los tuyos. Y lo importante:
+**no vas a escribir ni una sola línea de código.** Le hablas en español a un asistente
+de IA (**Google Antigravity**) y él lo programa por ti. Tú **diriges, miras y decides.**
 
 > El objetivo no es que te conviertas en programador/a. Es que salgas con otra
 > cabeza: **si se me ocurre algo, lo puedo prototipar.** El límite ya no es saber
@@ -19,13 +19,13 @@ Antigravity**) y él lo programa por ti. Tú **diriges, miras y decides.**
 
 ## El plan del Día 1
 
-Hoy montas la **primera pieza**: la parte que se ve.
+Hoy montas la **primera pieza** de **GEOIA**: la parte que se ve.
 
 - 🗺️ **Día 1 — El mapa** (`mod1-frontend/`): un mapa en el navegador con los lugares
   marcados; pulsas uno y ves su nombre y su descripción. Su guía trae el prompt listo
   para pegar.
 
-> 🔜 **El Día 2 seguimos** y tu app irá a más. Lo iremos descubriendo en directo: no
+> 🔜 **El Día 2 seguimos** y GEOIA irá a más. Lo iremos descubriendo en directo: no
 > necesitas preparar nada de eso hoy.
 >
 > *(Por curiosidad: el mapa usa una librería llamada Leaflet. No necesitas saber qué

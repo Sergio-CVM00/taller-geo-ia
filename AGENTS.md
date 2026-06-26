@@ -28,7 +28,8 @@
 
 ## El proyecto
 
-Se construye un **mapa de lugares** en el navegador. El paso de hoy:
+Se construye **GEOIA** (de *Geo* + *IA*), una app de **mapa de lugares** en el
+navegador. El paso de hoy:
 
 - **`mod1-frontend/`** — un mapa en el navegador: **un único archivo `index.html`**
   con la librería **Leaflet** (cargada desde su CDN) que muestra los lugares de
