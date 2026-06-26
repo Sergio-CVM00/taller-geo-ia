@@ -1,9 +1,0 @@
-# Librerías de Python del BACKEND del taller (Módulos 2 y 3).
-# Se instalan dentro de un entorno virtual .venv creado con uv:
-#   uv venv
-#   uv pip install -r requirements.txt
-# (Antigravity también puede instalarlas solo si se lo pides en un prompt.)
-
-fastapi             # el framework de la API web
-uvicorn[standard]   # el servidor que ejecuta la API
-# SQLite (Módulo 3) viene incluido en Python: no hace falta instalar nada.

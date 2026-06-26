@@ -5,10 +5,9 @@ de trabajo de campo en la **Marina Baja (Alicante)**.
 
 ## Archivos
 
-- **`lugares.json`** — los 18 lugares. Es el que usa el **Módulo 1** para pintar los
+- **`lugares.json`** — los 18 lugares. Es el que usa el **mapa** para pintar los
   marcadores.
-- **`lugares.csv`** — los mismos datos en tabla, por si quieres abrirlos en Excel o
-  cargarlos en la base de datos del **Módulo 3**.
+- **`lugares.csv`** — los mismos datos en tabla, por si quieres abrirlos en Excel.
 
 ## Qué guarda cada "lugar"
 

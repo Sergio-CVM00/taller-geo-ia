@@ -51,20 +51,20 @@ Antigravity te pedirá iniciar sesión con Google.
 
 ## 🤖 ¿Y las herramientas de programación (Python…)?
 
-**No tienes que instalar nada más.** El **Módulo 1** (el mapa) es un archivo que se
-abre en el navegador, sin instalar nada. Para los **Módulos 2 y 3**, el propio
-asistente (Antigravity) preparará Python cuando se lo pidas — es parte de lo que vas a
-aprender. Cada módulo te da el prompt exacto.
+**No tienes que instalar nada más.** El **mapa** del Día 1 es un archivo que se abre en
+el navegador, sin instalar nada. Más adelante en el taller, si hace falta alguna
+herramienta, el propio asistente (Antigravity) la preparará cuando se lo pidas — es
+parte de lo que vas a aprender.
 
-> ¿Te animas a dejarlo todo listo desde casa? Opcional: abre la carpeta en Antigravity
-> y pega este prompt:
+> ¿Te animas a dejar Python listo desde casa por si acaso? Opcional: abre la carpeta en
+> Antigravity y pega este prompt:
 >
 > ```text
 > Eres un asistente que me prepara el entorno para un taller. No sé programar, así
 > que hazlo tú y explícamelo en pasos sencillos.
-> Comprueba si tengo instalados uv y Python (para los módulos 2 y 3). Lo que falte,
-> instálalo tú, paso a paso, enseñándome los comandos. Al terminar, dime en una frase
-> si está todo listo o qué ha fallado.
+> Comprueba si tengo instalados uv y Python. Lo que falte, instálalo tú, paso a paso,
+> enseñándome los comandos. Al terminar, dime en una frase si está todo listo o qué
+> ha fallado.
 > ```
 >
 > 💡 Fíjate en cómo está escrito: papel, contexto, tarea y qué esperas al final. Esos

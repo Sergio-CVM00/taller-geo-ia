@@ -81,6 +81,5 @@ Cuando el mapa funcione, pídele mejoras de una en una:
 - *"Muestra la foto del lugar dentro del popup."*
 - *"Añade una cajita para buscar lugares por nombre."*
 
-> En los **Módulos 2 y 3** —cada uno por separado— construirás un servidor y una base
-> de datos para este mismo mapa. Son independientes; si quieres, al final puedes
-> conectarlos.
+> 🔜 **El Día 2** tu app irá a más. Lo descubriremos en directo. Por hoy, disfruta de
+> ver tu mapa funcionando. 🗺️

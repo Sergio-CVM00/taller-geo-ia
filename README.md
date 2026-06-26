@@ -17,28 +17,19 @@ Antigravity**) y él lo programa por ti. Tú **diriges, miras y decides.**
 > programar; es lo que te atrevas a imaginar.
 > **Imagínalo → pídeselo → inténtalo.**
 
-## El plan, en dos días
+## El plan del Día 1
 
-Lo montas en **tres piezas**, de lo más visible a lo más profundo. Cada una en su
-carpeta, con su guía y su prompt listo para pegar:
+Hoy montas la **primera pieza**: la parte que se ve.
 
-- 🗺️ **Día 1 — El mapa** (`mod1-frontend/`): la parte que se ve. Un mapa en el
-  navegador con los lugares marcados; pulsas uno y ves su nombre y su descripción.
-- ⚙️ **Día 2 — El servidor** (`mod2-backend/`): la parte que no se ve pero hace el
-  trabajo. Un programita que entrega y recibe lugares (como un camarero que te trae
-  lo que le pides).
-- 💾 **Día 2 — La memoria** (`mod3-base-de-datos/`): donde los lugares se **guardan
-  de verdad** y no se pierden aunque apagues todo.
+- 🗺️ **Día 1 — El mapa** (`mod1-frontend/`): un mapa en el navegador con los lugares
+  marcados; pulsas uno y ves su nombre y su descripción. Su guía trae el prompt listo
+  para pegar.
 
-Y el broche del Día 2: 🌍 **comparte tu app** con un enlace temporal para que otra
-persona la abra desde su móvil (guía en [`guia/compartir-tu-app.md`](guia/compartir-tu-app.md)).
-
-> 💡 Cada pieza es **independiente**: todas parten de los mismos datos de ejemplo
-> (`datos/`). Puedes hacerlas en orden o **saltar a la siguiente** aunque no hayas
-> terminado la anterior. No te quedas atascado/a.
+> 🔜 **El Día 2 seguimos** y tu app irá a más. Lo iremos descubriendo en directo: no
+> necesitas preparar nada de eso hoy.
 >
-> *(Por curiosidad: el mapa usa una librería llamada Leaflet; el servidor, Python;
-> la memoria, SQLite. No necesitas saber qué son: el agente se encarga.)*
+> *(Por curiosidad: el mapa usa una librería llamada Leaflet. No necesitas saber qué
+> es: el agente se encarga.)*
 
 ## Cómo empezar (3 pasos)
 
@@ -47,12 +38,10 @@ persona la abra desde su móvil (guía en [`guia/compartir-tu-app.md`](guia/comp
    pasa nada: abrimos la sala a las 16:30 para echarte una mano.)
 2. **En el taller** → abre **Google Antigravity** y carga esta carpeta
    `taller-geo-ia` (arrástrala a la ventana, o usa su botón de abrir/añadir carpeta).
-3. **Sigue la guía de cada pieza** → empieza por **[`mod1-frontend/`](mod1-frontend/README.md)**
-   el Día 1; sigue con **[`mod2-backend/`](mod2-backend/README.md)** y
-   **[`mod3-base-de-datos/`](mod3-base-de-datos/README.md)** el Día 2. Cada guía trae
-   el prompt para copiar y pegar.
+3. **Sigue la guía** → abre **[`mod1-frontend/`](mod1-frontend/README.md)**: trae el
+   prompt para copiar y pegar y cómo saber que va bien.
 
-> 🧭 ¿Te pierde alguna palabra (mapa, servidor, base de datos, prompt…)? Tienes una
+> 🧭 ¿Te pierde alguna palabra (mapa, marcador, prompt…)? Tienes una
 > **chuleta** de bolsillo en **[`guia/chuleta-conceptos.md`](guia/chuleta-conceptos.md)**
 > y todos los prompts juntos en **[`guia/prompts.md`](guia/prompts.md)**.
 
@@ -67,11 +56,9 @@ el agente los usa por ti.
 
 - 📄 **`00-ANTES-DEL-TALLER.md`** — empieza aquí (preparación, en casa).
 - 🗺️ **`mod1-frontend/`** — Día 1: el mapa.
-- ⚙️ **`mod2-backend/`** — Día 2: el servidor.
-- 💾 **`mod3-base-de-datos/`** — Día 2: la memoria.
 - 📊 **`datos/`** — los 18 lugares de ejemplo.
 - 📸 **`fotos_ejemplo/`** — las fotos de esos lugares.
-- 🧭 **`guia/`** — la chuleta de conceptos, todos los prompts y cómo **compartir tu app**.
+- 🧭 **`guia/`** — la chuleta de conceptos y los prompts.
 
 ---
 
