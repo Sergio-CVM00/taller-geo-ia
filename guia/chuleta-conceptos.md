@@ -53,14 +53,13 @@ asusten si aparecen:
   un **enlace** con el que tu app se ve **desde internet** un rato (para enseñársela a
   un compañero). Es temporal: se apaga cuando lo cierras. Lo tienes paso a paso en
   [`compartir-tu-app.md`](compartir-tu-app.md).
-- **Cuota:** las peticiones gratis que tienes con el agente. Un buen prompt gasta menos.
 
 ## Dos hábitos que valen oro
 
 - 🩹 **Pega el error entero al agente.** Si algo falla, copia el mensaje completo y
   pégaselo: **pegar el error es darle contexto**, y con contexto lo arregla.
 - 🧹 **Tarea nueva → chat nuevo.** Al empezar otro módulo, abre un **chat nuevo** en
-  Antigravity: el agente arranca despejado (y gastas menos cuota).
+  Antigravity: el agente arranca despejado y se centra en lo nuevo.
 
 ## Qué verás al abrir Antigravity
 

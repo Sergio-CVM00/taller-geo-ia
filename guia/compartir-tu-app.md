@@ -5,6 +5,10 @@
 > Has hecho una app **en tu ordenador**. Ahora viene lo bonito: que **otra persona la
 > abra desde su móvil o su portátil**. No necesitas saber nada nuevo: se lo pides al
 > agente y él te guía para conseguir un **enlace para compartir**.
+>
+> 🎈 **Sin presión:** en el taller lo verás primero **en directo**. Si te animas, lo
+> haces tú con el prompt de abajo; y si no te da tiempo, **te llevas esta guía** y lo
+> haces en casa con calma. Lo importante es **ver que se puede compartir**.
 
 ## Antes de empezar
 

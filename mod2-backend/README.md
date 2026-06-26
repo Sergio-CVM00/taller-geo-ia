@@ -22,7 +22,7 @@ camarero pequeño, hecho con **Python**, que sirve la lista de lugares y deja
   [`../datos/lugares.json`](../datos/lugares.json).
 
 > 💡 **Contexto limpio:** ¿vienes de otro módulo? Abre un **chat nuevo** en
-> Antigravity para empezar con la cabeza despejada (y gastando menos cuota).
+> Antigravity para empezar con la cabeza despejada.
 
 ## El prompt de partida (cópialo y pégalo)
 

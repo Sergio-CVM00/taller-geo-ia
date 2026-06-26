@@ -71,7 +71,8 @@ el agente los usa por ti.
 - 💾 **`mod3-base-de-datos/`** — Día 2: la memoria.
 - 📊 **`datos/`** — los 18 lugares de ejemplo.
 - 📸 **`fotos_ejemplo/`** — las fotos de esos lugares.
-- 🧭 **`guia/`** — la chuleta de conceptos, todos los prompts y cómo **compartir tu app**.
+- 📝 **`prompts/`** — los prompts listos para copiar y pegar (un `.txt` por paso).
+- 🧭 **`guia/`** — la chuleta de conceptos y cómo **compartir GEOIA**.
 
 ---
 
