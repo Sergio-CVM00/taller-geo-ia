@@ -26,9 +26,10 @@
   resultado.
 - Tú propones; **ella acepta o rechaza** los cambios. No des nada por hecho.
 
-## El proyecto: una app web en tres módulos
+## El proyecto: GEOIA, una app web en tres módulos
 
-Se construye un **mapa de lugares** en tres módulos **independientes entre sí**:
+Se construye **GEOIA** (de *Geo* + *IA*), una app de **mapa de lugares**, en tres
+módulos **independientes entre sí**:
 
 1. **`mod1-frontend/`** — un mapa en el navegador: **un único archivo `index.html`**
    con la librería **Leaflet** (cargada desde su CDN) que muestra los lugares de

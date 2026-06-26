@@ -19,7 +19,8 @@ Una hoja para consultar cuando una palabra te suene rara o algo no salga.
 
 ## Las palabras que oirás
 
-- **Frontend / "la cara":** la parte que se ve en el navegador. Aquí, el **mapa**.
+- **GEOIA:** la app que construyes en el taller — un **mapa de lugares** (de *Geo* + *IA*).
+- **Frontend / "la cara":** la parte que se ve en el navegador. Aquí, el **mapa** de GEOIA.
 - **Backend / servidor:** la parte que no se ve y hace el trabajo. Como un
   **camarero** que espera peticiones y responde.
 - **API:** el **menú** del camarero: la lista de cosas que puedes pedirle (p. ej.

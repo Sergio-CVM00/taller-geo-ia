@@ -5,12 +5,12 @@
 
 ---
 
-## ¿Qué vas a construir?
+## ¿Qué vas a construir? — **GEOIA**
 
-Una **app web de verdad**: un **mapa interactivo** con lugares marcados que, poco a
-poco, aprende a **guardar** los tuyos. Y lo importante: **no vas a escribir ni una
-sola línea de código.** Le hablas en español a un asistente de IA (**Google
-Antigravity**) y él lo programa por ti. Tú **diriges, miras y decides.**
+**GEOIA** (de *Geo* + *IA*), una **app web de verdad**: un **mapa interactivo** con
+lugares marcados que, poco a poco, aprende a **guardar** los tuyos. Y lo importante:
+**no vas a escribir ni una sola línea de código.** Le hablas en español a un asistente
+de IA (**Google Antigravity**) y él lo programa por ti. Tú **diriges, miras y decides.**
 
 > El objetivo no es que te conviertas en programador/a. Es que salgas con otra
 > cabeza: **si se me ocurre algo, lo puedo prototipar.** El límite ya no es saber
@@ -19,8 +19,8 @@ Antigravity**) y él lo programa por ti. Tú **diriges, miras y decides.**
 
 ## El plan, en dos días
 
-Lo montas en **tres piezas**, de lo más visible a lo más profundo. Cada una en su
-carpeta, con su guía y su prompt listo para pegar:
+Montas **GEOIA** en **tres piezas**, de lo más visible a lo más profundo. Cada una en
+su carpeta, con su guía y su prompt listo para pegar:
 
 - 🗺️ **Día 1 — El mapa** (`mod1-frontend/`): la parte que se ve. Un mapa en el
   navegador con los lugares marcados; pulsas uno y ves su nombre y su descripción.
@@ -30,7 +30,7 @@ carpeta, con su guía y su prompt listo para pegar:
 - 💾 **Día 2 — La memoria** (`mod3-base-de-datos/`): donde los lugares se **guardan
   de verdad** y no se pierden aunque apagues todo.
 
-Y el broche del Día 2: 🌍 **comparte tu app** con un enlace temporal para que otra
+Y el broche del Día 2: 🌍 **comparte GEOIA** con un enlace temporal para que otra
 persona la abra desde su móvil (guía en [`guia/compartir-tu-app.md`](guia/compartir-tu-app.md)).
 
 > 💡 Cada pieza es **independiente**: todas parten de los mismos datos de ejemplo

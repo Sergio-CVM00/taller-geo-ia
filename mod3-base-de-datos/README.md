@@ -1,4 +1,4 @@
-# Módulo 3 — La memoria: que los lugares no se pierdan 💾
+# Módulo 3 — La memoria de GEOIA: que los lugares no se pierdan 💾
 **Día 2 · lo construyes con Antigravity, sin escribir código**
 
 > 🧩 **Pieza independiente.** Construye su propio servidor con memoria partiendo de

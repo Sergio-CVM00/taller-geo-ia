@@ -1,4 +1,4 @@
-# Módulo 2 — El servidor: una API que sirve los lugares ⚙️
+# Módulo 2 — El servidor de GEOIA: una API que sirve los lugares ⚙️
 **Día 2 · lo enseña el presentador en directo (y, si quieres, lo sigues tú)**
 
 > 🧩 **Pieza independiente.** Parte de [`../datos/lugares.json`](../datos/lugares.json)
