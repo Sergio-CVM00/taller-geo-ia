@@ -99,6 +99,35 @@ Un solo main.py, sin subcarpetas, comentado en español, paso a paso. (LÍMITES)
 
 ---
 
+## Día 2 · Comparte tu app (`guia/compartir-tu-app.md`)
+
+> El broche final: un **enlace temporal** para que otra persona abra tu app desde su
+> móvil u ordenador. Cambia el puerto (`8722`) si el tuyo es otro.
+
+```text
+Eres un desarrollador que me ayuda paso a paso. No sé programar; hazlo tú y
+explícamelo en español. (PAPEL)
+
+Acabo de construir una app en la carpeta "taller-geo-ia" y la tengo funcionando en mi
+ordenador, en una dirección como http://localhost:8722. Quiero enseñársela a un
+compañero desde SU móvil u ordenador, durante un rato. (CONTEXTO)
+
+Dame un enlace público y temporal que abra mi app desde internet, y a ser posible sin
+que tenga que crearme ninguna cuenta. (TAREA)
+
+Usa una herramienta de "túnel" gratuita: prueba primero "cloudflared" con el comando
+"cloudflared tunnel --url http://localhost:8722" (no pide registro). Si no está
+disponible, usa "ngrok". Si hace falta instalar algo, instálalo tú y enséñame el
+comando. Deja encendido el servidor de mi app y arranca el túnel en OTRO terminal.
+(FORMATO)
+
+Al terminar, dame el enlace para copiar y pegar. Recuérdame en una frase que es
+temporal: deja de funcionar cuando cierre el túnel o apague el ordenador. Nada de
+dominios ni configuraciones permanentes. (LÍMITES)
+```
+
+---
+
 ## Preparación del entorno (opcional, en casa)
 
 > Solo para dejar Python listo antes del taller. El Módulo 1 no necesita nada de esto.

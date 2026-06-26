@@ -30,6 +30,9 @@ carpeta, con su guía y su prompt listo para pegar:
 - 💾 **Día 2 — La memoria** (`mod3-base-de-datos/`): donde los lugares se **guardan
   de verdad** y no se pierden aunque apagues todo.
 
+Y el broche del Día 2: 🌍 **comparte tu app** con un enlace temporal para que otra
+persona la abra desde su móvil (guía en [`guia/compartir-tu-app.md`](guia/compartir-tu-app.md)).
+
 > 💡 Cada pieza es **independiente**: todas parten de los mismos datos de ejemplo
 > (`datos/`). Puedes hacerlas en orden o **saltar a la siguiente** aunque no hayas
 > terminado la anterior. No te quedas atascado/a.
@@ -68,7 +71,7 @@ el agente los usa por ti.
 - 💾 **`mod3-base-de-datos/`** — Día 2: la memoria.
 - 📊 **`datos/`** — los 18 lugares de ejemplo.
 - 📸 **`fotos_ejemplo/`** — las fotos de esos lugares.
-- 🧭 **`guia/`** — la chuleta de conceptos y todos los prompts.
+- 🧭 **`guia/`** — la chuleta de conceptos, todos los prompts y cómo **compartir tu app**.
 
 ---
 

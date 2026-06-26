@@ -81,8 +81,9 @@ lugares, dile que **solo siembre los datos si la tabla está vacía**.
 - *"Déjame editar un lugar."*
 - **(Si hiciste los Módulos 1 y 2)** *"Conecta el mapa y el servidor con esta base de
   datos."*
-- *"Enséñame a enseñarle mi app a un compañero."* (El agente puede usar una
-  herramienta como **ngrok** para que tu app se vea desde internet un rato.)
+- 🌍 **Compártela:** consigue un **enlace temporal** para que otra persona abra tu app
+  desde su móvil u ordenador. Lo tienes paso a paso en
+  [`../guia/compartir-tu-app.md`](../guia/compartir-tu-app.md).
 
 > 🎉 Has construido una app web completa **hablando en español**. El límite ya no es
 > saber programar: es lo que te atrevas a imaginar.
