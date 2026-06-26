@@ -41,7 +41,7 @@ Quiero un único archivo "mod1-frontend/index.html" que muestre un mapa interact
 con un marcador por cada lugar. Al pulsar un marcador, usa el popup normal de Leaflet
 (bindPopup) para mostrar su nombre y su descripción. (TAREA)
 
-El archivo debe: cargar la librería Leaflet 1.9.4 desde su CDN (sin npm ni Node);
+El archivo debe: cargar la librería Leaflet 1.9.4 (su CSS y su JS) desde su CDN (sin npm ni Node);
 llevar los 18 lugares escritos directamente dentro del HTML como una lista de
 JavaScript (sin fetch), copiados de datos/lugares.json; centrar el mapa en
 lat 38.65, lon -0.10, zoom 12; y funcionar abriendo el archivo con doble clic, sin
@@ -66,6 +66,8 @@ servidor ni añadas cosas que no haya pedido. Al final dime qué archivo abrir. 
 > mal: **díselo al agente** ("los puntos salen en el mar, revísalo").
 > ⬜ Si el mapa sale **en blanco**, casi siempre es la wifi (Leaflet viene de
 > internet): comprueba la conexión y díselo al agente.
+> 🧷 Si el mapa se ve pero **no aparecen los marcadores** (o salen como cuadritos
+> rotos): **díselo al agente** ("el mapa se ve pero no aparecen los marcadores").
 
 ## Si algo falla 🆘
 

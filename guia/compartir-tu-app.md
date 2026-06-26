@@ -13,7 +13,7 @@
 ## Antes de empezar
 
 - Tienes tu app **funcionando** (si es del Módulo 2 o 3, el servidor está encendido en
-  una dirección como `http://localhost:8722`).
+  una dirección como `http://localhost:8722` —o `http://localhost:8731` en el Módulo 3—).
 - 📶 Necesitas **wifi**.
 
 ## ¿Qué vas a compartir?
@@ -27,8 +27,10 @@
 ## El prompt para compartir (cópialo y pégalo)
 
 > 🙌 No hace falta entenderlo. Pégalo tal cual: el agente instala **ngrok**, lo pone en
-> marcha y te da un enlace. Puede pedirte que crees una **cuenta gratuita de ngrok** (y
-> pegar un "token") — el agente te dice cómo, paso a paso.
+> marcha y te da un enlace. **La primera vez** te pedirá crear una **cuenta gratuita de
+> ngrok** y pegar un "token" (es normal, solo pasa una vez) — el agente te guía paso a
+> paso. Para esa cuenta usa tu **correo personal o tu cuenta de GitHub** (la `@us.es` no
+> funciona).
 
 ```text
 Eres un desarrollador que me ayuda paso a paso. No sé programar; hazlo tú y
@@ -59,6 +61,10 @@ temporal: deja de funcionar cuando lo cierre o apague el ordenador. (LÍMITES)
 2. Lo abres **tú** primero en el navegador para comprobar que se ve tu app.
 3. Se lo **mandas a un compañero** y lo abre desde **su** dispositivo: ve lo mismo. 🎉
 
+> ℹ️ **La primera vez**, ngrok enseña una **página azul de aviso en inglés** (*"You are
+> about to visit…"*). Es normal: solo hay que pulsar **"Visit Site"** y ya se ve tu app.
+> Avisa a tu compañero para que no piense que está roto.
+
 ## Recuerda 🔔
 
 - El enlace es **temporal**: cuando cierras ngrok o apagas el ordenador, **deja de
@@ -70,6 +76,9 @@ temporal: deja de funcionar cuando lo cierre o apague el ordenador. (LÍMITES)
 Copia el error entero y pégaselo al agente.
 - Si ngrok pide un **token** y no sabes de dónde sacarlo, dile: *"guíame para crear la
   cuenta de ngrok y conseguir el token"*.
+- Si el enlace abre una **página de error de ngrok** (pone `ERR_NGROK_8012` o
+  *connection refused*), casi siempre es el **puerto equivocado**: dile al agente
+  *"apunta ngrok al puerto correcto de mi app"* (el Módulo 3 suele ser el **8731**).
 - Si el enlace abre pero **no se ve tu app**, casi siempre el **servidor se ha parado**:
   pídele al agente que lo **vuelva a arrancar**.
 

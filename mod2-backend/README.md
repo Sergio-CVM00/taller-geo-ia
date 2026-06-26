@@ -70,6 +70,9 @@ a paso enseñándome los comandos. (LÍMITES)
 ## Si algo falla 🆘
 
 Copia el error entero y pégaselo al agente: pegar el error es darle contexto.
+- Si **`/docs` sale en blanco** o sin estilo, es la conexión a internet de esa página de
+  pruebas, no tu servidor: recarga, o pídele al agente *"ábreme `GET /lugares` en el
+  navegador"* (verás el JSON con los 18 lugares, así sabes que el servidor va bien).
 - Si el agente menciona un error de **CORS** (un bloqueo de seguridad rutinario del
   navegador), **no es culpa tuya**: pídele que lo arregle él en la API.
 

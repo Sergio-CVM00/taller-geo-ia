@@ -9,7 +9,9 @@ https://github.com/Sergio-CVM00/taller-geo-ia en una carpeta NUEVA, y copia a es
 carpeta nueva mi trabajo del Día 1 (el archivo del mapa, mod1-frontend/index.html, de
 mi carpeta de ayer). (TAREA)
 
-Si no sabes dónde está mi carpeta de ayer, pregúntamelo. Cuando termines, ábreme la
-carpeta nueva y dime que ya podemos seguir. (FORMATO)
+Si no sabes dónde está mi carpeta de ayer, pregúntamelo. Antes de seguir, comprueba que
+la carpeta nueva contiene las carpetas "mod2-backend" y "mod3-base-de-datos"; si no
+están, avísame y NO sigas (puede que el material nuevo aún no esté disponible). Cuando
+esté todo, ábreme la carpeta nueva y dime que ya podemos seguir. (FORMATO)
 
 Hazlo paso a paso, enseñándome los comandos. No borres mi carpeta de ayer. (LÍMITES)

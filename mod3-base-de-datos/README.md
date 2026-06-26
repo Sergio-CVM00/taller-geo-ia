@@ -65,6 +65,10 @@ Un solo main.py, sin subcarpetas, comentado en español, paso a paso. (LÍMITES)
    ```json
    { "id": 19, "nombre": "Mi lugar de prueba", "lat": 38.65, "lon": -0.10, "categoria": "Prueba", "descripcion": "Este lo he añadido yo", "foto": "" }
    ```
+   > 💬 La caja de *Try it out* puede salir **vacía**: es normal. Pega el ejemplo tal
+   > cual (con todas sus llaves y comas) dentro. Si sale un **error en rojo**, borra lo
+   > que haya, vuelve a pegar el ejemplo limpio y dale a *Execute* otra vez.
+
    Luego **dile al agente: "para el servidor y vuelve a arrancarlo"**. Pide otra vez
    `GET /lugares`: tu lugar **sigue ahí**. 🎉
 
@@ -73,6 +77,10 @@ Un solo main.py, sin subcarpetas, comentado en español, paso a paso. (LÍMITES)
 Pega el error entero al agente. Si dice que la tabla "no existe", pídele que la
 **cree al arrancar si todavía no existe**. Si al reiniciar **se duplican** los
 lugares, dile que **solo siembre los datos si la tabla está vacía**.
+- Si al reiniciar el servidor **no arranca** y el error menciona `UNIQUE constraint
+  failed`, dile: *"siembra los 18 lugares SOLO si la tabla está vacía, no cada vez"*.
+- Si al reiniciar tu lugar **desapareció** y vuelven a salir solo 18, dile: *"no borres
+  ni recrees la tabla al arrancar; solo siémbrala si está vacía"*.
 
 ## Ahora tú (reto) 🚀
 
