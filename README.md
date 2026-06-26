@@ -72,7 +72,8 @@ el agente los usa por ti.
 - 📊 **`datos/`** — los 18 lugares de ejemplo.
 - 📸 **`fotos_ejemplo/`** — las fotos de esos lugares.
 - 📝 **`prompts/`** — los prompts listos para copiar y pegar (un `.txt` por paso).
-- 🧭 **`guia/`** — la chuleta de conceptos y cómo **compartir GEOIA**.
+- 🧭 **`guia/`** — la chuleta de conceptos, el **mapa de módulos** (qué hacemos en cada
+  paso) y cómo **compartir GEOIA**.
 
 ---
 
