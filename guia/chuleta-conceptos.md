@@ -48,10 +48,10 @@ asusten si aparecen:
   **pégaselo al agente**: él lo arregla.
 - **CDN:** un sitio de internet desde donde se carga una librería ya hecha (por eso el
   mapa del Módulo 1 necesita wifi).
-- **Túnel / enlace temporal (cloudflared, ngrok):** una herramienta que el agente usa
-  para darte un **enlace** con el que tu app se ve **desde internet** un rato (para
-  enseñársela a un compañero). Es temporal: se apaga cuando cierras el túnel. Lo tienes
-  paso a paso en [`compartir-tu-app.md`](compartir-tu-app.md).
+- **ngrok (enlace temporal):** una herramienta que el agente instala y usa para darte
+  un **enlace** con el que tu app se ve **desde internet** un rato (para enseñársela a
+  un compañero). Es temporal: se apaga cuando lo cierras. Lo tienes paso a paso en
+  [`compartir-tu-app.md`](compartir-tu-app.md).
 - **Cuota:** las peticiones gratis que tienes con el agente. Un buen prompt gasta menos.
 
 ## Dos hábitos que valen oro

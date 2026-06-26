@@ -105,15 +105,12 @@ en frontend, backend y base de datos:
 - Si la app es **solo el mapa** (`mod1`, un `index.html` estático), lo más simple es
   **enviar el archivo** o abrirlo en el proyector; no hace falta servidor ni túnel.
 - Si la app tiene **servidor** (`mod2`/`mod3` en `localhost`), dale un **enlace público
-  temporal** con un túnel gratuito. **Prueba primero `cloudflared`**
-  (`cloudflared tunnel --url http://localhost:PUERTO`) porque **no exige registro**; si
-  no, usa **ngrok**. Si falta instalarlo, instálalo tú y enseña el comando.
-- **Deja el servidor de la app encendido** y arranca el túnel en **otro terminal**.
-  Devuélvele el enlace listo para copiar y **avisa de que es temporal** (caduca al
-  cerrar el túnel o apagar). No configures dominios ni nada permanente.
-- Alternativa sin internet, si están en la **misma wifi**: arranca el servidor con
-  `--host 0.0.0.0` y comparte `http://TU-IP-LOCAL:PUERTO` (puede no funcionar si la red
-  aísla a los equipos entre sí).
+  temporal** con **ngrok**. **Instala y configura ngrok tú** (enseñando los comandos);
+  si pide cuenta gratuita o token de autenticación, **guía a la persona paso a paso**
+  para conseguirlo. Si ngrok no se pudiera usar, esta guía les sirve de referencia.
+- **Deja el servidor de la app encendido** y arranca ngrok en **otro terminal**,
+  apuntando al puerto de la app. Devuélvele el enlace listo para copiar y **avisa de
+  que es temporal** (caduca al cerrarlo o apagar).
 
 ## Cómo escribir el código
 

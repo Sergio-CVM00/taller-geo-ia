@@ -4,7 +4,7 @@
 
 > Has hecho una app **en tu ordenador**. Ahora viene lo bonito: que **otra persona la
 > abra desde su móvil o su portátil**. No necesitas saber nada nuevo: se lo pides al
-> agente y él te da un **enlace para compartir**.
+> agente y él te guía para conseguir un **enlace para compartir**.
 
 ## Antes de empezar
 
@@ -14,18 +14,17 @@
 
 ## ¿Qué vas a compartir?
 
-Hay dos casos, y para los dos el agente se encarga:
-
-- 🗺️ **Solo el mapa (Módulo 1)** — es **un archivo** (`index.html`). Lo más simple de
-  todo: **mándaselo** a tu compañero o **ábrelo en el proyector**. Ya está.
+- 🗺️ **Solo el mapa (Módulo 1)** — es **un archivo** (`index.html`). Lo más simple:
+  **mándaselo** a tu compañero o **ábrelo en el proyector**. Ya está.
 - ⚙️💾 **Una app con servidor (Módulos 2 o 3)** — vive en *tu* ordenador
   (`localhost` = tu máquina), así que para que otra persona la abra hace falta un
-  **enlace temporal a internet**. Eso es lo que pides con el prompt de abajo.
+  **enlace temporal a internet**. Lo consigues con **ngrok** (el prompt de abajo).
 
 ## El prompt para compartir (cópialo y pégalo)
 
-> 🙌 No hace falta entenderlo (verás palabras como `cloudflared` o `túnel`): pégalo tal
-> cual. El agente instala lo que haga falta y te devuelve un enlace.
+> 🙌 No hace falta entenderlo. Pégalo tal cual: el agente instala **ngrok**, lo pone en
+> marcha y te da un enlace. Puede pedirte que crees una **cuenta gratuita de ngrok** (y
+> pegar un "token") — el agente te dice cómo, paso a paso.
 
 ```text
 Eres un desarrollador que me ayuda paso a paso. No sé programar; hazlo tú y
@@ -35,18 +34,15 @@ Acabo de construir una app en la carpeta "taller-geo-ia" y la tengo funcionando 
 ordenador, en una dirección como http://localhost:8722. Quiero enseñársela a un
 compañero desde SU móvil u ordenador, durante un rato. (CONTEXTO)
 
-Dame un enlace público y temporal que abra mi app desde internet, y a ser posible sin
-que tenga que crearme ninguna cuenta. (TAREA)
+Dame un enlace público y temporal que abra mi app desde internet, usando ngrok. (TAREA)
 
-Usa una herramienta de "túnel" gratuita: prueba primero "cloudflared" con el comando
-"cloudflared tunnel --url http://localhost:8722" (no pide registro). Si no está
-disponible, usa "ngrok". Si hace falta instalar algo, instálalo tú y enséñame el
-comando. Deja encendido el servidor de mi app y arranca el túnel en OTRO terminal.
-(FORMATO)
+Instala y configura ngrok tú mismo, enseñándome cada comando. Si ngrok necesita una
+cuenta gratuita o un token de autenticación, guíame para conseguirlo paso a paso. Deja
+encendido el servidor de mi app y arranca ngrok en OTRO terminal, apuntando al puerto
+de mi app. (FORMATO)
 
 Al terminar, dame el enlace para copiar y pegar. Recuérdame en una frase que es
-temporal: deja de funcionar cuando cierre el túnel o apague el ordenador. Nada de
-dominios ni configuraciones permanentes. (LÍMITES)
+temporal: deja de funcionar cuando lo cierre o apague el ordenador. (LÍMITES)
 ```
 
 > 💡 Si tu app está en otro puerto (por ejemplo `8731` en el Módulo 3), cámbialo en el
@@ -55,24 +51,23 @@ dominios ni configuraciones permanentes. (LÍMITES)
 
 ## Cómo saber que va bien ✅
 
-1. El agente te da un **enlace** parecido a `https://algo-algo.trycloudflare.com`.
+1. El agente te da un **enlace** parecido a `https://algo-algo.ngrok-free.app`.
 2. Lo abres **tú** primero en el navegador para comprobar que se ve tu app.
-3. Se lo **mandas a un compañero** (chat, correo…) y lo abre desde **su** dispositivo:
-   ve lo mismo que tú. 🎉
+3. Se lo **mandas a un compañero** y lo abre desde **su** dispositivo: ve lo mismo. 🎉
 
 ## Recuerda 🔔
 
-- El enlace es **temporal**: cuando cierras el túnel o apagas el ordenador, **deja de
+- El enlace es **temporal**: cuando cierras ngrok o apagas el ordenador, **deja de
   funcionar**. Es justo lo que quieres para una demo del taller.
-- Mientras el túnel esté abierto, cualquiera con el enlace puede entrar. Para cerrarlo,
-  dile al agente: *"cierra el túnel"* (o cierra ese terminal).
+- Para cerrarlo, dile al agente *"cierra ngrok"* (o cierra ese terminal).
 
 ## Si algo falla 🆘
 
 Copia el error entero y pégaselo al agente.
-- Si `cloudflared` no se instala o no arranca, dile: *"prueba con ngrok"*.
+- Si ngrok pide un **token** y no sabes de dónde sacarlo, dile: *"guíame para crear la
+  cuenta de ngrok y conseguir el token"*.
 - Si el enlace abre pero **no se ve tu app**, casi siempre el **servidor se ha parado**:
-  pídele al agente que **vuelva a arrancarlo** y deje el túnel apuntando a su dirección.
+  pídele al agente que lo **vuelva a arrancar**.
 
 > 🎉 Acabas de **publicar algo que has construido tú** hablando en español. El límite
 > ya no es saber programar; es lo que te atrevas a imaginar.

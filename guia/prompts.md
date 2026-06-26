@@ -112,18 +112,15 @@ Acabo de construir una app en la carpeta "taller-geo-ia" y la tengo funcionando 
 ordenador, en una dirección como http://localhost:8722. Quiero enseñársela a un
 compañero desde SU móvil u ordenador, durante un rato. (CONTEXTO)
 
-Dame un enlace público y temporal que abra mi app desde internet, y a ser posible sin
-que tenga que crearme ninguna cuenta. (TAREA)
+Dame un enlace público y temporal que abra mi app desde internet, usando ngrok. (TAREA)
 
-Usa una herramienta de "túnel" gratuita: prueba primero "cloudflared" con el comando
-"cloudflared tunnel --url http://localhost:8722" (no pide registro). Si no está
-disponible, usa "ngrok". Si hace falta instalar algo, instálalo tú y enséñame el
-comando. Deja encendido el servidor de mi app y arranca el túnel en OTRO terminal.
-(FORMATO)
+Instala y configura ngrok tú mismo, enseñándome cada comando. Si ngrok necesita una
+cuenta gratuita o un token de autenticación, guíame para conseguirlo paso a paso. Deja
+encendido el servidor de mi app y arranca ngrok en OTRO terminal, apuntando al puerto
+de mi app. (FORMATO)
 
 Al terminar, dame el enlace para copiar y pegar. Recuérdame en una frase que es
-temporal: deja de funcionar cuando cierre el túnel o apague el ordenador. Nada de
-dominios ni configuraciones permanentes. (LÍMITES)
+temporal: deja de funcionar cuando lo cierre o apague el ordenador. (LÍMITES)
 ```
 
 ---
