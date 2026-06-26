@@ -1,0 +1,23 @@
+Eres un desarrollador que me ayuda paso a paso. No sé programar; hazlo tú y
+explícamelo en español. (PAPEL)
+
+Estoy en "taller-geo-ia". En "datos/lugares.json" hay lugares con los campos: id,
+nombre, lat, lon, categoria, descripcion, foto. (CONTEXTO)
+
+Quiero un archivo "mod3-base-de-datos/main.py" que:
+(1) al arrancar, cree una base de datos SQLite "lugares.db" en la misma carpeta que
+main.py (usa Path(__file__).parent / "lugares.db");
+(2) si la tabla "lugares" no existe, la cree y la cargue con los 18 registros de
+datos/lugares.json (Path(__file__).parent.parent / "datos" / "lugares.json"); si la
+tabla ya tiene datos, NO inserte nada (para no duplicar al reiniciar);
+(3) GET /lugares devuelva todos los registros;
+(4) POST /lugares reciba un lugar en JSON (acéptalo con await request.json(), sin
+clase Pydantic) y lo guarde. (TAREA)
+
+Usa el entorno virtual (si no existe, créalo con uv venv). Para instalar usa
+"uv pip install fastapi uvicorn". Arráncalo con
+".venv/bin/uvicorn mod3-base-de-datos.main:app --port 8731" desde "taller-geo-ia",
+en un terminal normal. Usa sqlite3, que ya viene con Python: no instales nada más
+para la base de datos. (FORMATO)
+
+Un solo main.py, sin subcarpetas, comentado en español, paso a paso. (LÍMITES)

@@ -19,7 +19,8 @@ Una hoja para consultar cuando una palabra te suene rara o algo no salga.
 
 ## Las palabras que oirás
 
-- **Frontend / "la cara":** la parte que se ve en el navegador. Aquí, el **mapa**.
+- **GEOIA:** la app que construyes en el taller — un **mapa de lugares** (de *Geo* + *IA*).
+- **Frontend / "la cara":** la parte que se ve en el navegador. Aquí, el **mapa** de GEOIA.
 - **Backend / servidor:** la parte que no se ve y hace el trabajo. Como un
   **camarero** que espera peticiones y responde.
 - **API:** el **menú** del camarero: la lista de cosas que puedes pedirle (p. ej.
@@ -48,16 +49,17 @@ asusten si aparecen:
   **pégaselo al agente**: él lo arregla.
 - **CDN:** un sitio de internet desde donde se carga una librería ya hecha (por eso el
   mapa del Módulo 1 necesita wifi).
-- **ngrok:** una herramienta que el agente puede usar para que tu app se vea **desde
-  internet** un rato (para enseñársela a un compañero).
-- **Cuota:** las peticiones gratis que tienes con el agente. Un buen prompt gasta menos.
+- **ngrok (enlace temporal):** una herramienta que el agente instala y usa para darte
+  un **enlace** con el que tu app se ve **desde internet** un rato (para enseñársela a
+  un compañero). Es temporal: se apaga cuando lo cierras. Lo tienes paso a paso en
+  [`compartir-tu-app.md`](compartir-tu-app.md).
 
 ## Dos hábitos que valen oro
 
 - 🩹 **Pega el error entero al agente.** Si algo falla, copia el mensaje completo y
   pégaselo: **pegar el error es darle contexto**, y con contexto lo arregla.
 - 🧹 **Tarea nueva → chat nuevo.** Al empezar otro módulo, abre un **chat nuevo** en
-  Antigravity: el agente arranca despejado (y gastas menos cuota).
+  Antigravity: el agente arranca despejado y se centra en lo nuevo.
 
 ## Qué verás al abrir Antigravity
 

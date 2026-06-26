@@ -1,4 +1,4 @@
-# Módulo 1 — Tu mapa en el navegador 🗺️
+# Módulo 1 — El frontend de GEOIA: tu mapa en el navegador 🗺️
 **Día 1 · lo construyes con Antigravity, sin escribir código**
 
 > 🧩 **Pieza independiente.** Solo usa los datos de
@@ -6,9 +6,9 @@
 
 ## Qué vas a conseguir
 
-Una **página web con un mapa interactivo** que muestra los 18 lugares de ejemplo como
-marcadores. Pulsas un marcador y ves el **nombre** y la **descripción** del lugar. Es
-la **cara visible** de la app: lo que se ve y se toca.
+La **cara visible de GEOIA**: una **página web con un mapa interactivo** que muestra
+los 18 lugares de ejemplo como marcadores. Pulsas un marcador y ves el **nombre** y la
+**descripción** del lugar. Es lo que se ve y se toca.
 
 Será **un solo archivo** (`index.html`) que abres con **doble clic** en el navegador.
 Sin instalar nada.
@@ -51,9 +51,8 @@ Hazlo lo más simple posible: sin frameworks, comentado en español. No abras ni
 servidor ni añadas cosas que no haya pedido. Al final dime qué archivo abrir. (LÍMITES)
 ```
 
-> 🔋 **Truco de cuota** (la *cuota* son las peticiones gratis que tienes con el
-> agente): pensar el prompt antes de enviarlo gasta menos que reintentar a ciegas. Un
-> buen prompt vale por diez.
+> 🎯 **Truco:** pensar bien el prompt antes de enviarlo funciona mucho mejor que
+> reintentar a ciegas. Un buen prompt vale por diez.
 
 ## Cómo saber que va bien ✅
 

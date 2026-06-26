@@ -1,4 +1,4 @@
-# Módulo 2 — El servidor: una API que sirve los lugares ⚙️
+# Módulo 2 — El servidor de GEOIA: una API que sirve los lugares ⚙️
 **Día 2 · lo enseña el presentador en directo (y, si quieres, lo sigues tú)**
 
 > 🧩 **Pieza independiente.** Parte de [`../datos/lugares.json`](../datos/lugares.json)
@@ -22,7 +22,7 @@ camarero pequeño, hecho con **Python**, que sirve la lista de lugares y deja
   [`../datos/lugares.json`](../datos/lugares.json).
 
 > 💡 **Contexto limpio:** ¿vienes de otro módulo? Abre un **chat nuevo** en
-> Antigravity para empezar con la cabeza despejada (y gastando menos cuota).
+> Antigravity para empezar con la cabeza despejada.
 
 ## El prompt de partida (cópialo y pégalo)
 

@@ -26,9 +26,10 @@
   resultado.
 - Tú propones; **ella acepta o rechaza** los cambios. No des nada por hecho.
 
-## El proyecto: una app web en tres módulos
+## El proyecto: GEOIA, una app web en tres módulos
 
-Se construye un **mapa de lugares** en tres módulos **independientes entre sí**:
+Se construye **GEOIA** (de *Geo* + *IA*), una app de **mapa de lugares**, en tres
+módulos **independientes entre sí**:
 
 1. **`mod1-frontend/`** — un mapa en el navegador: **un único archivo `index.html`**
    con la librería **Leaflet** (cargada desde su CDN) que muestra los lugares de
@@ -41,6 +42,23 @@ Se construye un **mapa de lugares** en tres módulos **independientes entre sí*
 Cada módulo es **autónomo**: parte de `datos/lugares.json`, **no** del resultado de
 otro módulo, de modo que se pueda empezar cualquiera desde cero. Respeta el módulo en
 el que se está trabajando; no te adelantes a los siguientes salvo que te lo pidan.
+
+## Mapa de pasos: dónde encontrar cada cosa
+
+Para no perderte, este es el orden de los pasos y **dónde vive cada uno**. El prompt de
+partida de cada paso está en el `README.md` de su carpeta y, todos juntos, en
+`guia/prompts.md`:
+
+1. **Mapa** → `mod1-frontend/README.md` (crea `mod1-frontend/index.html`).
+2. **Servidor** → `mod2-backend/README.md` (crea `mod2-backend/main.py`).
+3. **Memoria** → `mod3-base-de-datos/README.md` (crea `mod3-base-de-datos/main.py`).
+4. **Compartir** → `guia/compartir-tu-app.md` (un enlace temporal para enseñar la app).
+
+Glosario para el alumnado en `guia/chuleta-conceptos.md`.
+
+> ⚠️ **No te adelantes ni hagas spoilers.** Trabaja solo el paso que la persona te pide.
+> Si una carpeta o un paso **no existe** en este proyecto, es que **aún no toca**: no lo
+> menciones, no lo crees y no adelantes lo que vendrá después. Cíñete a lo que hay.
 
 ## El modelo de datos (un "lugar")
 
@@ -80,6 +98,20 @@ en frontend, backend y base de datos:
 - En el **Módulo 3**, crea la tabla con `CREATE TABLE IF NOT EXISTS` y siembra los
   datos de `lugares.json` **solo si la tabla está vacía**, para no duplicarlos al
   reiniciar el servidor.
+
+## Compartir la app (paso "Compartir", Día 2)
+
+- El objetivo es que **otra persona abra la app desde su dispositivo**, de la forma más
+  sencilla posible. Guíate por `guia/compartir-tu-app.md`.
+- Si la app es **solo el mapa** (`mod1`, un `index.html` estático), lo más simple es
+  **enviar el archivo** o abrirlo en el proyector; no hace falta servidor ni túnel.
+- Si la app tiene **servidor** (`mod2`/`mod3` en `localhost`), dale un **enlace público
+  temporal** con **ngrok**. **Instala y configura ngrok tú** (enseñando los comandos);
+  si pide cuenta gratuita o token de autenticación, **guía a la persona paso a paso**
+  para conseguirlo. Si ngrok no se pudiera usar, esta guía les sirve de referencia.
+- **Deja el servidor de la app encendido** y arranca ngrok en **otro terminal**,
+  apuntando al puerto de la app. Devuélvele el enlace listo para copiar y **avisa de
+  que es temporal** (caduca al cerrarlo o apagar).
 
 ## Cómo escribir el código
 
