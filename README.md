@@ -1,7 +1,9 @@
-# Construye tu primera app web hablando en español 🌍🗺️
+![GEOIA - Taller de la Universidad de Sevilla](portada-readme.svg)
+
+# Construye tu primera app web hablando en español
 
 **Universidad de Sevilla · Cátedra de IA US-Google · Cactus Accelerative Innovation**
-📅 29 y 30 de junio de 2026 · 🕔 17:00 · Facultad de Geografía e Historia
+29 y 30 de junio de 2026 · 17:00 · Facultad de Geografía e Historia
 
 ---
 
@@ -21,11 +23,11 @@ de IA (**Google Antigravity**) y él lo programa por ti. Tú **diriges, miras y 
 
 Hoy montas la **primera pieza** de **GEOIA**: la parte que se ve.
 
-- 🗺️ **Día 1 — El mapa** (`mod1-frontend/`): un mapa en el navegador con los lugares
+- **Día 1 — El mapa** (`mod1-frontend/`): un mapa en el navegador con los lugares
   marcados; pulsas uno y ves su nombre y su descripción. Su guía trae el prompt listo
   para pegar.
 
-> 🔜 **El Día 2 seguimos** y GEOIA irá a más. Lo iremos descubriendo en directo: no
+> **El Día 2 seguimos** y GEOIA irá a más. Lo iremos descubriendo en directo: no
 > necesitas preparar nada de eso hoy.
 >
 > *(Por curiosidad: el mapa usa una librería llamada Leaflet. No necesitas saber qué
@@ -41,7 +43,7 @@ Hoy montas la **primera pieza** de **GEOIA**: la parte que se ve.
 3. **Sigue la guía** → abre **[`mod1-frontend/`](mod1-frontend/README.md)**: trae el
    prompt para copiar y pegar y cómo saber que va bien.
 
-> 🧭 ¿Te pierde alguna palabra (mapa, marcador, prompt…)? Tienes una
+> ¿Te pierde alguna palabra (mapa, marcador, prompt…)? Tienes una
 > **chuleta** de bolsillo en **[`guia/chuleta-conceptos.md`](guia/chuleta-conceptos.md)**
 > y todos los prompts juntos en **[`guia/prompts.md`](guia/prompts.md)**.
 
@@ -54,15 +56,15 @@ el agente los usa por ti.
 
 ## Qué hay en esta carpeta
 
-- 📄 **`00-ANTES-DEL-TALLER.md`** — empieza aquí (preparación, en casa).
-- 🗺️ **`mod1-frontend/`** — Día 1: el mapa.
-- 📊 **`datos/`** — los 18 lugares de ejemplo.
-- 📸 **`fotos_ejemplo/`** — las fotos de esos lugares.
-- 📝 **`prompts/`** — los prompts listos para copiar y pegar (un `.txt` por paso).
-- 🧭 **`guia/`** — la chuleta de conceptos y la guía.
+- **`00-ANTES-DEL-TALLER.md`** — empieza aquí (preparación, en casa).
+- **`mod1-frontend/`** — Día 1: el mapa.
+- **`datos/`** — los 18 lugares de ejemplo.
+- **`fotos_ejemplo/`** — las fotos de esos lugares.
+- **`prompts/`** — los prompts listos para copiar y pegar (un `.txt` por paso).
+- **`guia/`** — la chuleta de conceptos y la guía.
 
 ---
 
-📷 Las fotos y coordenadas de ejemplo son de **B. Zaragozí (Alicante)** —
+Las fotos y coordenadas de ejemplo son de **B. Zaragozí (Alicante)** —
 gracias por compartirlas. Los materiales del taller son de uso libre. Los detalles
 están en [`ATRIBUCION-DATOS.md`](ATRIBUCION-DATOS.md).

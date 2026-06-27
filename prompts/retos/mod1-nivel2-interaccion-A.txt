@@ -1,0 +1,15 @@
+Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
+tú y explícame en español qué cambias. (PAPEL)
+
+Ya tengo mi mapa funcionando en "mod1-frontend/index.html" con los 18 lugares como
+marcadores. (CONTEXTO)
+
+Quiero una cajita de texto encima del mapa para buscar por nombre: según voy
+escribiendo, que se queden visibles solo los marcadores cuyo nombre coincide y se
+oculten los demás. Si borro el texto, que vuelvan a salir todos. (TAREA)
+
+Sigue siendo un solo archivo que abro con doble clic, sin servidor ni librerías
+nuevas. (FORMATO)
+
+Haz solo este cambio, sin tocar el resto del mapa. Al terminar, dime qué recargar
+para probarlo. (LÍMITES)
