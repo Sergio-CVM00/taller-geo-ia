@@ -39,22 +39,17 @@
   }
   .deck { height:100dvh; display:flex; flex-direction:column; padding:clamp(.8rem,2.5vh,1.6rem) clamp(1rem,4vw,3rem); }
 
-  /* ---- barra superior: stepper + controles ---- */
-  .bar { flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
-  .stepper { display:flex; gap:clamp(.4rem,1vw,.9rem); flex-wrap:wrap; }
-  .pill {
-    display:flex; align-items:center; gap:.5em;
-    padding:.4em .85em; border:1px solid var(--card-border); border-radius:999px;
-    font-size:clamp(.65rem,1.4vw,.85rem); color:var(--muted); background:var(--card);
-    white-space:nowrap; transition:all .25s ease;
+  /* ---- barra superior: marca + controles ---- */
+  .bar { flex:0 0 auto; display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; }
+  .brand { display:flex; flex-direction:column; gap:.2rem; min-width:0; }
+  .brand .title { font-weight:700; font-size:clamp(.78rem,1.6vw,1rem); letter-spacing:.06em; }
+  .brand .title .dim { color:var(--muted); font-weight:400; }
+  .brand .where {
+    font-size:clamp(.66rem,1.5vw,.9rem); color:var(--muted);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
-  .pill .dot { width:.7em; height:.7em; border-radius:50%; background:var(--muted); opacity:.5; flex:none; }
-  .pill.revealed { color:var(--fg); border-color:var(--accent); }
-  .pill.revealed .dot { background:var(--accent); opacity:1; box-shadow:0 0 8px var(--accent); }
-  .pill.current { background:color-mix(in srgb, var(--accent) 14%, var(--card)); }
-  .pill .name { display:none; }
-  .pill.revealed .name { display:inline; }
-  .pill.locked .lock { opacity:.7; }
+  .brand .where b { color:var(--accent-now,var(--fg)); font-weight:700; }
+  .brand .where .lvl { color:var(--accent-now,var(--fg)); }
 
   .controls { display:flex; gap:.5rem; flex:none; }
   .btn {
@@ -63,6 +58,45 @@
     font-size:clamp(.7rem,1.5vw,.9rem); line-height:1; transition:border-color .2s;
   }
   .btn:hover { border-color:var(--fg); }
+
+  /* ---- barra de progreso segmentada (módulo · nivel) ---- */
+  .progress {
+    flex:0 0 auto; display:flex; gap:clamp(.5rem,1.8vw,1.5rem);
+    align-items:flex-end; margin-top:clamp(.55rem,1.6vh,.9rem);
+  }
+  .pg-group { flex:1 1 0; min-width:0; }
+  .pg-head {
+    font-size:clamp(.58rem,1.3vw,.78rem); color:var(--muted); margin-bottom:.4rem;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis; letter-spacing:.02em;
+    transition:color .25s ease;
+  }
+  .pg-head .pg-num { font-weight:700; }
+  .pg-name { display:none; }
+  .pg-lock { opacity:.55; }
+  .pg-group.revealed .pg-head { color:var(--fg); }
+  .pg-group.revealed .pg-name { display:inline; }
+  .pg-group.revealed .pg-lock { display:none; }
+  .pg-group.current .pg-head { color:var(--accent); }
+
+  .pg-track { display:flex; align-items:flex-end; gap:4px; height:18px; }
+  .pg-cell {
+    flex:1 1 0; height:11px; border-radius:5px;
+    border:1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    background:transparent; cursor:pointer;
+    transition:height .25s ease, background .35s ease, box-shadow .25s ease, opacity .25s ease;
+  }
+  .pg-cell.intro { flex:0 0 11px; border-radius:50%; }
+  /* relleno por nivel: el color se intensifica con cada nivel (--lvl 38→100) */
+  .pg-cell.filled {
+    background:color-mix(in srgb, var(--accent) calc(var(--lvl) * 1%), var(--card));
+    border-color:var(--accent);
+  }
+  .pg-cell.current {
+    height:18px;
+    box-shadow:0 0 0 1px var(--accent), 0 0 16px color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  .pg-cell.locked { cursor:default; opacity:.45; border-color:color-mix(in srgb, var(--accent) 16%, transparent); }
+  .pg-cell:not(.locked):not(.current):hover { border-color:var(--accent); }
 
   /* ---- escenario ---- */
   .stage { flex:1 1 auto; min-height:0; display:flex; align-items:center; justify-content:center; overflow:auto; }
@@ -167,16 +201,17 @@
 <div class="deck">
 
   <header class="bar">
-    <div class="stepper" id="stepper">
-      <span class="pill" data-accent="var(--emerald)"><span class="dot"></span><span>Módulo 1</span><span class="name"> · Frontend</span></span>
-      <span class="pill" data-accent="var(--violet)"><span class="dot"></span><span>Módulo 2</span><span class="name"> · Backend</span><span class="lock"> 🔒</span></span>
-      <span class="pill" data-accent="var(--amber)"><span class="dot"></span><span>Módulo 3</span><span class="name"> · Base de datos</span><span class="lock"> 🔒</span></span>
+    <div class="brand">
+      <span class="title">GEOIA <span class="dim">· Vibe Coding</span></span>
+      <span class="where" id="where">Módulo 1 · Frontend</span>
     </div>
     <div class="controls">
       <button class="btn" id="theme" title="Cambiar tema (t)">◐ Tema</button>
       <button class="btn" id="full" title="Pantalla completa (f)">⛶ Pantalla</button>
     </div>
   </header>
+
+  <div class="progress" id="progress"></div>
 
   <main class="stage" id="stage">
 
@@ -457,23 +492,91 @@
 <script>
 (function () {
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
-  var pills  = Array.prototype.slice.call(document.querySelectorAll('#stepper .pill'));
   var counter = document.getElementById('counter');
+  var where = document.getElementById('where');
+  var deck = document.querySelector('.deck');
   var i = (function () {
     var s = parseInt(new URLSearchParams(location.search).get('slide'), 10);
     return (s >= 1 && s <= slides.length) ? s - 1 : 0;
   })();
 
-  pills.forEach(function (p) { p.style.setProperty('--accent', p.dataset.accent); });
+  var meta = [
+    { num: 'Módulo 1', name: 'Frontend',       accent: 'var(--emerald)' },
+    { num: 'Módulo 2', name: 'Backend',        accent: 'var(--violet)' },
+    { num: 'Módulo 3', name: 'Base de datos',  accent: 'var(--amber)' }
+  ];
+  var lvlMap = {
+    'intro': { lvl: 38, label: 'Intro',    glyph: '' },
+    '1':     { lvl: 55, label: 'Nivel 1',  glyph: '🟢' },
+    '2':     { lvl: 70, label: 'Nivel 2',  glyph: '🟡' },
+    '3':     { lvl: 85, label: 'Nivel 3',  glyph: '🟣' },
+    '4':     { lvl: 100, label: 'Nivel 4', glyph: '🌟' }
+  };
+  function moduleOf(n) { return parseInt(slides[n].dataset.module, 10) || 0; }
+
+  // ---- construir la barra de progreso a partir de las diapositivas ----
+  var cells = [];   // { el, slide, module }
+  var groupEls = [];
+  (function buildProgress() {
+    var prog = document.getElementById('progress');
+    var groups = [[], [], []];
+    slides.forEach(function (s, idx) {
+      groups[moduleOf(idx)].push({ idx: idx, level: s.dataset.level });
+    });
+    groups.forEach(function (g, m) {
+      var group = document.createElement('div');
+      group.className = 'pg-group';
+      group.style.setProperty('--accent', meta[m].accent);
+
+      var head = document.createElement('div');
+      head.className = 'pg-head';
+      head.innerHTML = '<span class="pg-num">' + meta[m].num + '</span>' +
+        '<span class="pg-name"> · ' + meta[m].name + '</span>' +
+        '<span class="pg-lock"> 🔒</span>';
+      group.appendChild(head);
+
+      var track = document.createElement('div');
+      track.className = 'pg-track';
+      g.forEach(function (c) {
+        var info = lvlMap[c.level];
+        var cell = document.createElement('div');
+        cell.className = 'pg-cell' + (c.level === 'intro' ? ' intro' : '');
+        cell.style.setProperty('--lvl', info.lvl);
+        cell.title = meta[m].name + ' — ' + info.label + (info.glyph ? ' ' + info.glyph : '');
+        cell.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (m <= moduleOf(i)) go(c.idx);   // sin spoilers: sólo módulos ya alcanzados
+        });
+        track.appendChild(cell);
+        cells.push({ el: cell, slide: c.idx, module: m });
+      });
+      group.appendChild(track);
+      prog.appendChild(group);
+      groupEls.push(group);
+    });
+  })();
 
   function render() {
     slides.forEach(function (s, n) { s.classList.toggle('active', n === i); });
-    var mod = parseInt(slides[i].dataset.module, 10) || 0;   // módulo de la diapo actual
-    pills.forEach(function (p, n) {
-      p.classList.toggle('revealed', n <= mod);   // sólo se desvela hasta el módulo actual (sin spoilers)
-      p.classList.toggle('current', n === mod);
-      p.classList.toggle('locked', n > mod);
+    var curMod = moduleOf(i);
+    var accent = meta[curMod].accent;
+
+    cells.forEach(function (c) {
+      c.el.classList.toggle('filled', c.slide <= i);
+      c.el.classList.toggle('current', c.slide === i);
+      c.el.classList.toggle('locked', c.module > curMod);
     });
+    groupEls.forEach(function (g, m) {
+      g.classList.toggle('revealed', m <= curMod);
+      g.classList.toggle('current', m === curMod);
+    });
+
+    // lectura de posición actual + color de acento vivo
+    if (deck) deck.style.setProperty('--accent-now', accent);
+    var info = lvlMap[slides[i].dataset.level];
+    where.innerHTML = '<b>' + meta[curMod].num + ' · ' + meta[curMod].name + '</b>' +
+      ' — <span class="lvl">' + info.label + (info.glyph ? ' ' + info.glyph : '') + '</span>';
+
     counter.textContent = (i + 1) + ' / ' + slides.length;
   }
   function go(n) { i = Math.max(0, Math.min(slides.length - 1, n)); render(); }
