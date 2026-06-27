@@ -84,27 +84,27 @@ escriba el código.** Todo se prueba en la misma página `/docs`. Sube por la es
 que quieras. 🪜
 
 **Nivel 1 · para coger confianza** 🟢
-- *"Añade GET /lugares/{id} para devolver un solo lugar por su id."*
-- *"Añade un endpoint /salud que responda que el servidor está vivo."*
-- *"Cambia el título y la descripción que aparecen arriba en la página /docs."*
-- *"Dime en un endpoint cuántos lugares hay en total ahora mismo."*
+- **A.** *"Añade GET /lugares/{id} para devolver un solo lugar por su id."*
+- **B.** *"Añade un endpoint /salud que responda que el servidor está vivo."*
+- **C.** *"Cambia el título y la descripción que aparecen arriba en la página /docs."*
+- **D.** *"Dime en un endpoint cuántos lugares hay en total ahora mismo."*
 
 **Nivel 2 · interacción de verdad** 🟡
-- *"Haz que pueda filtrar los lugares por categoría, por ejemplo /lugares?categoria=Playa."*
-- *"Añade una búsqueda por texto que mire en el nombre y la descripción."*
-- *"Permite borrar un lugar con DELETE /lugares/{id}."*
-- *"Permite editar un lugar con PUT /lugares/{id}."*
-- *"Al añadir un lugar, comprueba que vienen nombre, lat y lon; si falta algo, responde con un error claro."*
+- **A.** *"Haz que pueda filtrar los lugares por categoría, por ejemplo /lugares?categoria=Playa."*
+- **B.** *"Añade una búsqueda por texto que mire en el nombre y la descripción."*
+- **C.** *"Permite borrar un lugar con DELETE /lugares/{id}."*
+- **D.** *"Permite editar un lugar con PUT /lugares/{id}."*
+- **E.** *"Al añadir un lugar, comprueba que vienen nombre, lat y lon; si falta algo, responde con un error claro."*
 
 **Nivel 3 · efecto «ohhh»** 🟣
-- *"Dame la lista de categorías con cuántos lugares tiene cada una."*
-- *"Lugares cercanos: dame los lugares ordenados por cercanía a un punto (lat, lon) que yo te pase."*
-- *"Al añadir un lugar, pon tú el id automáticamente (el siguiente libre) si no lo mando."*
-- *"Crea una página de inicio en / con un resumen: cuántos lugares hay y cuántos por categoría."*
+- **A.** *"Dame la lista de categorías con cuántos lugares tiene cada una."*
+- **B.** *"Lugares cercanos: dame los lugares ordenados por cercanía a un punto (lat, lon) que yo te pase."*
+- **C.** *"Al añadir un lugar, pon tú el id automáticamente (el siguiente libre) si no lo mando."*
+- **D.** *"Crea una página de inicio en / con un resumen: cuántos lugares hay y cuántos por categoría."*
 
 **Nivel 4 · atrévete** 🌟
-- *"Sirve mi mapa desde aquí: que al abrir http://localhost:8722/ se vea el mapa del Módulo 1."*
-- **(Si hiciste el Módulo 1)** *"Conecta mi mapa de mod1-frontend para que pida los
+- **A.** *"Sirve mi mapa desde aquí: que al abrir http://localhost:8722/ se vea el mapa del Módulo 1."*
+- **B.** **(Si hiciste el Módulo 1)** *"Conecta mi mapa de mod1-frontend para que pida los
   lugares a esta API en vez de llevarlos dentro del HTML."*
 
 > 🎯 Los retos **no son obligatorios**: elige los que te apetezcan. Y si uno se resiste,
