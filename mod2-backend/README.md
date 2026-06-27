@@ -76,11 +76,40 @@ Copia el error entero y pégaselo al agente: pegar el error es darle contexto.
 - Si el agente menciona un error de **CORS** (un bloqueo de seguridad rutinario del
   navegador), **no es culpa tuya**: pídele que lo arregle él en la API.
 
-## Ahora tú (reto) 🚀
+## Ahora tú (retos) 🚀
 
-- *"Añade GET /lugares/{id} para devolver un solo lugar."*
+Pídele mejoras **de una en una** (en el mismo chat; si se empieza a liar, abre uno
+nuevo). **No necesitas saber cómo se hace: descríbelo en español y deja que el agente
+escriba el código.** Todo se prueba en la misma página `/docs`. Sube por la escalera lo
+que quieras. 🪜
+
+**Nivel 1 · para coger confianza** 🟢
+- *"Añade GET /lugares/{id} para devolver un solo lugar por su id."*
+- *"Añade un endpoint /salud que responda que el servidor está vivo."*
+- *"Cambia el título y la descripción que aparecen arriba en la página /docs."*
+- *"Dime en un endpoint cuántos lugares hay en total ahora mismo."*
+
+**Nivel 2 · interacción de verdad** 🟡
+- *"Haz que pueda filtrar los lugares por categoría, por ejemplo /lugares?categoria=Playa."*
+- *"Añade una búsqueda por texto que mire en el nombre y la descripción."*
+- *"Permite borrar un lugar con DELETE /lugares/{id}."*
+- *"Permite editar un lugar con PUT /lugares/{id}."*
+- *"Al añadir un lugar, comprueba que vienen nombre, lat y lon; si falta algo, responde con un error claro."*
+
+**Nivel 3 · efecto «ohhh»** 🟣
+- *"Dame la lista de categorías con cuántos lugares tiene cada una."*
+- *"Lugares cercanos: dame los lugares ordenados por cercanía a un punto (lat, lon) que yo te pase."*
+- *"Al añadir un lugar, pon tú el id automáticamente (el siguiente libre) si no lo mando."*
+- *"Crea una página de inicio en / con un resumen: cuántos lugares hay y cuántos por categoría."*
+
+**Nivel 4 · atrévete** 🌟
+- *"Sirve mi mapa desde aquí: que al abrir http://localhost:8722/ se vea el mapa del Módulo 1."*
 - **(Si hiciste el Módulo 1)** *"Conecta mi mapa de mod1-frontend para que pida los
   lugares a esta API en vez de llevarlos dentro del HTML."*
 
-> El **Módulo 3** le dará **memoria** a los lugares para que no se pierdan — y también
-> se construye por separado.
+> 🎯 Los retos **no son obligatorios**: elige los que te apetezcan. Y si uno se resiste,
+> ya sabes — **copia el error y pégaselo al agente**.
+
+> 💾 ¿Viste que al **parar el servidor se pierden** los lugares nuevos? El **Módulo 3**
+> les da **memoria de verdad** para que no se pierdan — y también se construye por
+> separado.

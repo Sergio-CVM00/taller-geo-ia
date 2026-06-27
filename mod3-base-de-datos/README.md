@@ -82,16 +82,44 @@ lugares, dile que **solo siembre los datos si la tabla está vacía**.
 - Si al reiniciar tu lugar **desapareció** y vuelven a salir solo 18, dile: *"no borres
   ni recrees la tabla al arrancar; solo siémbrala si está vacía"*.
 
-## Ahora tú (reto) 🚀
+## Ahora tú (retos) 🚀
 
-- *"Añade poder borrar un lugar."* Luego pruébalo: **dile al agente "borra el lugar
-  con id 19"** (el que creaste) y comprueba que desaparece de la lista.
+Pídele mejoras **de una en una** (en el mismo chat; si se empieza a liar, abre uno
+nuevo). **No necesitas saber cómo se hace: descríbelo en español y deja que el agente
+escriba el código.** Todo se prueba en `/docs`. Sube por la escalera lo que quieras. 🪜
+
+**Nivel 1 · para coger confianza** 🟢
+- *"Añade poder borrar un lugar."* Luego pruébalo: **dile "borra el lugar con id 19"** (el
+  que creaste) y comprueba que desaparece de la lista.
 - *"Déjame editar un lugar."*
+- *"Añade poder ver un solo lugar por su id."*
+- *"Cambia el título de la página /docs a «GEOIA — mis lugares»."*
+
+**Nivel 2 · interacción de verdad** 🟡
+- *"Filtra los lugares por categoría, por ejemplo /lugares?categoria=Playa."*
+- *"Añade una búsqueda por texto que mire en el nombre y la descripción."*
+- *"Ordena los lugares por nombre."*
+- *"No dejes guardar dos lugares con el mismo nombre; si pasa, avísame con un error claro."*
+- *"Dame la lista de categorías con cuántos lugares tiene cada una."*
+
+**Nivel 3 · efecto «ohhh»** 🟣
+- *"Guarda la fecha en que añadí cada lugar y muéstrala."*
+- *"Añade un campo «favorito» y deja marcar y desmarcar lugares."*
+- *"Lugares cercanos: dame los lugares ordenados por cercanía a un punto que yo te pase."*
+- *"Cuando borre un lugar, no lo elimines del todo: márcalo como archivado y deja recuperarlo."*
+- *"Haz una copia de seguridad: exporta todos los lugares a un archivo JSON."*
+
+**Nivel 4 · atrévete (¡la app entera!)** 🌟
+- *"Sirve mi mapa desde aquí: que al abrir http://localhost:8731/ se vea el mapa leyendo
+  los lugares de la base de datos."*
 - **(Si hiciste los Módulos 1 y 2)** *"Conecta el mapa y el servidor con esta base de
   datos."*
 - 🌍 **Compártela:** consigue un **enlace temporal** para que otra persona abra tu app
   desde su móvil u ordenador. Lo tienes paso a paso en
   [`../guia/compartir-tu-app.md`](../guia/compartir-tu-app.md).
+
+> 🎯 Los retos **no son obligatorios**: elige los que te hagan ilusión. Y si uno se
+> resiste, ya sabes — **copia el error y pégaselo al agente**.
 
 > 🎉 Has construido una app web completa **hablando en español**. El límite ya no es
 > saber programar: es lo que te atrevas a imaginar.
