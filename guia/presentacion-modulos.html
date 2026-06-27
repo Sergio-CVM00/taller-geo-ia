@@ -66,7 +66,7 @@
 
   /* ---- escenario ---- */
   .stage { flex:1 1 auto; min-height:0; display:flex; align-items:center; justify-content:center; overflow:auto; }
-  .slide { display:none; width:100%; max-width:1180px; gap:clamp(1.5rem,4vw,3.5rem); align-items:center; }
+  .slide { display:none; width:100%; max-width:1180px; min-width:0; gap:clamp(1.5rem,4vw,3.5rem); align-items:center; }
   .slide.active { display:flex; animation:fade .45s ease; }
   @keyframes fade { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
   .slide .col-text { flex:1 1 46%; min-width:0; }
@@ -104,15 +104,48 @@
   .badge { display:inline-block; margin-top:.5em; font-size:.6rem; letter-spacing:.12em; font-weight:700; color:var(--bg); background:var(--accent); padding:.2em .6em; border-radius:999px; }
   .arrow { align-self:center; color:var(--muted); font-size:clamp(1rem,2.6vw,1.8rem); flex:none; padding:0 .1em; }
 
+  /* ---- diapositiva de retos (una por nivel) ---- */
+  .slide.retos { flex-direction:column; align-items:stretch; gap:clamp(.9rem,2.6vh,1.6rem); }
+  .slide.retos > .retos-head, .slide.retos > .prompt-grid { width:100%; }
+  .retos-head { text-align:left; overflow-wrap:anywhere; }
+  .level-title { font-size:clamp(1.7rem,5.2vw,3.1rem); line-height:1.04; margin:.1em 0 .12em; letter-spacing:-.01em; }
+  .prompt-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:clamp(.55rem,1.5vw,1rem); min-width:0; }
+  .prompt {
+    display:flex; gap:.6em; align-items:flex-start; min-width:0;
+    border-left:3px solid var(--accent); background:color-mix(in srgb, var(--accent) 9%, var(--card));
+    border-radius:0 10px 10px 0; padding:clamp(.6rem,1.4vw,.95rem) clamp(.7rem,1.6vw,1.05rem);
+    font-size:clamp(.8rem,1.6vw,1.06rem); line-height:1.4; box-shadow:0 4px 14px var(--shadow);
+  }
+  .prompt > span { min-width:0; overflow-wrap:anywhere; word-break:break-word; }
+  .prompt code { overflow-wrap:anywhere; word-break:break-word; }
+  .prompt .q { color:var(--accent); flex:none; }
+  .prompt .note { display:block; margin-top:.35em; font-size:.82em; color:var(--muted); }
+  .prompt .tag {
+    display:inline-block; margin-right:.5em; font-size:.66em; font-weight:700; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--accent); border:1px solid var(--accent);
+    border-radius:999px; padding:.12em .6em; vertical-align:middle;
+  }
+  .prompt.full { grid-column:1 / -1; }
+  .banner {
+    grid-column:1 / -1; padding:.75em 1.05em; border-radius:10px;
+    background:color-mix(in srgb, var(--accent) 12%, var(--card)); border:1px dashed var(--accent);
+    font-size:clamp(.8rem,1.6vw,1.05rem); line-height:1.45;
+  }
+
   /* ---- pie: navegación ---- */
   .nav { flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; gap:1rem; color:var(--muted); font-size:clamp(.7rem,1.5vw,.9rem); }
   .nav .hint { opacity:.8; }
   .counter { font-variant-numeric:tabular-nums; }
 
   @media (max-width:760px) {
-    body { overflow:auto; }
+    body { overflow-y:auto; overflow-x:hidden; }
     .deck { height:auto; min-height:100dvh; }
+    .bar { flex-wrap:wrap; }
+    .stepper, .controls { flex:1 1 100%; min-width:0; }
+    .nav { flex-wrap:wrap; row-gap:.4rem; }
     .slide { flex-direction:column; align-items:flex-start; }
+    .slide.retos { align-items:stretch; }
+    .prompt-grid { grid-template-columns:minmax(0, 1fr); }
     .slide .col-diagram { width:100%; }
     .arrow { transform:rotate(90deg); }
     .flow { flex-direction:column; align-items:stretch; }
@@ -143,8 +176,8 @@
 
   <main class="stage" id="stage">
 
-    <!-- ===== MÓDULO 1 ===== -->
-    <section class="slide active" style="--accent:var(--emerald)">
+    <!-- ===================== MÓDULO 1 · FRONTEND ===================== -->
+    <section class="slide active" data-module="0" data-level="intro" style="--accent:var(--emerald)">
       <div class="col-text">
         <div class="eyebrow">MÓDULO 1 · DÍA 1</div>
         <h1>El frontend</h1>
@@ -169,8 +202,71 @@
       </div>
     </section>
 
-    <!-- ===== MÓDULO 2 ===== -->
-    <section class="slide" style="--accent:var(--violet)">
+    <!-- M1 · Nivel 1 -->
+    <section class="slide retos" data-module="0" data-level="1" style="--accent:var(--emerald)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 1 · DÍA 1 · NIVEL 1 🟢</div>
+        <h1 class="level-title">Para coger confianza</h1>
+        <p class="tagline">Cámbiale cosas pequeñas y comprueba que mandas tú.</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt"><span class="q">💬</span><span>Pon un color distinto a los marcadores según su categoría.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Muestra la foto del lugar dentro del popup, debajo del nombre.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Ajusta el zoom automáticamente para que se vean todos los puntos al abrir.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Añade un título arriba que diga «GEOIA — mis lugares» con un subtítulo.</span></div>
+        <div class="prompt full"><span class="q">💬</span><span>Cambia los marcadores por un emoji distinto según la categoría (🏖️, ⛰️, 🍴…).</span></div>
+      </div>
+    </section>
+
+    <!-- M1 · Nivel 2 -->
+    <section class="slide retos" data-module="0" data-level="2" style="--accent:var(--emerald)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 1 · DÍA 1 · NIVEL 2 🟡</div>
+        <h1 class="level-title">Interacción de verdad</h1>
+        <p class="tagline">Que tu app empiece a reaccionar a lo que haces.</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt"><span class="q">💬</span><span>Añade una cajita para buscar lugares por nombre y que filtre el mapa.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Pon botones para mostrar solo una categoría (playas, miradores…).</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Haz una lista de lugares al lado; al pulsar uno, que el mapa vaya volando a él.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Muestra cuántos lugares se están viendo ahora mismo con el filtro puesto.</span></div>
+        <div class="prompt full"><span class="q">💬</span><span>Dame un botón para cambiar entre mapa normal, de relieve y satélite.</span></div>
+      </div>
+    </section>
+
+    <!-- M1 · Nivel 3 -->
+    <section class="slide retos" data-module="0" data-level="3" style="--accent:var(--emerald)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 1 · DÍA 1 · NIVEL 3 🟣</div>
+        <h1 class="level-title">Efecto «ohhh»</h1>
+        <p class="tagline">El detalle que hace decir «¿esto lo he hecho yo?».</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt"><span class="q">💬</span><span>Añade un botón para cambiar entre modo claro y oscuro.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Dibuja una línea que conecte los lugares en orden, como una ruta turística.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Añade un gráfico de barras con cuántos lugares hay por categoría.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Agrupa los marcadores que se apilan y sepáralos al hacer zoom.</span></div>
+        <div class="prompt full"><span class="q">💬</span><span>En cada popup, un botón «Cómo llegar» que abra Google Maps en ese punto.</span></div>
+      </div>
+    </section>
+
+    <!-- M1 · Nivel 4 -->
+    <section class="slide retos" data-module="0" data-level="4" style="--accent:var(--emerald)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 1 · DÍA 1 · NIVEL 4 🌟</div>
+        <h1 class="level-title">Atrévete</h1>
+        <p class="tagline">Salta más alto: que tu app guarde y crezca.</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt"><span class="q">💬</span><span>Deja marcar lugares como favoritos y que se recuerden aunque cierre la página.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Quiero un formulario para añadir un lugar nuevo escribiendo su nombre y coordenadas.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Pon un botón para descargar todos mis lugares en un archivo, como copia de seguridad.</span></div>
+        <div class="banner">💡 ¿Y si <strong>añades un lugar</strong> y luego <strong>recargas</strong> la página? Fíjate en qué pasa… y guarda esa pregunta. 👀</div>
+      </div>
+    </section>
+
+    <!-- ===================== MÓDULO 2 · BACKEND ===================== -->
+    <section class="slide" data-module="1" data-level="intro" style="--accent:var(--violet)">
       <div class="col-text">
         <div class="eyebrow">MÓDULO 2 · DÍA 2</div>
         <h1>El backend</h1>
@@ -195,8 +291,68 @@
       </div>
     </section>
 
-    <!-- ===== MÓDULO 3 ===== -->
-    <section class="slide" style="--accent:var(--amber)">
+    <!-- M2 · Nivel 1 -->
+    <section class="slide retos" data-module="1" data-level="1" style="--accent:var(--violet)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 2 · DÍA 2 · NIVEL 1 🟢</div>
+        <h1 class="level-title">Para coger confianza</h1>
+        <p class="tagline">Endpoints pequeños que se prueban al momento en <code>/docs</code>.</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt"><span class="q">💬</span><span>Añade <code>GET /lugares/{id}</code> para devolver un solo lugar por su id.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Añade un endpoint <code>/salud</code> que responda que el servidor está vivo.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Cambia el título y la descripción que aparecen arriba en la página <code>/docs</code>.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Dime en un endpoint cuántos lugares hay en total ahora mismo.</span></div>
+      </div>
+    </section>
+
+    <!-- M2 · Nivel 2 -->
+    <section class="slide retos" data-module="1" data-level="2" style="--accent:var(--violet)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 2 · DÍA 2 · NIVEL 2 🟡</div>
+        <h1 class="level-title">Interacción de verdad</h1>
+        <p class="tagline">Que la API filtre, busque y deje cambiar los datos.</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt"><span class="q">💬</span><span>Haz que pueda filtrar los lugares por categoría (<code>/lugares?categoria=Playa</code>).</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Añade una búsqueda por texto que mire en el nombre y la descripción.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Permite borrar un lugar con <code>DELETE /lugares/{id}</code>.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Permite editar un lugar con <code>PUT /lugares/{id}</code>.</span></div>
+        <div class="prompt full"><span class="q">💬</span><span>Al añadir un lugar, comprueba que vienen nombre, lat y lon; si falta algo, responde con un error claro.</span></div>
+      </div>
+    </section>
+
+    <!-- M2 · Nivel 3 -->
+    <section class="slide retos" data-module="1" data-level="3" style="--accent:var(--violet)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 2 · DÍA 2 · NIVEL 3 🟣</div>
+        <h1 class="level-title">Efecto «ohhh»</h1>
+        <p class="tagline">Resúmenes, cercanía y detalles que parecen «de mayores».</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt"><span class="q">💬</span><span>Dame la lista de categorías con cuántos lugares tiene cada una.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Lugares cercanos: ordénalos por cercanía a un punto (lat, lon) que yo te pase.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Al añadir un lugar, pon tú el id automáticamente (el siguiente libre) si no lo mando.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Crea una página de inicio en <code>/</code> con un resumen: cuántos lugares y por categoría.</span></div>
+      </div>
+    </section>
+
+    <!-- M2 · Nivel 4 -->
+    <section class="slide retos" data-module="1" data-level="4" style="--accent:var(--violet)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 2 · DÍA 2 · NIVEL 4 🌟</div>
+        <h1 class="level-title">Atrévete</h1>
+        <p class="tagline">Que el servidor y el mapa empiecen a hablarse.</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt full"><span class="q">💬</span><span>Sirve mi mapa desde aquí: que al abrir <code>http://localhost:8722/</code> se vea el mapa del Módulo 1.</span></div>
+        <div class="prompt full"><span class="q">💬</span><span><span class="tag">Si hiciste el M1</span>Conecta mi mapa de mod1-frontend para que pida los lugares a esta API en vez de llevarlos dentro del HTML.</span></div>
+        <div class="banner">💾 ¿Viste que al <strong>parar el servidor se pierden</strong> los lugares nuevos? El <strong>Módulo 3</strong> les da memoria de verdad.</div>
+      </div>
+    </section>
+
+    <!-- ===================== MÓDULO 3 · BASE DE DATOS ===================== -->
+    <section class="slide" data-module="2" data-level="intro" style="--accent:var(--amber)">
       <div class="col-text">
         <div class="eyebrow">MÓDULO 3 · DÍA 2</div>
         <h1>La base de datos</h1>
@@ -221,12 +377,74 @@
       </div>
     </section>
 
+    <!-- M3 · Nivel 1 -->
+    <section class="slide retos" data-module="2" data-level="1" style="--accent:var(--amber)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 3 · DÍA 2 · NIVEL 1 🟢</div>
+        <h1 class="level-title">Para coger confianza</h1>
+        <p class="tagline">Lo básico de una memoria: borrar, editar, ver.</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt"><span class="q">💬</span><span>Añade poder borrar un lugar.<span class="note">Pruébalo: dile «borra el lugar con id 19» (el que creaste).</span></span></div>
+        <div class="prompt"><span class="q">💬</span><span>Déjame editar un lugar.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Añade poder ver un solo lugar por su id.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Cambia el título de la página <code>/docs</code> a «GEOIA — mis lugares».</span></div>
+      </div>
+    </section>
+
+    <!-- M3 · Nivel 2 -->
+    <section class="slide retos" data-module="2" data-level="2" style="--accent:var(--amber)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 3 · DÍA 2 · NIVEL 2 🟡</div>
+        <h1 class="level-title">Interacción de verdad</h1>
+        <p class="tagline">Filtra, busca, ordena y protege tus datos.</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt"><span class="q">💬</span><span>Filtra los lugares por categoría (<code>/lugares?categoria=Playa</code>).</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Añade una búsqueda por texto en el nombre y la descripción.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Ordena los lugares por nombre.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>No dejes guardar dos lugares con el mismo nombre; si pasa, avísame con un error claro.</span></div>
+        <div class="prompt full"><span class="q">💬</span><span>Dame la lista de categorías con cuántos lugares tiene cada una.</span></div>
+      </div>
+    </section>
+
+    <!-- M3 · Nivel 3 -->
+    <section class="slide retos" data-module="2" data-level="3" style="--accent:var(--amber)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 3 · DÍA 2 · NIVEL 3 🟣</div>
+        <h1 class="level-title">Efecto «ohhh»</h1>
+        <p class="tagline">Campos nuevos, papelera de reciclaje y copia de seguridad.</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt"><span class="q">💬</span><span>Guarda la fecha en que añadí cada lugar y muéstrala.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Añade un campo «favorito» y deja marcar y desmarcar lugares.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Lugares cercanos: ordénalos por cercanía a un punto que yo te pase.</span></div>
+        <div class="prompt"><span class="q">💬</span><span>Cuando borre un lugar, no lo elimines del todo: márcalo como archivado y deja recuperarlo.</span></div>
+        <div class="prompt full"><span class="q">💬</span><span>Haz una copia de seguridad: exporta todos los lugares a un archivo JSON.</span></div>
+      </div>
+    </section>
+
+    <!-- M3 · Nivel 4 -->
+    <section class="slide retos" data-module="2" data-level="4" style="--accent:var(--amber)">
+      <div class="retos-head">
+        <div class="eyebrow">MÓDULO 3 · DÍA 2 · NIVEL 4 🌟</div>
+        <h1 class="level-title">Atrévete · ¡la app entera!</h1>
+        <p class="tagline">Une mapa + servidor + memoria, y compártela con el mundo.</p>
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt full"><span class="q">💬</span><span>Sirve mi mapa desde aquí: al abrir <code>http://localhost:8731/</code> se ve el mapa leyendo los lugares de la base de datos.</span></div>
+        <div class="prompt full"><span class="q">💬</span><span><span class="tag">Si hiciste M1 y M2</span>Conecta el mapa y el servidor con esta base de datos.</span></div>
+        <div class="prompt full"><span class="q">🌍</span><span>Compártela: consigue un enlace temporal (ngrok) para que otra persona la abra desde su móvil u ordenador.</span></div>
+        <div class="banner">🎉 Has construido una app web completa <strong>hablando en español</strong>. El límite ya no es saber programar: es lo que te atrevas a imaginar. <strong>Imagínalo → pídeselo → inténtalo.</strong></div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="nav">
     <button class="btn" id="prev">← Anterior</button>
     <span class="hint">← → para navegar · F pantalla completa · sin spoilers: cada módulo aparece al llegar</span>
-    <span class="counter" id="counter">1 / 3</span>
+    <span class="counter" id="counter">1 / 15</span>
     <button class="btn" id="next">Siguiente →</button>
   </footer>
 
@@ -246,10 +464,11 @@
 
   function render() {
     slides.forEach(function (s, n) { s.classList.toggle('active', n === i); });
+    var mod = parseInt(slides[i].dataset.module, 10) || 0;   // módulo de la diapo actual
     pills.forEach(function (p, n) {
-      p.classList.toggle('revealed', n <= i);   // sólo se desvela hasta el módulo actual
-      p.classList.toggle('current', n === i);
-      p.classList.toggle('locked', n > i);
+      p.classList.toggle('revealed', n <= mod);   // sólo se desvela hasta el módulo actual (sin spoilers)
+      p.classList.toggle('current', n === mod);
+      p.classList.toggle('locked', n > mod);
     });
     counter.textContent = (i + 1) + ' / ' + slides.length;
   }
