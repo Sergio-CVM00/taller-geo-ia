@@ -82,30 +82,30 @@ empieza a liar, abre uno nuevo). **No necesitas saber cómo se hace: descríbelo
 español y deja que el agente lo monte.** Sube por la escalera tanto como te apetezca. 🪜
 
 **Nivel 1 · para coger confianza** 🟢
-- *"Pon un color distinto a los marcadores según su categoría."*
-- *"Muestra la foto del lugar dentro del popup, debajo del nombre."*
-- *"Ajusta el zoom automáticamente para que se vean todos los puntos al abrir."*
-- *"Añade un título arriba que diga «GEOIA — mis lugares» con un subtítulo."*
-- *"Cambia los marcadores por un emoji distinto según la categoría (🏖️, ⛰️, 🍴…)."*
+- **A.** *"Pon un color distinto a los marcadores según su categoría."*
+- **B.** *"Muestra la foto del lugar dentro del popup, debajo del nombre."*
+- **C.** *"Ajusta el zoom automáticamente para que se vean todos los puntos al abrir."*
+- **D.** *"Añade un título arriba que diga «GEOIA — mis lugares» con un subtítulo."*
+- **E.** *"Cambia los marcadores por un emoji distinto según la categoría (🏖️, ⛰️, 🍴…)."*
 
 **Nivel 2 · interacción de verdad** 🟡
-- *"Añade una cajita para buscar lugares por nombre y que filtre el mapa."*
-- *"Pon botones para mostrar solo una categoría (playas, miradores…)."*
-- *"Haz una lista de lugares al lado; al pulsar uno, que el mapa vaya volando a él."*
-- *"Muestra cuántos lugares se están viendo ahora mismo con el filtro puesto."*
-- *"Dame un botón para cambiar entre mapa normal, de relieve y satélite."*
+- **A.** *"Añade una cajita para buscar lugares por nombre y que filtre el mapa."*
+- **B.** *"Pon botones para mostrar solo una categoría (playas, miradores…)."*
+- **C.** *"Haz una lista de lugares al lado; al pulsar uno, que el mapa vaya volando a él."*
+- **D.** *"Muestra cuántos lugares se están viendo ahora mismo con el filtro puesto."*
+- **E.** *"Dame un botón para cambiar entre mapa normal, de relieve y satélite."*
 
 **Nivel 3 · efecto «ohhh»** 🟣
-- *"Añade un botón para cambiar entre modo claro y oscuro."*
-- *"Dibuja una línea que conecte los lugares en orden, como una ruta turística."*
-- *"Añade un gráfico de barras con cuántos lugares hay por categoría."*
-- *"Agrupa los marcadores que se apilan y sepáralos al hacer zoom."*
-- *"En cada popup, un botón «Cómo llegar» que abra Google Maps en ese punto."*
+- **A.** *"Añade un botón para cambiar entre modo claro y oscuro."*
+- **B.** *"Dibuja una línea que conecte los lugares en orden, como una ruta turística."*
+- **C.** *"Añade un gráfico de barras con cuántos lugares hay por categoría."*
+- **D.** *"Agrupa los marcadores que se apilan y sepáralos al hacer zoom."*
+- **E.** *"En cada popup, un botón «Cómo llegar» que abra Google Maps en ese punto."*
 
 **Nivel 4 · atrévete** 🌟
-- *"Deja marcar lugares como favoritos y que se recuerden aunque cierre la página."*
-- *"Quiero un formulario para añadir un lugar nuevo escribiendo su nombre y coordenadas."*
-- *"Pon un botón para descargar todos mis lugares en un archivo, como copia de seguridad."*
+- **A.** *"Deja marcar lugares como favoritos y que se recuerden aunque cierre la página."*
+- **B.** *"Quiero un formulario para añadir un lugar nuevo escribiendo su nombre y coordenadas."*
+- **C.** *"Pon un botón para descargar todos mis lugares en un archivo, como copia de seguridad."*
 
 > 🎯 Los retos **no son obligatorios**: elige los que te hagan ilusión. Y si uno se
 > resiste, ya sabes — **copia el error y pégaselo al agente**.
