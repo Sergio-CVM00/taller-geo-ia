@@ -118,7 +118,11 @@
   }
   .prompt > span { min-width:0; overflow-wrap:anywhere; word-break:break-word; }
   .prompt code { overflow-wrap:anywhere; word-break:break-word; }
-  .prompt .q { color:var(--accent); flex:none; }
+  .prompt .q {
+    flex:none; display:inline-flex; align-items:center; justify-content:center;
+    width:1.7em; height:1.7em; border-radius:50%; background:var(--accent); color:var(--bg);
+    font-weight:700; font-size:.9em; line-height:1;
+  }
   .prompt .note { display:block; margin-top:.35em; font-size:.82em; color:var(--muted); }
   .prompt .tag {
     display:inline-block; margin-right:.5em; font-size:.66em; font-weight:700; letter-spacing:.06em;
@@ -210,11 +214,11 @@
         <p class="tagline">Cámbiale cosas pequeñas y comprueba que mandas tú.</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt"><span class="q">💬</span><span>Pon un color distinto a los marcadores según su categoría.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Muestra la foto del lugar dentro del popup, debajo del nombre.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Ajusta el zoom automáticamente para que se vean todos los puntos al abrir.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Añade un título arriba que diga «GEOIA — mis lugares» con un subtítulo.</span></div>
-        <div class="prompt full"><span class="q">💬</span><span>Cambia los marcadores por un emoji distinto según la categoría (🏖️, ⛰️, 🍴…).</span></div>
+        <div class="prompt"><span class="q">A</span><span>Pon un color distinto a los marcadores según su categoría.</span></div>
+        <div class="prompt"><span class="q">B</span><span>Muestra la foto del lugar dentro del popup, debajo del nombre.</span></div>
+        <div class="prompt"><span class="q">C</span><span>Ajusta el zoom automáticamente para que se vean todos los puntos al abrir.</span></div>
+        <div class="prompt"><span class="q">D</span><span>Añade un título arriba que diga «GEOIA — mis lugares» con un subtítulo.</span></div>
+        <div class="prompt full"><span class="q">E</span><span>Cambia los marcadores por un emoji distinto según la categoría (🏖️, ⛰️, 🍴…).</span></div>
       </div>
     </section>
 
@@ -226,11 +230,11 @@
         <p class="tagline">Que tu app empiece a reaccionar a lo que haces.</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt"><span class="q">💬</span><span>Añade una cajita para buscar lugares por nombre y que filtre el mapa.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Pon botones para mostrar solo una categoría (playas, miradores…).</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Haz una lista de lugares al lado; al pulsar uno, que el mapa vaya volando a él.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Muestra cuántos lugares se están viendo ahora mismo con el filtro puesto.</span></div>
-        <div class="prompt full"><span class="q">💬</span><span>Dame un botón para cambiar entre mapa normal, de relieve y satélite.</span></div>
+        <div class="prompt"><span class="q">A</span><span>Añade una cajita para buscar lugares por nombre y que filtre el mapa.</span></div>
+        <div class="prompt"><span class="q">B</span><span>Pon botones para mostrar solo una categoría (playas, miradores…).</span></div>
+        <div class="prompt"><span class="q">C</span><span>Haz una lista de lugares al lado; al pulsar uno, que el mapa vaya volando a él.</span></div>
+        <div class="prompt"><span class="q">D</span><span>Muestra cuántos lugares se están viendo ahora mismo con el filtro puesto.</span></div>
+        <div class="prompt full"><span class="q">E</span><span>Dame un botón para cambiar entre mapa normal, de relieve y satélite.</span></div>
       </div>
     </section>
 
@@ -242,11 +246,11 @@
         <p class="tagline">El detalle que hace decir «¿esto lo he hecho yo?».</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt"><span class="q">💬</span><span>Añade un botón para cambiar entre modo claro y oscuro.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Dibuja una línea que conecte los lugares en orden, como una ruta turística.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Añade un gráfico de barras con cuántos lugares hay por categoría.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Agrupa los marcadores que se apilan y sepáralos al hacer zoom.</span></div>
-        <div class="prompt full"><span class="q">💬</span><span>En cada popup, un botón «Cómo llegar» que abra Google Maps en ese punto.</span></div>
+        <div class="prompt"><span class="q">A</span><span>Añade un botón para cambiar entre modo claro y oscuro.</span></div>
+        <div class="prompt"><span class="q">B</span><span>Dibuja una línea que conecte los lugares en orden, como una ruta turística.</span></div>
+        <div class="prompt"><span class="q">C</span><span>Añade un gráfico de barras con cuántos lugares hay por categoría.</span></div>
+        <div class="prompt"><span class="q">D</span><span>Agrupa los marcadores que se apilan y sepáralos al hacer zoom.</span></div>
+        <div class="prompt full"><span class="q">E</span><span>En cada popup, un botón «Cómo llegar» que abra Google Maps en ese punto.</span></div>
       </div>
     </section>
 
@@ -258,9 +262,9 @@
         <p class="tagline">Salta más alto: que tu app guarde y crezca.</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt"><span class="q">💬</span><span>Deja marcar lugares como favoritos y que se recuerden aunque cierre la página.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Quiero un formulario para añadir un lugar nuevo escribiendo su nombre y coordenadas.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Pon un botón para descargar todos mis lugares en un archivo, como copia de seguridad.</span></div>
+        <div class="prompt"><span class="q">A</span><span>Deja marcar lugares como favoritos y que se recuerden aunque cierre la página.</span></div>
+        <div class="prompt"><span class="q">B</span><span>Quiero un formulario para añadir un lugar nuevo escribiendo su nombre y coordenadas.</span></div>
+        <div class="prompt"><span class="q">C</span><span>Pon un botón para descargar todos mis lugares en un archivo, como copia de seguridad.</span></div>
         <div class="banner">💡 ¿Y si <strong>añades un lugar</strong> y luego <strong>recargas</strong> la página? Fíjate en qué pasa… y guarda esa pregunta. 👀</div>
       </div>
     </section>
@@ -299,10 +303,10 @@
         <p class="tagline">Endpoints pequeños que se prueban al momento en <code>/docs</code>.</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt"><span class="q">💬</span><span>Añade <code>GET /lugares/{id}</code> para devolver un solo lugar por su id.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Añade un endpoint <code>/salud</code> que responda que el servidor está vivo.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Cambia el título y la descripción que aparecen arriba en la página <code>/docs</code>.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Dime en un endpoint cuántos lugares hay en total ahora mismo.</span></div>
+        <div class="prompt"><span class="q">A</span><span>Añade <code>GET /lugares/{id}</code> para devolver un solo lugar por su id.</span></div>
+        <div class="prompt"><span class="q">B</span><span>Añade un endpoint <code>/salud</code> que responda que el servidor está vivo.</span></div>
+        <div class="prompt"><span class="q">C</span><span>Cambia el título y la descripción que aparecen arriba en la página <code>/docs</code>.</span></div>
+        <div class="prompt"><span class="q">D</span><span>Dime en un endpoint cuántos lugares hay en total ahora mismo.</span></div>
       </div>
     </section>
 
@@ -314,11 +318,11 @@
         <p class="tagline">Que la API filtre, busque y deje cambiar los datos.</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt"><span class="q">💬</span><span>Haz que pueda filtrar los lugares por categoría (<code>/lugares?categoria=Playa</code>).</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Añade una búsqueda por texto que mire en el nombre y la descripción.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Permite borrar un lugar con <code>DELETE /lugares/{id}</code>.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Permite editar un lugar con <code>PUT /lugares/{id}</code>.</span></div>
-        <div class="prompt full"><span class="q">💬</span><span>Al añadir un lugar, comprueba que vienen nombre, lat y lon; si falta algo, responde con un error claro.</span></div>
+        <div class="prompt"><span class="q">A</span><span>Haz que pueda filtrar los lugares por categoría (<code>/lugares?categoria=Playa</code>).</span></div>
+        <div class="prompt"><span class="q">B</span><span>Añade una búsqueda por texto que mire en el nombre y la descripción.</span></div>
+        <div class="prompt"><span class="q">C</span><span>Permite borrar un lugar con <code>DELETE /lugares/{id}</code>.</span></div>
+        <div class="prompt"><span class="q">D</span><span>Permite editar un lugar con <code>PUT /lugares/{id}</code>.</span></div>
+        <div class="prompt full"><span class="q">E</span><span>Al añadir un lugar, comprueba que vienen nombre, lat y lon; si falta algo, responde con un error claro.</span></div>
       </div>
     </section>
 
@@ -330,10 +334,10 @@
         <p class="tagline">Resúmenes, cercanía y detalles que parecen «de mayores».</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt"><span class="q">💬</span><span>Dame la lista de categorías con cuántos lugares tiene cada una.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Lugares cercanos: ordénalos por cercanía a un punto (lat, lon) que yo te pase.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Al añadir un lugar, pon tú el id automáticamente (el siguiente libre) si no lo mando.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Crea una página de inicio en <code>/</code> con un resumen: cuántos lugares y por categoría.</span></div>
+        <div class="prompt"><span class="q">A</span><span>Dame la lista de categorías con cuántos lugares tiene cada una.</span></div>
+        <div class="prompt"><span class="q">B</span><span>Lugares cercanos: ordénalos por cercanía a un punto (lat, lon) que yo te pase.</span></div>
+        <div class="prompt"><span class="q">C</span><span>Al añadir un lugar, pon tú el id automáticamente (el siguiente libre) si no lo mando.</span></div>
+        <div class="prompt"><span class="q">D</span><span>Crea una página de inicio en <code>/</code> con un resumen: cuántos lugares y por categoría.</span></div>
       </div>
     </section>
 
@@ -345,8 +349,8 @@
         <p class="tagline">Que el servidor y el mapa empiecen a hablarse.</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt full"><span class="q">💬</span><span>Sirve mi mapa desde aquí: que al abrir <code>http://localhost:8722/</code> se vea el mapa del Módulo 1.</span></div>
-        <div class="prompt full"><span class="q">💬</span><span><span class="tag">Si hiciste el M1</span>Conecta mi mapa de mod1-frontend para que pida los lugares a esta API en vez de llevarlos dentro del HTML.</span></div>
+        <div class="prompt full"><span class="q">A</span><span>Sirve mi mapa desde aquí: que al abrir <code>http://localhost:8722/</code> se vea el mapa del Módulo 1.</span></div>
+        <div class="prompt full"><span class="q">B</span><span><span class="tag">Si hiciste el M1</span>Conecta mi mapa de mod1-frontend para que pida los lugares a esta API en vez de llevarlos dentro del HTML.</span></div>
         <div class="banner">💾 ¿Viste que al <strong>parar el servidor se pierden</strong> los lugares nuevos? El <strong>Módulo 3</strong> les da memoria de verdad.</div>
       </div>
     </section>
@@ -385,10 +389,10 @@
         <p class="tagline">Lo básico de una memoria: borrar, editar, ver.</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt"><span class="q">💬</span><span>Añade poder borrar un lugar.<span class="note">Pruébalo: dile «borra el lugar con id 19» (el que creaste).</span></span></div>
-        <div class="prompt"><span class="q">💬</span><span>Déjame editar un lugar.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Añade poder ver un solo lugar por su id.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Cambia el título de la página <code>/docs</code> a «GEOIA — mis lugares».</span></div>
+        <div class="prompt"><span class="q">A</span><span>Añade poder borrar un lugar.<span class="note">Pruébalo: dile «borra el lugar con id 19» (el que creaste).</span></span></div>
+        <div class="prompt"><span class="q">B</span><span>Déjame editar un lugar.</span></div>
+        <div class="prompt"><span class="q">C</span><span>Añade poder ver un solo lugar por su id.</span></div>
+        <div class="prompt"><span class="q">D</span><span>Cambia el título de la página <code>/docs</code> a «GEOIA — mis lugares».</span></div>
       </div>
     </section>
 
@@ -400,11 +404,11 @@
         <p class="tagline">Filtra, busca, ordena y protege tus datos.</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt"><span class="q">💬</span><span>Filtra los lugares por categoría (<code>/lugares?categoria=Playa</code>).</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Añade una búsqueda por texto en el nombre y la descripción.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Ordena los lugares por nombre.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>No dejes guardar dos lugares con el mismo nombre; si pasa, avísame con un error claro.</span></div>
-        <div class="prompt full"><span class="q">💬</span><span>Dame la lista de categorías con cuántos lugares tiene cada una.</span></div>
+        <div class="prompt"><span class="q">A</span><span>Filtra los lugares por categoría (<code>/lugares?categoria=Playa</code>).</span></div>
+        <div class="prompt"><span class="q">B</span><span>Añade una búsqueda por texto en el nombre y la descripción.</span></div>
+        <div class="prompt"><span class="q">C</span><span>Ordena los lugares por nombre.</span></div>
+        <div class="prompt"><span class="q">D</span><span>No dejes guardar dos lugares con el mismo nombre; si pasa, avísame con un error claro.</span></div>
+        <div class="prompt full"><span class="q">E</span><span>Dame la lista de categorías con cuántos lugares tiene cada una.</span></div>
       </div>
     </section>
 
@@ -416,11 +420,11 @@
         <p class="tagline">Campos nuevos, papelera de reciclaje y copia de seguridad.</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt"><span class="q">💬</span><span>Guarda la fecha en que añadí cada lugar y muéstrala.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Añade un campo «favorito» y deja marcar y desmarcar lugares.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Lugares cercanos: ordénalos por cercanía a un punto que yo te pase.</span></div>
-        <div class="prompt"><span class="q">💬</span><span>Cuando borre un lugar, no lo elimines del todo: márcalo como archivado y deja recuperarlo.</span></div>
-        <div class="prompt full"><span class="q">💬</span><span>Haz una copia de seguridad: exporta todos los lugares a un archivo JSON.</span></div>
+        <div class="prompt"><span class="q">A</span><span>Guarda la fecha en que añadí cada lugar y muéstrala.</span></div>
+        <div class="prompt"><span class="q">B</span><span>Añade un campo «favorito» y deja marcar y desmarcar lugares.</span></div>
+        <div class="prompt"><span class="q">C</span><span>Lugares cercanos: ordénalos por cercanía a un punto que yo te pase.</span></div>
+        <div class="prompt"><span class="q">D</span><span>Cuando borre un lugar, no lo elimines del todo: márcalo como archivado y deja recuperarlo.</span></div>
+        <div class="prompt full"><span class="q">E</span><span>Haz una copia de seguridad: exporta todos los lugares a un archivo JSON.</span></div>
       </div>
     </section>
 
@@ -432,9 +436,9 @@
         <p class="tagline">Une mapa + servidor + memoria, y compártela con el mundo.</p>
       </div>
       <div class="prompt-grid">
-        <div class="prompt full"><span class="q">💬</span><span>Sirve mi mapa desde aquí: al abrir <code>http://localhost:8731/</code> se ve el mapa leyendo los lugares de la base de datos.</span></div>
-        <div class="prompt full"><span class="q">💬</span><span><span class="tag">Si hiciste M1 y M2</span>Conecta el mapa y el servidor con esta base de datos.</span></div>
-        <div class="prompt full"><span class="q">🌍</span><span>Compártela: consigue un enlace temporal (ngrok) para que otra persona la abra desde su móvil u ordenador.</span></div>
+        <div class="prompt full"><span class="q">A</span><span>Sirve mi mapa desde aquí: al abrir <code>http://localhost:8731/</code> se ve el mapa leyendo los lugares de la base de datos.</span></div>
+        <div class="prompt full"><span class="q">B</span><span><span class="tag">Si hiciste M1 y M2</span>Conecta el mapa y el servidor con esta base de datos.</span></div>
+        <div class="prompt full"><span class="q">C</span><span>🌍 Compártela: consigue un enlace temporal (ngrok) para que otra persona la abra desde su móvil u ordenador.</span></div>
         <div class="banner">🎉 Has construido una app web completa <strong>hablando en español</strong>. El límite ya no es saber programar: es lo que te atrevas a imaginar. <strong>Imagínalo → pídeselo → inténtalo.</strong></div>
       </div>
     </section>
