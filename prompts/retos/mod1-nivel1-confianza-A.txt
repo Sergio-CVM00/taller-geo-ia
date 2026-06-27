@@ -1,0 +1,16 @@
+Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
+tú y explícame en español qué cambias. (PAPEL)
+
+Ya tengo mi mapa funcionando en "mod1-frontend/index.html": muestra los 18 lugares
+como marcadores, y cada lugar tiene un campo "categoria". (CONTEXTO)
+
+Quiero que cada marcador tenga un color según su categoría (por ejemplo, los almendros
+o frutales de un color y los bancales o terrazas de otro) y, si es fácil, una pequeña
+leyenda que explique qué color es cada categoría. Si hace falta, usa círculos de
+colores en vez del marcador clásico para poder pintarlos. (TAREA)
+
+Sigue siendo un solo archivo que abro con doble clic, sin servidor ni librerías
+nuevas. (FORMATO)
+
+Haz solo este cambio, sin tocar el resto del mapa. Al terminar, dime qué recargar
+para verlo. (LÍMITES)
