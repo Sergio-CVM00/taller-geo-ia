@@ -75,13 +75,42 @@ Es normal. **Copia el mensaje de error entero y pégaselo al agente**: pegar el 
 es darle contexto, y con contexto lo arregla. Por ejemplo: *"Me sale esto, ¿qué pasa?
 [pega el error]"*.
 
-## Ahora tú (reto) 🚀
+## Ahora tú (retos) 🚀
 
-Cuando el mapa funcione, pídele mejoras de una en una:
+Cuando el mapa funcione, pídele mejoras **de una en una** (en el mismo chat; si se
+empieza a liar, abre uno nuevo). **No necesitas saber cómo se hace: descríbelo en
+español y deja que el agente lo monte.** Sube por la escalera tanto como te apetezca. 🪜
+
+**Nivel 1 · para coger confianza** 🟢
 - *"Pon un color distinto a los marcadores según su categoría."*
-- *"Muestra la foto del lugar dentro del popup."*
-- *"Añade una cajita para buscar lugares por nombre."*
+- *"Muestra la foto del lugar dentro del popup, debajo del nombre."*
+- *"Ajusta el zoom automáticamente para que se vean todos los puntos al abrir."*
+- *"Añade un título arriba que diga «GEOIA — mis lugares» con un subtítulo."*
+- *"Cambia los marcadores por un emoji distinto según la categoría (🏖️, ⛰️, 🍴…)."*
 
-> En los **Módulos 2 y 3** —cada uno por separado— construirás un servidor y una base
-> de datos para este mismo mapa. Son independientes; si quieres, al final puedes
-> conectarlos.
+**Nivel 2 · interacción de verdad** 🟡
+- *"Añade una cajita para buscar lugares por nombre y que filtre el mapa."*
+- *"Pon botones para mostrar solo una categoría (playas, miradores…)."*
+- *"Haz una lista de lugares al lado; al pulsar uno, que el mapa vaya volando a él."*
+- *"Muestra cuántos lugares se están viendo ahora mismo con el filtro puesto."*
+- *"Dame un botón para cambiar entre mapa normal, de relieve y satélite."*
+
+**Nivel 3 · efecto «ohhh»** 🟣
+- *"Añade un botón para cambiar entre modo claro y oscuro."*
+- *"Dibuja una línea que conecte los lugares en orden, como una ruta turística."*
+- *"Añade un gráfico de barras con cuántos lugares hay por categoría."*
+- *"Agrupa los marcadores que se apilan y sepáralos al hacer zoom."*
+- *"En cada popup, un botón «Cómo llegar» que abra Google Maps en ese punto."*
+
+**Nivel 4 · atrévete** 🌟
+- *"Deja marcar lugares como favoritos y que se recuerden aunque cierre la página."*
+- *"Quiero un formulario para añadir un lugar nuevo escribiendo su nombre y coordenadas."*
+- *"Pon un botón para descargar todos mis lugares en un archivo, como copia de seguridad."*
+
+> 🎯 Los retos **no son obligatorios**: elige los que te hagan ilusión. Y si uno se
+> resiste, ya sabes — **copia el error y pégaselo al agente**.
+
+> 🌉 **Puente al Día 2:** ¿probaste a *añadir un lugar nuevo*? Recarga la página… ya no
+> está. Para que tus datos se queden de verdad (y los pueda ver más gente) necesitas un
+> **servidor** y una **base de datos**: es justo lo que montas en los **Módulos 2 y 3**
+> —cada uno por su cuenta; si quieres, al final los conectas—. 🚀
