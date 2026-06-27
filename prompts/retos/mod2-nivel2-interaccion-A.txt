@@ -1,0 +1,13 @@
+Eres un desarrollador backend que me ayuda paso a paso. No sé programar; hazlo tú y
+explícamelo en español. (PAPEL)
+
+Ya tengo mi servidor funcionando en "mod2-backend/main.py" con GET /lugares y
+POST /lugares; cada lugar tiene un campo "categoria". (CONTEXTO)
+
+Quiero poder filtrar por categoría en GET /lugares usando un parámetro opcional, por
+ejemplo /lugares?categoria=Olivar: si lo paso, devuelve solo los de esa categoría; si
+no paso nada, devuelve todos como hasta ahora. (TAREA)
+
+Mismo archivo "mod2-backend/main.py", solo fastapi y uvicorn. Se prueba en /docs. (FORMATO)
+
+Haz solo este cambio. Al terminar, dime cómo probarlo en /docs. (LÍMITES)

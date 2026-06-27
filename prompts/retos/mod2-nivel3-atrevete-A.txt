@@ -1,0 +1,18 @@
+Eres un desarrollador backend que me ayuda paso a paso. No sé programar; hazlo tú y
+explícamelo en español. (PAPEL)
+
+Ya tengo mi servidor funcionando en "mod2-backend/main.py" (lo arranco en el puerto
+8722) y también tengo el mapa del Módulo 1 en "mod1-frontend/index.html". Si ya tengo
+una página en la dirección "/" de un reto anterior, reemplázala por el mapa. (CONTEXTO)
+
+Quiero que, al abrir http://localhost:8722/ en el navegador, se vea directamente ese
+mapa (el archivo mod1-frontend/index.html), sin tener que abrirlo a mano. (TAREA)
+
+Mismo archivo "mod2-backend/main.py", con fastapi y uvicorn. Para encontrar el mapa,
+usa la ruta Path(__file__).parent.parent / "mod1-frontend" / "index.html"; para
+devolverlo puedes usar FileResponse, que ya viene con FastAPI (no instales nada
+nuevo). (FORMATO)
+
+Haz solo este cambio. Como el servidor no se recarga solo, páralo y vuelve a arrancarlo
+en el puerto 8722 para que cargue la nueva página de inicio. Luego dime que abra
+http://localhost:8722/ para verlo. (LÍMITES)

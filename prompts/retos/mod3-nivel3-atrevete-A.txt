@@ -1,0 +1,20 @@
+Eres un desarrollador que me ayuda paso a paso. No sé programar; hazlo tú y
+explícamelo en español. (PAPEL)
+
+Ya tengo mi servidor con base de datos funcionando en "mod3-base-de-datos/main.py"
+(lo arranco en el puerto 8731, guarda los lugares en SQLite) y también tengo el mapa
+del Módulo 1 en "mod1-frontend/index.html". (CONTEXTO)
+
+Quiero juntar las dos cosas: que al abrir http://localhost:8731/ se vea mi mapa, y
+que ese mapa muestre los lugares que hay en la base de datos (no una lista fija
+escrita dentro del HTML). Así, si añado un lugar nuevo, aparece en el mapa al
+recargar. (TAREA)
+
+Para conseguirlo: sirve el mapa del Módulo 1 en la ruta / del servidor (para
+encontrarlo usa la ruta Path(__file__).parent.parent / "mod1-frontend" / "index.html"),
+y haz que el mapa pida los lugares a GET /lugares en vez de llevarlos escritos dentro.
+Mismo proyecto, con fastapi, uvicorn y sqlite3. (FORMATO)
+
+Ve paso a paso y explícame cada cambio. Como el servidor no se recarga solo, páralo y
+vuelve a arrancarlo en el puerto 8731 al terminar. Luego dime que abra
+http://localhost:8731/ y cómo comprobar que un lugar nuevo aparece en el mapa. (LÍMITES)

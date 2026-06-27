@@ -1,4 +1,4 @@
-# ⚠️ ANTES DEL TALLER — léelo y hazlo en casa
+# ANTES DEL TALLER — léelo y hazlo en casa
 
 En el taller construirás **GEOIA**, tu primera app web (un mapa de lugares), hablando
 en español con una IA. Para no perder tiempo el primer día, **tienes que llegar con
@@ -9,7 +9,7 @@ sala 30 minutos antes (16:30) para ayudarte.
 
 ---
 
-## ✅ Checklist (4 pasos)
+## Checklist (4 pasos)
 
 ### Paso 1 — Instala Google Antigravity
 1. Entra en **https://antigravity.google** y descarga la versión para tu sistema
@@ -31,7 +31,7 @@ Antigravity usa Chrome para algunas funciones. Si no lo tienes:
 ### Paso 3 — Ten lista una cuenta de Google PERSONAL
 Antigravity te pedirá iniciar sesión con Google.
 
-> 🚨 **MUY IMPORTANTE:** usa una cuenta **personal** de `@gmail.com`.
+> **MUY IMPORTANTE:** usa una cuenta **personal** de `@gmail.com`.
 > La cuenta de la universidad (**`@us.es`** / Google Workspace) **NO funciona**.
 > Si no tienes una `@gmail.com`, créate una gratis antes de venir:
 > https://accounts.google.com/signup
@@ -43,14 +43,14 @@ Antigravity te pedirá iniciar sesión con Google.
    - **Windows:** clic derecho en el archivo `.zip` → *Extraer todo* → *Extraer*.
    - **Mac:** doble clic en el `.zip` y se descomprime solo.
 
-> 🆘 ¿No encuentras el enlace o algo se resiste? No te agobies: lo descargamos juntos
+> ¿No encuentras el enlace o algo se resiste? No te agobies: lo descargamos juntos
 > al empezar — abrimos la sala a las **16:30** del día 29.
 
-> 💡 ¿Sabes clonar con Git? También vale: acabas con la misma carpeta `taller-geo-ia`.
+> ¿Sabes clonar con Git? También vale: acabas con la misma carpeta `taller-geo-ia`.
 
 ---
 
-## 🤖 ¿Y las herramientas de programación (Python…)?
+## ¿Y las herramientas de programación (Python…)?
 
 **No tienes que instalar nada más.** El **Módulo 1** (el mapa) es un archivo que se
 abre en el navegador, sin instalar nada. Para los **Módulos 2 y 3**, el propio
@@ -68,15 +68,15 @@ aprender. Cada módulo te da el prompt exacto.
 > si está todo listo o qué ha fallado.
 > ```
 >
-> 💡 Fíjate en cómo está escrito: papel, contexto, tarea y qué esperas al final. Esos
+> Fíjate en cómo está escrito: papel, contexto, tarea y qué esperas al final. Esos
 > son los "ingredientes" de un buen prompt — lo veremos en el taller.
 
 ---
 
-## 🟢 Estás listo/a si...
+## Estás listo/a si...
 
 - Al abrir Antigravity ves su pantalla principal con el **panel del agente**, y
   has iniciado sesión con tu cuenta **`@gmail.com`**.
 - Tienes la carpeta **`taller-geo-ia`** descomprimida y a mano.
 
-Si tienes las dos cosas, **lo tienes todo**. Nos vemos el 29. 🚀
+Si tienes las dos cosas, **lo tienes todo**. Nos vemos el 29.

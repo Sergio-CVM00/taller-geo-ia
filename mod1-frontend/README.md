@@ -1,7 +1,7 @@
-# Módulo 1 — El frontend de GEOIA: tu mapa en el navegador 🗺️
+# Módulo 1 — El frontend de GEOIA: tu mapa en el navegador
 **Día 1 · lo construyes con Antigravity, sin escribir código**
 
-> 🧩 **Pieza independiente.** Solo usa los datos de
+> **Pieza independiente.** Solo usa los datos de
 > [`../datos/lugares.json`](../datos/lugares.json). Aunque empieces por aquí, funciona.
 
 ## Qué vas a conseguir
@@ -21,7 +21,7 @@ Sin instalar nada.
   [`../00-ANTES-DEL-TALLER.md`](../00-ANTES-DEL-TALLER.md)).
 - Los datos ya están en [`../datos/lugares.json`](../datos/lugares.json). No tienes
   que crearlos.
-- 📶 **Necesitas wifi:** el mapa (las imágenes del terreno y la librería que lo
+- **Necesitas wifi:** el mapa (las imágenes del terreno y la librería que lo
   dibuja) se cargan de internet.
 
 ## El prompt de partida (cópialo y pégalo)
@@ -51,10 +51,10 @@ Hazlo lo más simple posible: sin frameworks, comentado en español. No abras ni
 servidor ni añadas cosas que no haya pedido. Al final dime qué archivo abrir. (LÍMITES)
 ```
 
-> 🎯 **Truco:** pensar bien el prompt antes de enviarlo funciona mucho mejor que
+> **Truco:** pensar bien el prompt antes de enviarlo funciona mucho mejor que
 > reintentar a ciegas. Un buen prompt vale por diez.
 
-## Cómo saber que va bien ✅
+## Cómo saber que va bien
 
 1. El agente crea un archivo **`mod1-frontend/index.html`**. Lo abres con **doble
    clic** y se ve un **mapa**.
@@ -62,55 +62,48 @@ servidor ni añadas cosas que no haya pedido. Al final dime qué archivo abrir. 
    lon -0.1. (Algunos quedan uno encima de otro: es normal.)
 3. Al pulsar un marcador aparece el **nombre** y la **descripción**.
 
-> 🌊 Si los puntos salen en el mar o en otro continente, las coordenadas se leyeron
+> Si los puntos salen en el mar o en otro continente, las coordenadas se leyeron
 > mal: **díselo al agente** ("los puntos salen en el mar, revísalo").
-> ⬜ Si el mapa sale **en blanco**, casi siempre es la wifi (Leaflet viene de
+> Si el mapa sale **en blanco**, casi siempre es la wifi (Leaflet viene de
 > internet): comprueba la conexión y díselo al agente.
-> 🧷 Si el mapa se ve pero **no aparecen los marcadores** (o salen como cuadritos
+> Si el mapa se ve pero **no aparecen los marcadores** (o salen como cuadritos
 > rotos): **díselo al agente** ("el mapa se ve pero no aparecen los marcadores").
 
-## Si algo falla 🆘
+## Si algo falla
 
 Es normal. **Copia el mensaje de error entero y pégaselo al agente**: pegar el error
 es darle contexto, y con contexto lo arregla. Por ejemplo: *"Me sale esto, ¿qué pasa?
 [pega el error]"*.
 
-## Ahora tú (retos) 🚀
+## Ahora tú (retos)
 
 Cuando el mapa funcione, pídele mejoras **de una en una** (en el mismo chat; si se
 empieza a liar, abre uno nuevo). **No necesitas saber cómo se hace: descríbelo en
-español y deja que el agente lo monte.** Sube por la escalera tanto como te apetezca. 🪜
+español y deja que el agente lo monte.** Sube por la escalera tanto como te apetezca.
 
-**Nivel 1 · para coger confianza** 🟢
+> ¿Te atascas en el **reto A** de algún nivel? Tienes un prompt de ejemplo en
+> [`../prompts/retos/`](../prompts/retos/) (`mod1-nivel1-confianza-A.txt` … `mod1-nivel3-atrevete-A.txt`). Míralo
+> solo si lo necesitas: lo suyo es **describir tú la mejora en español**.
+
+**Nivel 1 · Para coger confianza**
 - **A.** *"Pon un color distinto a los marcadores según su categoría."*
 - **B.** *"Muestra la foto del lugar dentro del popup, debajo del nombre."*
 - **C.** *"Ajusta el zoom automáticamente para que se vean todos los puntos al abrir."*
-- **D.** *"Añade un título arriba que diga «GEOIA — mis lugares» con un subtítulo."*
-- **E.** *"Cambia los marcadores por un emoji distinto según la categoría (🏖️, ⛰️, 🍴…)."*
 
-**Nivel 2 · interacción de verdad** 🟡
+**Nivel 2 · Interacción de verdad**
 - **A.** *"Añade una cajita para buscar lugares por nombre y que filtre el mapa."*
-- **B.** *"Pon botones para mostrar solo una categoría (playas, miradores…)."*
+- **B.** *"Pon botones para mostrar solo una categoría (olivares, bancales…)."*
 - **C.** *"Haz una lista de lugares al lado; al pulsar uno, que el mapa vaya volando a él."*
-- **D.** *"Muestra cuántos lugares se están viendo ahora mismo con el filtro puesto."*
-- **E.** *"Dame un botón para cambiar entre mapa normal, de relieve y satélite."*
 
-**Nivel 3 · efecto «ohhh»** 🟣
-- **A.** *"Añade un botón para cambiar entre modo claro y oscuro."*
-- **B.** *"Dibuja una línea que conecte los lugares en orden, como una ruta turística."*
-- **C.** *"Añade un gráfico de barras con cuántos lugares hay por categoría."*
-- **D.** *"Agrupa los marcadores que se apilan y sepáralos al hacer zoom."*
-- **E.** *"En cada popup, un botón «Cómo llegar» que abra Google Maps en ese punto."*
-
-**Nivel 4 · atrévete** 🌟
+**Nivel 3 · Atrévete**
 - **A.** *"Deja marcar lugares como favoritos y que se recuerden aunque cierre la página."*
 - **B.** *"Quiero un formulario para añadir un lugar nuevo escribiendo su nombre y coordenadas."*
-- **C.** *"Pon un botón para descargar todos mis lugares en un archivo, como copia de seguridad."*
+- **C.** *"Añade un botón para cambiar entre modo claro y oscuro."*
 
-> 🎯 Los retos **no son obligatorios**: elige los que te hagan ilusión. Y si uno se
+> Los retos **no son obligatorios**: elige los que te hagan ilusión. Y si uno se
 > resiste, ya sabes — **copia el error y pégaselo al agente**.
 
-> 🌉 **Puente al Día 2:** ¿probaste a *añadir un lugar nuevo*? Recarga la página… ya no
+> **Puente al Día 2:** ¿probaste a *añadir un lugar nuevo*? Recarga la página… ya no
 > está. Para que tus datos se queden de verdad (y los pueda ver más gente) necesitas un
 > **servidor** y una **base de datos**: es justo lo que montas en los **Módulos 2 y 3**
-> —cada uno por su cuenta; si quieres, al final los conectas—. 🚀
+> —cada uno por su cuenta; si quieres, al final los conectas—.

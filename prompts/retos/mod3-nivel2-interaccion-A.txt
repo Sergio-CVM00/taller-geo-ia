@@ -1,0 +1,14 @@
+Eres un desarrollador que me ayuda paso a paso. No sé programar; hazlo tú y
+explícamelo en español. (PAPEL)
+
+Ya tengo mi servidor con base de datos funcionando en "mod3-base-de-datos/main.py"
+(SQLite); GET /lugares devuelve todos y cada lugar tiene un campo "categoria". (CONTEXTO)
+
+Quiero poder filtrar por categoría en GET /lugares con un parámetro opcional de
+consulta, por ejemplo /lugares?categoria=Olivar: si lo paso, devuelve solo los de esa
+categoría; si no paso nada, devuelve todos como hasta ahora. Declara la categoría como
+argumento del endpoint, con valor por defecto, para que salga como casilla en /docs. (TAREA)
+
+Mismo archivo "mod3-base-de-datos/main.py", con sqlite3. Se prueba en /docs. (FORMATO)
+
+Haz solo este cambio. Al terminar, dime cómo probarlo en /docs. (LÍMITES)

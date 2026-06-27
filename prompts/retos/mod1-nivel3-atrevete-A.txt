@@ -1,0 +1,15 @@
+Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
+tú y explícame en español qué cambias. (PAPEL)
+
+Ya tengo mi mapa funcionando en "mod1-frontend/index.html", y cada marcador abre un
+popup con el nombre y la descripción del lugar. (CONTEXTO)
+
+Quiero poder marcar un lugar como favorito desde su popup (por ejemplo, con un botón
+de estrella) y quitarle el favorito si lo pulso otra vez. Lo importante: que mis
+favoritos se recuerden aunque cierre y vuelva a abrir la página. (TAREA)
+
+Sigue siendo un solo archivo que abro con doble clic, sin servidor. Para que se
+recuerden, guárdalos en el propio navegador (localStorage). (FORMATO)
+
+Haz solo este cambio, sin tocar el resto del mapa. Explícame cómo comprobar que de
+verdad se recuerdan: marco uno, cierro la página, la vuelvo a abrir y sigue marcado. (LÍMITES)

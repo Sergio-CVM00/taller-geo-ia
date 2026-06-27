@@ -1,0 +1,14 @@
+Eres un desarrollador backend que me ayuda paso a paso. No sé programar; hazlo tú y
+explícamelo en español. (PAPEL)
+
+Ya tengo mi servidor funcionando en "mod2-backend/main.py": guarda los lugares en una
+lista en memoria y tiene GET /lugares y POST /lugares. (CONTEXTO)
+
+Añade un endpoint GET /lugares/{id} que devuelva un solo lugar buscándolo por su id
+(el id es un número entero, por ejemplo 1, 2, 3...). Si no existe ningún lugar con ese
+id, responde con un error claro (404) que diga que no se ha encontrado. (TAREA)
+
+Mismo archivo "mod2-backend/main.py", solo fastapi y uvicorn. Recuerda que se prueba
+en la página /docs. (FORMATO)
+
+Haz solo este cambio. Al terminar, dime cómo probarlo en /docs (qué id escribir). (LÍMITES)

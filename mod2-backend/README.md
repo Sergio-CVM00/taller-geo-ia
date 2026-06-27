@@ -1,7 +1,7 @@
-# Módulo 2 — El servidor de GEOIA: una API que sirve los lugares ⚙️
+# Módulo 2 — El servidor de GEOIA: una API que sirve los lugares
 **Día 2 · lo enseña el presentador en directo (y, si quieres, lo sigues tú)**
 
-> 🧩 **Pieza independiente.** Parte de [`../datos/lugares.json`](../datos/lugares.json)
+> **Pieza independiente.** Parte de [`../datos/lugares.json`](../datos/lugares.json)
 > y se prueba sola. **No necesitas haber hecho el Módulo 1.**
 
 ## Qué es esto (en una frase)
@@ -21,12 +21,12 @@ camarero pequeño, hecho con **Python**, que sirve la lista de lugares y deja
   cajita aparte para no tocar el resto de tu ordenador). Los datos están en
   [`../datos/lugares.json`](../datos/lugares.json).
 
-> 💡 **Contexto limpio:** ¿vienes de otro módulo? Abre un **chat nuevo** en
+> **Contexto limpio:** ¿vienes de otro módulo? Abre un **chat nuevo** en
 > Antigravity para empezar con la cabeza despejada.
 
 ## El prompt de partida (cópialo y pégalo)
 
-> 🙌 **No necesitas entender el prompt** (verás palabras técnicas como `uvicorn` o
+> **No necesitas entender el prompt** (verás palabras técnicas como `uvicorn` o
 > `Path`): cópialo tal cual y pégaselo al agente. Él escribe el código; si algo falla,
 > le pegas el error. ¿Te pica la curiosidad por alguna palabra? Mírala en la
 > [chuleta](../guia/chuleta-conceptos.md).
@@ -53,7 +53,7 @@ Un solo archivo, sin subcarpetas, comentado en español, solo fastapi y uvicorn,
 a paso enseñándome los comandos. (LÍMITES)
 ```
 
-## Cómo saber que va bien ✅
+## Cómo saber que va bien
 
 1. El agente arranca el servidor y te da una dirección parecida a
    **`http://localhost:8722`** (`localhost` = tu propio ordenador). Pega esa dirección
@@ -64,10 +64,10 @@ a paso enseñándome los comandos. (LÍMITES)
 4. Abre `POST /lugares`, rellena un lugar nuevo y ejecútalo; vuelve a `GET /lugares` y
    ahora hay **19**.
 
-> ⚠️ Como guarda los lugares "en memoria", si **paras el servidor se pierden los
+> Como guarda los lugares "en memoria", si **paras el servidor se pierden los
 > nuevos**. Es normal: darles memoria de verdad es justo lo del Módulo 3.
 
-## Si algo falla 🆘
+## Si algo falla
 
 Copia el error entero y pégaselo al agente: pegar el error es darle contexto.
 - Si **`/docs` sale en blanco** o sin estilo, es la conexión a internet de esa página de
@@ -76,40 +76,35 @@ Copia el error entero y pégaselo al agente: pegar el error es darle contexto.
 - Si el agente menciona un error de **CORS** (un bloqueo de seguridad rutinario del
   navegador), **no es culpa tuya**: pídele que lo arregle él en la API.
 
-## Ahora tú (retos) 🚀
+## Ahora tú (retos)
 
 Pídele mejoras **de una en una** (en el mismo chat; si se empieza a liar, abre uno
 nuevo). **No necesitas saber cómo se hace: descríbelo en español y deja que el agente
 escriba el código.** Todo se prueba en la misma página `/docs`. Sube por la escalera lo
-que quieras. 🪜
+que quieras.
 
-**Nivel 1 · para coger confianza** 🟢
+> ¿Te atascas en el **reto A** de algún nivel? Tienes un prompt de ejemplo en
+> [`../prompts/retos/`](../prompts/retos/) (`mod2-nivel1-confianza-A.txt` … `mod2-nivel3-atrevete-A.txt`). Míralo
+> solo si lo necesitas: lo suyo es **describir tú la mejora en español**.
+
+**Nivel 1 · Para coger confianza**
 - **A.** *"Añade GET /lugares/{id} para devolver un solo lugar por su id."*
 - **B.** *"Añade un endpoint /salud que responda que el servidor está vivo."*
 - **C.** *"Cambia el título y la descripción que aparecen arriba en la página /docs."*
-- **D.** *"Dime en un endpoint cuántos lugares hay en total ahora mismo."*
 
-**Nivel 2 · interacción de verdad** 🟡
-- **A.** *"Haz que pueda filtrar los lugares por categoría, por ejemplo /lugares?categoria=Playa."*
+**Nivel 2 · Interacción de verdad**
+- **A.** *"Haz que pueda filtrar los lugares por categoría, por ejemplo /lugares?categoria=Olivar."*
 - **B.** *"Añade una búsqueda por texto que mire en el nombre y la descripción."*
 - **C.** *"Permite borrar un lugar con DELETE /lugares/{id}."*
-- **D.** *"Permite editar un lugar con PUT /lugares/{id}."*
-- **E.** *"Al añadir un lugar, comprueba que vienen nombre, lat y lon; si falta algo, responde con un error claro."*
 
-**Nivel 3 · efecto «ohhh»** 🟣
-- **A.** *"Dame la lista de categorías con cuántos lugares tiene cada una."*
-- **B.** *"Lugares cercanos: dame los lugares ordenados por cercanía a un punto (lat, lon) que yo te pase."*
-- **C.** *"Al añadir un lugar, pon tú el id automáticamente (el siguiente libre) si no lo mando."*
-- **D.** *"Crea una página de inicio en / con un resumen: cuántos lugares hay y cuántos por categoría."*
-
-**Nivel 4 · atrévete** 🌟
+**Nivel 3 · Atrévete**
 - **A.** *"Sirve mi mapa desde aquí: que al abrir http://localhost:8722/ se vea el mapa del Módulo 1."*
-- **B.** **(Si hiciste el Módulo 1)** *"Conecta mi mapa de mod1-frontend para que pida los
-  lugares a esta API en vez de llevarlos dentro del HTML."*
+- **B.** *"Dame la lista de categorías con cuántos lugares tiene cada una."*
+- **C.** **(Si hiciste el Módulo 1)** *"Conecta mi mapa de mod1-frontend para que pida los lugares a esta API en vez de llevarlos dentro del HTML."*
 
-> 🎯 Los retos **no son obligatorios**: elige los que te apetezcan. Y si uno se resiste,
+> Los retos **no son obligatorios**: elige los que te apetezcan. Y si uno se resiste,
 > ya sabes — **copia el error y pégaselo al agente**.
 
-> 💾 ¿Viste que al **parar el servidor se pierden** los lugares nuevos? El **Módulo 3**
+> ¿Viste que al **parar el servidor se pierden** los lugares nuevos? El **Módulo 3**
 > les da **memoria de verdad** para que no se pierdan — y también se construye por
 > separado.

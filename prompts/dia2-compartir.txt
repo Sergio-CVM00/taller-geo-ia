@@ -1,18 +1,15 @@
 Eres un desarrollador que me ayuda paso a paso. No sé programar; hazlo tú y
 explícamelo en español. (PAPEL)
 
-Acabo de construir una app en la carpeta "taller-geo-ia" y la tengo funcionando en mi
-ordenador, en una dirección como http://localhost (no estoy seguro del puerto exacto).
-Quiero enseñársela a un compañero desde SU móvil u ordenador, durante un rato. (CONTEXTO)
+Tengo mi app funcionando en mi ordenador (algo como http://localhost) y quiero
+enseñársela a otra persona desde su móvil, un rato. (CONTEXTO)
 
-Dame un enlace público y temporal que abra mi app desde internet, usando ngrok. (TAREA)
+Dame un enlace público y temporal con ngrok. Encárgate tú de todo: instálalo,
+ayúdame a iniciar sesión y a pegar el token la primera vez (usa mi correo personal
+o GitHub; la cuenta @us.es no funciona) y arráncalo contra el puerto de mi app. (TAREA)
 
-Instala y configura ngrok tú mismo, enseñándome cada comando. La primera vez ngrok te
-pedirá una cuenta gratuita y un token de autenticación (es normal, solo pasa una vez):
-guíame paso a paso para conseguirlo, y para esa cuenta usa mi correo personal o mi
-cuenta de GitHub (la cuenta @us.es de la universidad no funciona). Antes de arrancarlo,
-comprueba/dime en qué puerto está corriendo mi app y usa ESE puerto. Deja encendido el
-servidor de mi app y arranca ngrok en OTRO terminal, apuntando a ese puerto. (FORMATO)
+Hazlo paso a paso, enseñándome cada comando. Deja mi app encendida y arranca ngrok
+en otro terminal. (FORMATO)
 
-Al terminar, dame el enlace para copiar y pegar. Recuérdame en una frase que es
-temporal: deja de funcionar cuando lo cierre o apague el ordenador. (LÍMITES)
+Al final dame el enlace para copiar y recuérdame en una frase que es temporal:
+deja de funcionar cuando lo cierre. (LÍMITES)

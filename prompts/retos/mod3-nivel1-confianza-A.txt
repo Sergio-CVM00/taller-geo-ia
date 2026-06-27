@@ -1,0 +1,14 @@
+Eres un desarrollador que me ayuda paso a paso. No sé programar; hazlo tú y
+explícamelo en español. (PAPEL)
+
+Ya tengo mi servidor con base de datos funcionando en "mod3-base-de-datos/main.py":
+guarda los lugares en SQLite (lugares.db) y tiene GET /lugares y POST /lugares. (CONTEXTO)
+
+Quiero poder borrar un lugar por su id con DELETE /lugares/{id}: que lo borre de la
+base de datos de verdad. Si no existe ese id, avísame con un error claro. (TAREA)
+
+Mismo archivo "mod3-base-de-datos/main.py", con sqlite3 (ya viene con Python). Se
+prueba en /docs. (FORMATO)
+
+Haz solo este cambio. Al terminar, dime cómo probarlo: voy a borrar el lugar con id
+19 (el que añadí antes) y comprobar que desaparece de la lista. (LÍMITES)

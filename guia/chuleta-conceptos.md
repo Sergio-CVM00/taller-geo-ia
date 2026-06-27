@@ -1,4 +1,4 @@
-# 🧭 Chuleta del taller — para llevar
+# Chuleta del taller — para llevar
 
 Una hoja para consultar cuando una palabra te suene rara o algo no salga.
 **No hay que memorizar nada.**
@@ -56,9 +56,9 @@ asusten si aparecen:
 
 ## Dos hábitos que valen oro
 
-- 🩹 **Pega el error entero al agente.** Si algo falla, copia el mensaje completo y
+- **Pega el error entero al agente.** Si algo falla, copia el mensaje completo y
   pégaselo: **pegar el error es darle contexto**, y con contexto lo arregla.
-- 🧹 **Tarea nueva → chat nuevo.** Al empezar otro módulo, abre un **chat nuevo** en
+- **Tarea nueva → chat nuevo.** Al empezar otro módulo, abre un **chat nuevo** en
   Antigravity: el agente arranca despejado y se centra en lo nuevo.
 
 ## Qué verás al abrir Antigravity

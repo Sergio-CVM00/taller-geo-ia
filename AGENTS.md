@@ -3,7 +3,7 @@
 > **Para quién es esto:** reglas para el asistente de IA (p. ej. Google
 > Antigravity, que lee este archivo al empezar cada sesión).
 >
-> 🙋 **¿Eres alumno/a del taller? Puedes ignorar este archivo por completo.** No es
+> **¿Eres alumno/a del taller? Puedes ignorar este archivo por completo.** No es
 > material tuyo: lo lee la IA por su cuenta. Tú sigue los README de cada módulo.
 >
 > *(¿Agente ayudando a desarrollar los materiales? Mira `../CLAUDE.md`.)*
@@ -56,7 +56,7 @@ partida de cada paso está en el `README.md` de su carpeta y, todos juntos, en
 
 Glosario para el alumnado en `guia/chuleta-conceptos.md`.
 
-> ⚠️ **No te adelantes ni hagas spoilers.** Trabaja solo el paso que la persona te pide.
+> **No te adelantes ni hagas spoilers.** Trabaja solo el paso que la persona te pide.
 > Si una carpeta o un paso **no existe** en este proyecto, es que **aún no toca**: no lo
 > menciones, no lo crees y no adelantes lo que vendrá después. Cíñete a lo que hay.
 

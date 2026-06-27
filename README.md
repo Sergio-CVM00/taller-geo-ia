@@ -1,7 +1,9 @@
-# Construye tu primera app web hablando en español 🌍🗺️
+![GEOIA - Taller de la Universidad de Sevilla](portada-readme.svg)
+
+# Construye tu primera app web hablando en español
 
 **Universidad de Sevilla · Cátedra de IA US-Google · Cactus Accelerative Innovation**
-📅 29 y 30 de junio de 2026 · 🕔 17:00 · Facultad de Geografía e Historia
+29 y 30 de junio de 2026 · 17:00 · Facultad de Geografía e Historia
 
 ---
 
@@ -22,18 +24,18 @@ de IA (**Google Antigravity**) y él lo programa por ti. Tú **diriges, miras y 
 Montas **GEOIA** en **tres piezas**, de lo más visible a lo más profundo. Cada una en
 su carpeta, con su guía y su prompt listo para pegar:
 
-- 🗺️ **Día 1 — El mapa** (`mod1-frontend/`): la parte que se ve. Un mapa en el
+- **Día 1 — El mapa** (`mod1-frontend/`): la parte que se ve. Un mapa en el
   navegador con los lugares marcados; pulsas uno y ves su nombre y su descripción.
-- ⚙️ **Día 2 — El servidor** (`mod2-backend/`): la parte que no se ve pero hace el
+- **Día 2 — El servidor** (`mod2-backend/`): la parte que no se ve pero hace el
   trabajo. Un programita que entrega y recibe lugares (como un camarero que te trae
   lo que le pides).
-- 💾 **Día 2 — La memoria** (`mod3-base-de-datos/`): donde los lugares se **guardan
+- **Día 2 — La memoria** (`mod3-base-de-datos/`): donde los lugares se **guardan
   de verdad** y no se pierden aunque apagues todo.
 
-Y el broche del Día 2: 🌍 **comparte GEOIA** con un enlace temporal para que otra
+Y el broche del Día 2: **comparte GEOIA** con un enlace temporal para que otra
 persona la abra desde su móvil (guía en [`guia/compartir-tu-app.md`](guia/compartir-tu-app.md)).
 
-> 💡 Cada pieza es **independiente**: todas parten de los mismos datos de ejemplo
+> Cada pieza es **independiente**: todas parten de los mismos datos de ejemplo
 > (`datos/`). Puedes hacerlas en orden o **saltar a la siguiente** aunque no hayas
 > terminado la anterior. No te quedas atascado/a.
 >
@@ -52,7 +54,7 @@ persona la abra desde su móvil (guía en [`guia/compartir-tu-app.md`](guia/comp
    **[`mod3-base-de-datos/`](mod3-base-de-datos/README.md)** el Día 2. Cada guía trae
    el prompt para copiar y pegar.
 
-> 🧭 ¿Te pierde alguna palabra (mapa, servidor, base de datos, prompt…)? Tienes una
+> ¿Te pierde alguna palabra (mapa, servidor, base de datos, prompt…)? Tienes una
 > **chuleta** de bolsillo en **[`guia/chuleta-conceptos.md`](guia/chuleta-conceptos.md)**
 > y todos los prompts juntos en **[`guia/prompts.md`](guia/prompts.md)**.
 
@@ -65,18 +67,18 @@ el agente los usa por ti.
 
 ## Qué hay en esta carpeta
 
-- 📄 **`00-ANTES-DEL-TALLER.md`** — empieza aquí (preparación, en casa).
-- 🗺️ **`mod1-frontend/`** — Día 1: el mapa.
-- ⚙️ **`mod2-backend/`** — Día 2: el servidor.
-- 💾 **`mod3-base-de-datos/`** — Día 2: la memoria.
-- 📊 **`datos/`** — los 18 lugares de ejemplo.
-- 📸 **`fotos_ejemplo/`** — las fotos de esos lugares.
-- 📝 **`prompts/`** — los prompts listos para copiar y pegar (un `.txt` por paso).
-- 🧭 **`guia/`** — la chuleta de conceptos, el **mapa de módulos** (qué hacemos en cada
+- **`00-ANTES-DEL-TALLER.md`** — empieza aquí (preparación, en casa).
+- **`mod1-frontend/`** — Día 1: el mapa.
+- **`mod2-backend/`** — Día 2: el servidor.
+- **`mod3-base-de-datos/`** — Día 2: la memoria.
+- **`datos/`** — los 18 lugares de ejemplo.
+- **`fotos_ejemplo/`** — las fotos de esos lugares.
+- **`prompts/`** — los prompts listos para copiar y pegar (un `.txt` por paso).
+- **`guia/`** — la chuleta de conceptos, el **mapa de módulos** (qué hacemos en cada
   paso) y cómo **compartir GEOIA**.
 
 ---
 
-📷 Las fotos y coordenadas de ejemplo son de **B. Zaragozí (Alicante)** —
+Las fotos y coordenadas de ejemplo son de **B. Zaragozí (Alicante)** —
 gracias por compartirlas. Los materiales del taller son de uso libre. Los detalles
 están en [`ATRIBUCION-DATOS.md`](ATRIBUCION-DATOS.md).
