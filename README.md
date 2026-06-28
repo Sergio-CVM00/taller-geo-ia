@@ -43,6 +43,10 @@ Hoy montas la **primera pieza** de **GEOIA**: la parte que se ve.
 3. **Sigue la guía** → abre **[`mod1-frontend/`](mod1-frontend/README.md)**: trae el
    prompt para copiar y pegar y cómo saber que va bien.
 
+> ¿Es tu primera vez con un agente? Suéltate con el calentamiento opcional
+> `prompts/dia1-calentamiento.txt` (una página web sencilla para perderle el miedo)
+> antes de ir al mapa.
+
 > ¿Te pierde alguna palabra (mapa, marcador, prompt…)? Tienes una
 > **chuleta** de bolsillo en **[`guia/chuleta-conceptos.md`](guia/chuleta-conceptos.md)**
 > y todos los prompts juntos en **[`guia/prompts.md`](guia/prompts.md)**.
