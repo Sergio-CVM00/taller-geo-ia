@@ -80,3 +80,6 @@ aprender. Cada módulo te da el prompt exacto.
 - Tienes la carpeta **`taller-geo-ia`** descomprimida y a mano.
 
 Si tienes las dos cosas, **lo tienes todo**. Nos vemos el 29.
+
+> ¿Te suena raro algún término (agente, prompt, `.venv`)? Échale un ojo a la chuleta de
+> bolsillo: [`guia/chuleta-conceptos.md`](guia/chuleta-conceptos.md). No hay que memorizar nada.

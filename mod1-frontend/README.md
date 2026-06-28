@@ -65,7 +65,10 @@ servidor ni añadas cosas que no haya pedido. Al final dime qué archivo abrir. 
 > Si los puntos salen en el mar o en otro continente, las coordenadas se leyeron
 > mal: **díselo al agente** ("los puntos salen en el mar, revísalo").
 > Si el mapa sale **en blanco**, casi siempre es la wifi (Leaflet viene de
-> internet): comprueba la conexión y díselo al agente.
+> internet): comprueba la conexión y díselo al agente. Si la wifi va bien y sigue en
+> blanco, hay otra causa frecuente: que el agente haya puesto un "candado de seguridad"
+> (un atributo `integrity`/SRI) en las etiquetas de Leaflet con un valor que no cuadra,
+> y el navegador bloquee la librería sin avisar. Díselo así para que lo revise o lo quite.
 > Si el mapa se ve pero **no aparecen los marcadores** (o salen como cuadritos
 > rotos): **díselo al agente** ("el mapa se ve pero no aparecen los marcadores").
 
@@ -88,20 +91,44 @@ español y deja que el agente lo monte.** Sube por la escalera tanto como te ape
 **Nivel 1 · Para coger confianza**
 - **A.** *"Pon un color distinto a los marcadores según su categoría."*
 - **B.** *"Muestra la foto del lugar dentro del popup, debajo del nombre."*
+  > Ojo con las carpetas: las fotos están en `fotos_ejemplo/`, que está **fuera** de
+  > `mod1-frontend/`. Si la foto sale rota, dile al agente que las imágenes están una
+  > carpeta por encima del `index.html` y que ajuste la ruta para que las encuentre.
 - **C.** *"Ajusta el zoom automáticamente para que se vean todos los puntos al abrir."*
+  > Sabrás que va bien cuando, al abrir, **todos** los marcadores quepan en pantalla sin
+  > tener que alejar el zoom. El encuadre debe salir de los propios datos; si más adelante
+  > añades un lugar lejano (reto del formulario) y se sale, pídele que lo recalcule.
 
 **Nivel 2 · Interacción de verdad**
 - **A.** *"Añade una cajita para buscar lugares por nombre y que filtre el mapa."*
 - **B.** *"Pon botones para mostrar solo una categoría (olivares, bancales…)."*
 - **C.** *"Haz una lista de lugares al lado; al pulsar uno, que el mapa vaya volando a él."*
+  > Sabrás que va bien cuando, al pulsar un nombre de la lista, el mapa se desplace hasta
+  > el punto y se abra su popup ahí. Si el popup sale descolocado o parpadea, díselo: suele
+  > bastar con que espere a que termine el desplazamiento antes de abrirlo.
 
 **Nivel 3 · Atrévete**
 - **A.** *"Deja marcar lugares como favoritos y que se recuerden aunque cierre la página."*
+  > Trampa típica: la estrella funciona la primera vez, pero al volver a pulsarla ya no hace
+  > nada (hasta que cierras y reabres el popup). Si te pasa, díselo con esas palabras —*"la
+  > estrella solo funciona una vez por apertura del popup"*— para que vuelva a dejar activo
+  > el botón cada vez que cambia el popup.
 - **B.** *"Quiero un formulario para añadir un lugar nuevo escribiendo su nombre y coordenadas."*
+  > Si ya tienes búsqueda o filtros, al añadir un lugar puede parecer que "no aparece" porque
+  > el filtro lo esconde. Pídele que, al añadir, el mapa y la lista queden **coherentes** (por
+  > ejemplo, que quite los filtros o que el lugar nuevo respete el filtro activo).
 - **C.** *"Añade un botón para cambiar entre modo claro y oscuro."*
+  > Dos cosas que se suelen olvidar aquí: el mapa de fondo (las imágenes del terreno) **no se
+  > oscurece solo** al cambiar los colores de la página, así que pide que también lo atenúe en
+  > modo oscuro; y, como con los favoritos, pide que **recuerde el modo elegido** al recargar.
 
 > Los retos **no son obligatorios**: elige los que te hagan ilusión. Y si uno se
 > resiste, ya sabes — **copia el error y pégaselo al agente**.
+
+> **Antes de dar un reto por bueno, pruébalo de verdad:** el caso normal y un caso límite
+> (borra la búsqueda, recarga la página, pulsa dos veces). Estos retos se acumulan sobre el
+> mismo `index.html`, así que comprueba que los anteriores siguen funcionando. ¿No sabes cómo
+> comprobar uno? Pídeselo al agente: *"enséñame cómo probar este cambio"*.
 
 > **Puente al Día 2:** ¿probaste a *añadir un lugar nuevo*? Recarga la página… ya no
 > está. Para que tus datos se queden de verdad (y los pueda ver más gente) necesitas un
