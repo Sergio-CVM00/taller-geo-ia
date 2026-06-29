@@ -1,0 +1,22 @@
+Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
+tú y explícame en español qué cambias. (PAPEL)
+
+Ya tengo mi mapa funcionando en "mod1-frontend/index.html" con los 18 lugares, y cada
+marcador abre un popup con el nombre y la descripción. (CONTEXTO)
+
+Quiero una lista de lugares al lado del mapa: a la izquierda una columna con los
+nombres de los 18 lugares y a la derecha el mapa. Al pulsar un nombre de la lista,
+que el mapa "vuele" hasta ese lugar (usa map.flyTo) y se abra su popup ahí. (TAREA)
+
+MUY IMPORTANTE para que no salga descolocado: abre el popup DESPUÉS de que termine el
+vuelo, no a la vez. Para eso, lanza el flyTo y abre el popup cuando el mapa avise de
+que ya ha terminado de moverse (por ejemplo, escuchando una sola vez el evento
+"moveend" del mapa, o con un pequeño retardo). Para el layout usa CSS sencillo (por
+ejemplo flexbox): lista estrecha a la izquierda, mapa ocupando el resto a la derecha.
+Construye la lista de nombres en un bloque de código que se ejecute ANTES de cargar
+Leaflet, para que los nombres aparezcan siempre aunque Leaflet tarde en cargarse de
+internet. Sigue siendo un solo archivo que abro con doble clic, sin servidor ni
+librerías nuevas. (FORMATO)
+
+Haz solo este cambio, sin romper los popups ni lo que ya funciona. Al terminar, dime
+qué recargar y cómo comprobar que al pulsar un nombre el mapa vuela y abre el popup. (LÍMITES)

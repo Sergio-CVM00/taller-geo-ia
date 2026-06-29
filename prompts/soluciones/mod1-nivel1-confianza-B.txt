@@ -1,0 +1,23 @@
+Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
+tú y explícame en español qué cambias. (PAPEL)
+
+Ya tengo mi mapa funcionando en "mod1-frontend/index.html": cada lugar abre un popup
+con su nombre y su descripción, y en los datos cada lugar tiene un campo "foto" con
+una ruta tipo "fotos_ejemplo/DSC01684.JPG". MUY IMPORTANTE sobre las carpetas: el
+archivo "index.html" está dentro de la carpeta "mod1-frontend/", pero la carpeta
+"fotos_ejemplo/" NO está dentro de "mod1-frontend/", sino una carpeta por encima, en
+la raíz del proyecto. (CONTEXTO)
+
+Quiero que dentro de cada popup se vea la foto del lugar, colocada debajo del nombre
+y encima de la descripción. (TAREA)
+
+Como el "index.html" está en "mod1-frontend/" y las fotos están una carpeta por
+encima, la ruta de la imagen dentro del HTML tiene que empezar por "../". Es decir,
+si en los datos la foto es "fotos_ejemplo/DSC01684.JPG", en la etiqueta de imagen
+debe quedar "../fotos_ejemplo/DSC01684.JPG". Muestra la imagen con un ancho fijo (por
+ejemplo 220 píxeles) para que el popup no se descuadre. Si alguna foto no carga, que
+el popup siga mostrando el nombre y la descripción sin romperse. Sigue siendo un solo
+archivo que abro con doble clic, sin servidor ni librerías nuevas. (FORMATO)
+
+Haz solo este cambio, sin tocar el resto del mapa. Al terminar, dime qué archivo
+recargar y cómo comprobar que las fotos se ven. (LÍMITES)
