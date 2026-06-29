@@ -81,5 +81,21 @@ aprender. Cada módulo te da el prompt exacto.
 
 Si tienes las dos cosas, **lo tienes todo**. Nos vemos el 29.
 
+---
+
+## Para el Día 2 (al volver)
+
+El segundo día seguimos donde lo dejamos. Para arrancar sin perder tiempo:
+
+1. **Descarga la versión nueva** del repositorio (`Code` → `Download ZIP` otra vez) —
+   trae el material del Día 2.
+2. **Trae tu trabajo del Día 1** (tu mapa) a la carpeta nueva.
+3. Hábito de oro: **tarea nueva → chat nuevo** en Antigravity, con la cabeza despejada.
+
+> ¿Quieres ver el viaje completo de los dos días (qué construyes y cómo sabrás que va
+> bien)? Tienes la **hoja de ruta** en [`guia/hoja-de-ruta.md`](guia/hoja-de-ruta.md).
+
+---
+
 > ¿Te suena raro algún término (agente, prompt, `.venv`)? Échale un ojo a la chuleta de
 > bolsillo: [`guia/chuleta-conceptos.md`](guia/chuleta-conceptos.md). No hay que memorizar nada.
