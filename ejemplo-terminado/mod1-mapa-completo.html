@@ -131,12 +131,27 @@
       /* Si la imagen no carga, el popup no se rompe */
     }
 
-    /* ---- N2-A: caja de búsqueda por nombre ---- */
-    #buscador-contenedor {
+    /* ---- Barra superior: agrupa el buscador y los botones en una sola fila ----
+       Antes cada control estaba "fixed" con un "left" fijo (260px, 580px…) y se
+       solapaban entre ellos y con la leyenda. Al meterlos en un contenedor flex
+       se colocan solos uno al lado del otro y, si no caben, bajan de línea. El
+       hueco de la derecha (right:260px) reserva espacio para la leyenda. */
+    #barra-superior {
       position: fixed;
       top: 10px;
       left: 260px;
+      right: 260px;
       z-index: 1000;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ---- N2-A: caja de búsqueda por nombre ----
+       min-width:0 + flex-shrink permiten que la caja se encoja en pantallas
+       estrechas en lugar de desbordarse por encima de la leyenda. */
+    #buscador-contenedor {
       background: rgba(255, 255, 255, 0.95);
       border: 1px solid #ccc;
       border-radius: 6px;
@@ -147,18 +162,22 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      white-space: nowrap;
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 360px;
     }
     #buscador-contenedor label {
       font-weight: bold;
       color: #333;
+      flex-shrink: 0;
     }
     #buscador {
       border: 1px solid #aaa;
       border-radius: 4px;
       padding: 4px 8px;
       font-size: 13px;
-      width: 200px;
+      flex: 1 1 90px;
+      min-width: 0;
       outline: none;
     }
     #buscador:focus {
@@ -246,10 +265,13 @@
       font-weight: bold;
     }
 
-    /* ---- N3-B: formulario para añadir un lugar nuevo ---- */
+    /* ---- N3-B: formulario para añadir un lugar nuevo ----
+       Empieza OCULTO (display:none) y se abre al pulsar el botón "➕ Añadir
+       lugar". Así no tapa el mapa todo el rato: aparece solo cuando lo pides.
+       El botón le pone la clase "abierto" para mostrarlo. */
     #formulario-contenedor {
       position: fixed;
-      top: 55px;
+      top: 62px;
       left: 260px;
       z-index: 1000;
       background: rgba(255, 255, 255, 0.97);
@@ -260,6 +282,10 @@
       font-size: 13px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       width: 340px;
+      display: none;
+    }
+    #formulario-contenedor.abierto {
+      display: block;
     }
     #formulario-contenedor h4 {
       margin: 0 0 8px 0;
@@ -318,13 +344,11 @@
       color: #27ae60;
     }
 
-    /* ---- N3-C: MODO OSCURO ---- */
-    /* El botón de modo oscuro: anclado justo debajo del buscador */
-    #btn-modo-oscuro {
-      position: fixed;
-      top: 10px;
-      left: 580px;
-      z-index: 1000;
+    /* ---- Botones de la barra superior (modo oscuro y abrir formulario) ----
+       Misma pinta de "pastilla" que el buscador. Ya no llevan position:fixed ni
+       un "left" fijo: viven dentro de #barra-superior, que los coloca en fila. */
+    #btn-modo-oscuro,
+    #btn-toggle-form {
       background: rgba(255, 255, 255, 0.95);
       border: 1px solid #ccc;
       border-radius: 6px;
@@ -332,13 +356,21 @@
       font-family: Arial, sans-serif;
       font-size: 13px;
       font-weight: bold;
+      color: #333;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       transition: background 0.2s, color 0.2s, border-color 0.2s;
       white-space: nowrap;
     }
-    #btn-modo-oscuro:hover {
+    #btn-modo-oscuro:hover,
+    #btn-toggle-form:hover {
       background: #f0f0f0;
+    }
+    /* Cuando el formulario está abierto, el botón se resalta en verde */
+    #btn-toggle-form.activo {
+      background: #27ae60;
+      border-color: #27ae60;
+      color: #fff;
     }
 
     /* ---- N3-C: Estilos para el modo oscuro — se activan añadiendo la clase
@@ -421,14 +453,22 @@
       color: #e0e0e0;
     }
 
-    /* Botón de modo oscuro: en modo oscuro cambia su apariencia */
-    body.modo-oscuro #btn-modo-oscuro {
+    /* Botones de la barra superior: en modo oscuro cambian su apariencia */
+    body.modo-oscuro #btn-modo-oscuro,
+    body.modo-oscuro #btn-toggle-form {
       background: rgba(22, 33, 62, 0.97);
       border-color: #0f3460;
       color: #e0e0e0;
     }
-    body.modo-oscuro #btn-modo-oscuro:hover {
+    body.modo-oscuro #btn-modo-oscuro:hover,
+    body.modo-oscuro #btn-toggle-form:hover {
       background: #1a4a80;
+    }
+    /* El botón "Añadir lugar" activo mantiene su verde también en modo oscuro */
+    body.modo-oscuro #btn-toggle-form.activo {
+      background: #27ae60;
+      border-color: #27ae60;
+      color: #fff;
     }
 
     /* ---- N3-C: FILTRO CSS sobre los tiles del mapa en modo oscuro ----
@@ -459,22 +499,32 @@
 
 </div>
 
-<!-- N2-A: Caja de búsqueda por nombre, anclada a la izquierda (tras la lista) -->
-<div id="buscador-contenedor">
-  <label for="buscador">Buscar:</label>
-  <input
-    type="text"
-    id="buscador"
-    placeholder="Escribe un nombre..."
-    autocomplete="off"
-  />
-  <span id="buscador-contador"></span>
-</div>
+<!-- Barra superior: buscador + botones, todos en una fila (sin solaparse) -->
+<div id="barra-superior">
 
-<!-- N3-C: Botón de modo oscuro/claro -->
-<button id="btn-modo-oscuro" title="Cambiar entre modo claro y oscuro">
-  🌙 Modo oscuro
-</button>
+  <!-- N2-A: Caja de búsqueda por nombre -->
+  <div id="buscador-contenedor">
+    <label for="buscador">Buscar:</label>
+    <input
+      type="text"
+      id="buscador"
+      placeholder="Escribe un nombre..."
+      autocomplete="off"
+    />
+    <span id="buscador-contador"></span>
+  </div>
+
+  <!-- N3-B: Botón que abre/cierra el formulario de añadir lugar -->
+  <button id="btn-toggle-form" title="Mostrar u ocultar el formulario para añadir un lugar">
+    ➕ Añadir lugar
+  </button>
+
+  <!-- N3-C: Botón de modo oscuro/claro -->
+  <button id="btn-modo-oscuro" title="Cambiar entre modo claro y oscuro">
+    🌙 Modo oscuro
+  </button>
+
+</div>
 
 <!-- N3-B: Formulario para añadir un lugar nuevo -->
 <div id="formulario-contenedor">
@@ -1190,6 +1240,23 @@
         btnAnadir.click();
       }
     });
+  });
+
+  // -------------------------------------------------------
+  // N3-B: ABRIR / CERRAR EL FORMULARIO DE AÑADIR LUGAR
+  // El formulario empieza oculto; este botón lo muestra u oculta
+  // añadiendo o quitando la clase "abierto".
+  // -------------------------------------------------------
+  var btnToggleForm = document.getElementById('btn-toggle-form');
+  var formContenedor = document.getElementById('formulario-contenedor');
+
+  btnToggleForm.addEventListener('click', function() {
+    var seAbre = !formContenedor.classList.contains('abierto');
+    formContenedor.classList.toggle('abierto', seAbre);
+    btnToggleForm.classList.toggle('activo', seAbre);
+    btnToggleForm.textContent = seAbre ? '✕ Cerrar' : '➕ Añadir lugar';
+    // Al abrir, llevamos el foco al primer campo para escribir directamente
+    if (seAbre) inputNombre.focus();
   });
 
   // -------------------------------------------------------
