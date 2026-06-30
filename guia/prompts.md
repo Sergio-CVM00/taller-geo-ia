@@ -7,11 +7,17 @@ contenido y pégaselo al agente.
 > **No hace falta entenderlos**: cópialos tal cual. ¿Una palabra rara? Mira la
 > [chuleta](chuleta-conceptos.md). Y recuerda: **tarea nueva → chat nuevo**.
 
-## Día 1
+## Día 1 — el mapa
 
 - **`prompts/dia1-calentamiento.txt`** — calentamiento: tu primera página web sencilla
   (para perderle el miedo al agente).
-- **`prompts/dia1-mapa.txt`** — el frontend de GEOIA: el mapa (Módulo 1).
+- **`prompts/dia1-mapa.txt`** — el mapa de GEOIA (Módulo 1) → crea `modulo-1-mapa/`.
+
+## Día 2 — el servidor, la memoria y compartir
+
+- **`prompts/dia2-servidor.txt`** — el servidor (Módulo 2) → crea `modulo-2-servidor/`.
+- **`prompts/dia2-memoria.txt`** — la base de datos (Módulo 3) → crea `modulo-3-memoria/`.
+- **`prompts/dia2-compartir.txt`** — comparte tu app con un enlace temporal (ngrok).
 
 ## Antes del taller (opcional)
 
@@ -29,5 +35,6 @@ El nombre de cada archivo lleva el nivel y la tarea: `nivel1-confianza-A`,
 
 - **Módulo 1 (el mapa):** `mod1-nivel1-confianza-A.txt` · `mod1-nivel2-interaccion-A.txt` · `mod1-nivel3-atrevete-A.txt`.
 
-> **El Día 2** seguiremos en directo y aparecerán más prompts aquí. Hoy, con el del
-> mapa te sobra.
+> ¿Quieres ver **todos los retos** del taller (Módulos 1, 2 y 3) como metas a
+> conseguir? Están en la **[hoja de ruta](hoja-de-ruta.md)**. Y los prompts de
+> solución del Módulo 1, uno por reto, en **[`../prompts/soluciones/`](../prompts/soluciones/)**.

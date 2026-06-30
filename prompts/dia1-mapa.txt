@@ -5,7 +5,7 @@ Estoy en la carpeta "taller-geo-ia". En "datos/lugares.json" hay 18 lugares con
 estos campos: id, nombre, lat, lon, categoria, descripcion, foto. Algunos puntos
 comparten coordenadas, así que verás marcadores apilados: es normal. (CONTEXTO)
 
-Quiero un único archivo "mod1-frontend/index.html" que muestre un mapa interactivo
+Quiero un único archivo "modulo-1-mapa/index.html" que muestre un mapa interactivo
 con un marcador por cada lugar. Al pulsar un marcador, usa el popup normal de Leaflet
 (bindPopup) para mostrar su nombre y su descripción. (TAREA)
 

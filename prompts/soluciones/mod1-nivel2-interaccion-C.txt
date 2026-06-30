@@ -1,7 +1,7 @@
 Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
 tú y explícame en español qué cambias. (PAPEL)
 
-Ya tengo mi mapa funcionando en "mod1-frontend/index.html" con los 18 lugares, y cada
+Ya tengo mi mapa funcionando en "modulo-1-mapa/index.html" con los 18 lugares, y cada
 marcador abre un popup con el nombre y la descripción. (CONTEXTO)
 
 Quiero una lista de lugares al lado del mapa: a la izquierda una columna con los

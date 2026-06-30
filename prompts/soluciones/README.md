@@ -11,7 +11,7 @@ en el agente y compáralo con lo que tú habías intentado.
 
 ## Cómo se usan
 
-1. Ten tu mapa abierto en `mod1-frontend/index.html` (el que construiste el Día 1).
+1. Ten tu mapa abierto en `modulo-1-mapa/index.html` (el que construiste el Día 1).
 2. Abre el `.txt` del reto que quieras, **copia todo el prompt y pégalo en el agente**.
 3. Los retos se **acumulan** sobre el mismo `index.html`. Si vas a encadenarlos, hazlo
    **de uno en uno** y comprueba que lo anterior sigue funcionando.
@@ -40,5 +40,5 @@ en el agente y compáralo con lo que tú habías intentado.
 > de gama básica. Aun así, un agente puede equivocarse: si algo falla, ya sabes —
 > **copia el error y pégaselo**.
 
-> ¿Quieres ver cómo queda **todo junto**? En [`../../soluciones/`](../../soluciones/)
+> ¿Quieres ver cómo queda **todo junto**? En [`../../ejemplo-terminado/`](../../ejemplo-terminado/)
 > tienes un mapa de ejemplo con los 9 retos ya completados.

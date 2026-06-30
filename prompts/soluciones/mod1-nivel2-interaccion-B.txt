@@ -1,7 +1,7 @@
 Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
 tú y explícame en español qué cambias. (PAPEL)
 
-Ya tengo mi mapa funcionando en "mod1-frontend/index.html" con los 18 lugares. Cada
+Ya tengo mi mapa funcionando en "modulo-1-mapa/index.html" con los 18 lugares. Cada
 lugar tiene un campo "categoria", y las categorías que existen son exactamente estas
 7: "Almendros o frutales", "Bancales / terrazas", "Camino o construcción rural",
 "Cultivo en uso", "Matorral / regeneración", "Olivar" y "Vista de valle o ladera". (CONTEXTO)

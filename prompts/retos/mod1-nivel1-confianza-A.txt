@@ -1,7 +1,7 @@
 Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
 tú y explícame en español qué cambias. (PAPEL)
 
-Ya tengo mi mapa funcionando en "mod1-frontend/index.html": muestra los 18 lugares
+Ya tengo mi mapa funcionando en "modulo-1-mapa/index.html": muestra los 18 lugares
 como marcadores, y cada lugar tiene un campo "categoria". (CONTEXTO)
 
 Quiero que cada marcador tenga un color según su categoría (por ejemplo, los almendros

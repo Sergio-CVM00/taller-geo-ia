@@ -1,7 +1,7 @@
 Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
 tú y explícame en español qué cambias. (PAPEL)
 
-Ya tengo mi mapa funcionando en "mod1-frontend/index.html" con los 18 lugares como
+Ya tengo mi mapa funcionando en "modulo-1-mapa/index.html" con los 18 lugares como
 marcadores. (CONTEXTO)
 
 Quiero una cajita de texto encima del mapa para buscar por nombre: según voy

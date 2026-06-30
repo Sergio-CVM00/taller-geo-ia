@@ -1,0 +1,20 @@
+Eres un desarrollador backend que me ayuda paso a paso. No sé programar; hazlo tú y
+explícamelo en español. (PAPEL)
+
+Estoy en la carpeta "taller-geo-ia". En "datos/lugares.json" hay lugares con estos
+campos: id, nombre, lat, lon, categoria, descripcion, foto. (CONTEXTO)
+
+Quiero un archivo "modulo-2-servidor/main.py" que: (1) al arrancar, cargue los lugares
+de "datos/lugares.json" en una lista en memoria (usa la ruta
+Path(__file__).parent.parent / "datos" / "lugares.json"); (2) los devuelva en
+GET /lugares; y (3) permita añadir uno nuevo con POST /lugares. (TAREA)
+
+Usa el entorno virtual del proyecto (si no existe, créalo con "uv venv"). Para instalar
+usa siempre "uv pip install fastapi uvicorn" (nunca .venv/bin/pip). Arráncalo desde la
+carpeta "taller-geo-ia" con este comando, en un terminal normal (no en segundo plano):
+".venv/bin/uvicorn main:app --app-dir modulo-2-servidor --port 8722"
+(el "--app-dir" es importante porque la carpeta lleva guiones). Al terminar, dime cómo
+abrir la página /docs. (FORMATO)
+
+Un solo archivo, sin subcarpetas, comentado en español, solo fastapi y uvicorn, paso a
+paso enseñándome los comandos. (LÍMITES)

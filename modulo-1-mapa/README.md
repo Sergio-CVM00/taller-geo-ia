@@ -37,7 +37,7 @@ Estoy en la carpeta "taller-geo-ia". En "datos/lugares.json" hay 18 lugares con
 estos campos: id, nombre, lat, lon, categoria, descripcion, foto. Algunos puntos
 comparten coordenadas, así que verás marcadores apilados: es normal. (CONTEXTO)
 
-Quiero un único archivo "mod1-frontend/index.html" que muestre un mapa interactivo
+Quiero un único archivo "modulo-1-mapa/index.html" que muestre un mapa interactivo
 con un marcador por cada lugar. Al pulsar un marcador, usa el popup normal de Leaflet
 (bindPopup) para mostrar su nombre y su descripción. (TAREA)
 
@@ -56,7 +56,7 @@ servidor ni añadas cosas que no haya pedido. Al final dime qué archivo abrir. 
 
 ## Cómo saber que va bien
 
-1. El agente crea un archivo **`mod1-frontend/index.html`**. Lo abres con **doble
+1. El agente crea un archivo **`modulo-1-mapa/index.html`**. Lo abres con **doble
    clic** y se ve un **mapa**.
 2. Se ven **18 marcadores** en la **Marina Baja (Alicante)**, alrededor de lat 38.6,
    lon -0.1. (Algunos quedan uno encima de otro: es normal.)
@@ -92,7 +92,7 @@ español y deja que el agente lo monte.** Sube por la escalera tanto como te ape
 - **A.** *"Pon un color distinto a los marcadores según su categoría."*
 - **B.** *"Muestra la foto del lugar dentro del popup, debajo del nombre."*
   > Ojo con las carpetas: las fotos están en `fotos_ejemplo/`, que está **fuera** de
-  > `mod1-frontend/`. Si la foto sale rota, dile al agente que las imágenes están una
+  > `modulo-1-mapa/`. Si la foto sale rota, dile al agente que las imágenes están una
   > carpeta por encima del `index.html` y que ajuste la ruta para que las encuentre.
 - **C.** *"Ajusta el zoom automáticamente para que se vean todos los puntos al abrir."*
   > Sabrás que va bien cuando, al abrir, **todos** los marcadores quepan en pantalla sin

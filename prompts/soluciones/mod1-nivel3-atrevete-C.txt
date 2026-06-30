@@ -1,7 +1,7 @@
 Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
 tú y explícame en español qué cambias. (PAPEL)
 
-Ya tengo mi mapa funcionando en "mod1-frontend/index.html". El mapa de fondo lo dibuja
+Ya tengo mi mapa funcionando en "modulo-1-mapa/index.html". El mapa de fondo lo dibuja
 Leaflet con imágenes del terreno (los "tiles") que se cargan de internet. (CONTEXTO)
 
 Quiero un botón para cambiar entre modo claro y modo oscuro de la página. (TAREA)

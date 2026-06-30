@@ -1,0 +1,15 @@
+Eres un desarrollador que me ayuda paso a paso. No sé programar; hazlo tú y
+explícamelo en español. (PAPEL)
+
+Tengo mi app funcionando en mi ordenador (algo como http://localhost) y quiero
+enseñársela a otra persona desde su móvil, un rato. (CONTEXTO)
+
+Dame un enlace público y temporal con ngrok. Encárgate tú de todo: instálalo,
+ayúdame a iniciar sesión y a pegar el token la primera vez (usa mi correo personal
+o GitHub; la cuenta @us.es no funciona) y arráncalo contra el puerto de mi app. (TAREA)
+
+Hazlo paso a paso, enseñándome cada comando. Deja mi app encendida y arranca ngrok
+en otro terminal. (FORMATO)
+
+Al final dame el enlace para copiar y recuérdame en una frase que es temporal:
+deja de funcionar cuando lo cierre. (LÍMITES)

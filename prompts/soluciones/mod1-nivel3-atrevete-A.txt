@@ -1,7 +1,7 @@
 Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
 tú y explícame en español qué cambias. (PAPEL)
 
-Ya tengo mi mapa funcionando en "mod1-frontend/index.html", y cada marcador abre un
+Ya tengo mi mapa funcionando en "modulo-1-mapa/index.html", y cada marcador abre un
 popup con el nombre y la descripción del lugar. (CONTEXTO)
 
 Quiero poder marcar un lugar como favorito desde su popup, con un botón de estrella, y

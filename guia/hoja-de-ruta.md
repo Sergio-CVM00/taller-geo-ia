@@ -37,10 +37,10 @@ que muestra los **18 lugares** como marcadores; pulsas uno y ves su nombre y su
 descripción. Es **un solo archivo** (`index.html`) que abres con **doble clic**, sin
 instalar nada.
 
-**Tu meta de partida:** que aparezca `mod1-frontend/index.html`, lo abras y veas un
+**Tu meta de partida:** que aparezca `modulo-1-mapa/index.html`, lo abras y veas un
 mapa con **18 marcadores** en la **Marina Baja (Alicante)**; al pulsar uno, salen su
 **nombre** y su **descripción**. La guía con el prompt listo está en
-**[`mod1-frontend/`](../mod1-frontend/README.md)**.
+**[`modulo-1-mapa/`](../modulo-1-mapa/README.md)**.
 
 **La escalera de retos**
 
@@ -52,7 +52,7 @@ mapa con **18 marcadores** en la **Marina Baja (Alicante)**; al pulsar uno, sale
 
 > ¿Te atascaste en algún reto? Hay un prompt de ayuda por cada uno en
 > **[`prompts/soluciones/`](../prompts/soluciones/)**, y un mapa de ejemplo con los 9
-> retos ya hechos en **[`soluciones/`](../soluciones/)**. Míralos **cuando ya lo hayas
+> retos ya hechos en **[`ejemplo-terminado/`](../ejemplo-terminado/)**. Míralos **cuando ya lo hayas
 > intentado tú**: son la red de seguridad, no el atajo.
 
 **El puente al Día 2:** ¿probaste a **añadir un lugar** con el formulario? Recargas la
