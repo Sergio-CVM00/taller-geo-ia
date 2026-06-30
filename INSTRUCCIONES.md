@@ -13,19 +13,19 @@ una app web (un mapa de lugares), **hablando en español con una IA**. No progra
 
 | Qué | Para qué | Dónde |
 |---|---|---|
-| **Un agente de IA** *(elige uno; valen los dos)* | hablarle y que construya por ti | **Antigravity** → `antigravity.google` (entra con una cuenta **`@gmail` personal**, la **`@us.es` NO** funciona) · **OpenCode** → `opencode.ai` (capa gratuita; pasos justo aquí abajo ↓) |
+| **Un agente de IA** *(elige uno; valen los dos)* | hablarle y que construya por ti | **Antigravity** → `antigravity.google` (entra con una cuenta **`@gmail` personal**, la **`@us.es` NO** funciona) · **OpenCode** → `opencode.ai/download` (app de escritorio, lo más fácil; pasos abajo ↓) |
 | **uv** (de Astral) | preparar Python (Módulos 2 y 3) | `astral.sh/uv` — o pega `prompts/antes-preparar-python.txt` y el agente lo deja listo |
 | **ngrok** | compartir tu app al final | `ngrok.com/download` — el agente lo instala cuando llegues a ese reto |
 
-> **¿Eliges OpenCode? (casi todos vais con Windows 11)** · Página oficial: **`opencode.ai`**
-> - **Instalar** (abre la app **Windows Terminal**, que ya viene en Windows 11):
->   - con **npm** → primero Node.js (`winget install OpenJS.NodeJS`), luego `npm i -g opencode-ai@latest`
->   - o con **Scoop** (`scoop install opencode`) o **Chocolatey** (`choco install opencode`)
-> - **Requisitos:** Node.js (para la vía npm) y una terminal moderna (**Windows Terminal** vale).
-> - **Tokens (gratis):** abre OpenCode, escribe `/connect` y entra en **`opencode.ai/auth`**;
->   elige **OpenCode Zen**, su capa gratuita para empezar.
-> - **¿Prefieres que lo instale un agente por ti?** Pega `prompts/instalar-opencode.txt`
->   (trae los dos caminos: npm/Node y, si falla, Scoop/Chocolatey).
+> **¿Eliges OpenCode? (casi todos vais con Windows 11)** · Descarga: **`opencode.ai/download`**
+> - **Lo más fácil (recomendado):** baja la **app de escritorio** de Windows desde
+>   **`opencode.ai/download`** e instálala como cualquier programa (doble clic en el
+>   instalador → *Siguiente* → *Siguiente* → abrir). Es una app directa, sin terminal
+>   (está en *beta*, pero va bien).
+> - **Tokens (gratis):** al abrir la app, sigue el paso para **conectar tu cuenta**
+>   (te lleva a `opencode.ai/auth`) y elige **OpenCode Zen**, su capa gratuita.
+> - *Vías avanzadas (terminal), por si prefieres:* `npm i -g opencode-ai@latest` (antes
+>   Node.js), o Scoop/Chocolatey — o pega `prompts/instalar-opencode.txt` y lo hace un agente.
 > - ¿Se te resiste? Usa **Antigravity** (no instala nada) o lo vemos juntos en la sala.
 
 ---
