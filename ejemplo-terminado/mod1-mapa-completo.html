@@ -57,6 +57,8 @@
       padding: 0;
     }
     #lista-lugares li {
+      display: flex;
+      align-items: center;
       padding: 8px 12px;
       cursor: pointer;
       border-bottom: 1px solid #e8e8e8;
@@ -78,6 +80,28 @@
       flex-shrink: 0;
       vertical-align: middle;
       border: 1px solid rgba(0,0,0,0.15);
+    }
+    /* El nombre ocupa el espacio libre; la estrella queda pegada a la derecha */
+    #lista-lugares li .nombre-lugar {
+      flex: 1;
+      min-width: 0;
+    }
+    /* Estrella de favorito en la lista: clic para marcar/desmarcar sin volar */
+    #lista-lugares li .estrella-lista {
+      flex-shrink: 0;
+      margin-left: 6px;
+      color: #c9c9c9;
+      font-size: 15px;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.12s, transform 0.12s;
+    }
+    #lista-lugares li .estrella-lista:hover {
+      transform: scale(1.25);
+      color: #f0c040;
+    }
+    #lista-lugares li .estrella-lista.es-favorito {
+      color: #f0c040;
     }
 
     #mapa {
@@ -236,6 +260,11 @@
     /* El botón "Todas" tiene un color neutro oscuro */
     .btn-filtro-todas {
       background: #34495e;
+    }
+    /* El botón "Favoritos" es dorado, como las estrellas */
+    .btn-filtro-favoritos {
+      background: #f0c040;
+      color: #6b4e00;
     }
 
     /* ---- N3-A: estilos del botón de favorito en el popup ---- */
@@ -415,6 +444,12 @@
     body.modo-oscuro #lista-lugares li:hover {
       background: #1a4a80;
       color: #7ec8e3;
+    }
+    body.modo-oscuro #lista-lugares li .estrella-lista {
+      color: #56688f;
+    }
+    body.modo-oscuro #lista-lugares li .estrella-lista.es-favorito {
+      color: #f0c040;
     }
 
     /* Leyenda */
@@ -888,15 +923,34 @@
     var color = coloresPorCategoria[lugar.categoria] || colorPorDefecto;
 
     var li = document.createElement('li');
+    li.setAttribute('data-id', lugar.id);
 
     var punto = document.createElement('span');
     punto.className = 'punto-cat';
     punto.style.background = color;
 
-    var textoNombre = document.createTextNode(lugar.nombre);
+    var nombre = document.createElement('span');
+    nombre.className = 'nombre-lugar';
+    nombre.textContent = lugar.nombre;
+
+    // Estrella de favorito: refleja el estado guardado y permite cambiarlo
+    // directamente desde la lista (sin tener que abrir el popup en el mapa).
+    var favInicial = esFavorito(lugar.id);
+    var estrella = document.createElement('span');
+    estrella.className = favInicial ? 'estrella-lista es-favorito' : 'estrella-lista';
+    estrella.textContent = favInicial ? '★' : '☆';
+    estrella.title = favInicial ? 'Quitar de favoritos' : 'Añadir a favoritos';
+    estrella.addEventListener('click', function(e) {
+      e.stopPropagation();   // que no vuele al mapa al pulsar la estrella
+      var ahoraFav = alternarFavorito(lugar.id);
+      if (typeof sincronizarFavorito === 'function') {
+        sincronizarFavorito(lugar.id, ahoraFav);
+      }
+    });
 
     li.appendChild(punto);
-    li.appendChild(textoNombre);
+    li.appendChild(nombre);
+    li.appendChild(estrella);
     li.title = lugar.categoria || 'Sin categoría';
 
     li.addEventListener('click', function() {
@@ -1015,6 +1069,8 @@
         boton.textContent = '☆ Añadir a favoritos';
         boton.classList.remove('es-favorito');
       }
+      // Reflejar el cambio en la estrella de la lista y, si procede, en el filtro
+      sincronizarFavorito(id, ahoresEsFavorito);
     });
   });
 
@@ -1038,8 +1094,11 @@
   // N2-B: FILTROS POR CATEGORÍA
   // -------------------------------------------------------
   var categoriaActiva = null;
+  // N3-A: cuando es true, el mapa muestra SOLO los lugares favoritos.
+  var modoFavoritos = false;
 
-  // Función central de visibilidad: aplica buscador Y filtro de categoría juntos.
+  // Función central de visibilidad: aplica buscador Y filtro (categoría o
+  // favoritos) juntos.
   function actualizarVisibilidad() {
     var textoBusqueda = inputBuscador.value.toLowerCase().trim();
     var visibles = 0;
@@ -1047,8 +1106,14 @@
     marcadores.forEach(function(item) {
       var nombreMinusculas = item.lugar.nombre.toLowerCase();
       var pasaBuscador = textoBusqueda === '' || nombreMinusculas.indexOf(textoBusqueda) !== -1;
-      var pasaCategoria = categoriaActiva === null || item.lugar.categoria === categoriaActiva;
-      var debeEstarVisible = pasaBuscador && pasaCategoria;
+      // El filtro activo es "solo favoritos" o "una categoría" (o ninguno)
+      var pasaFiltro;
+      if (modoFavoritos) {
+        pasaFiltro = esFavorito(item.lugar.id);
+      } else {
+        pasaFiltro = categoriaActiva === null || item.lugar.categoria === categoriaActiva;
+      }
+      var debeEstarVisible = pasaBuscador && pasaFiltro;
 
       if (debeEstarVisible) {
         if (!mapa.hasLayer(item.marcador)) {
@@ -1062,12 +1127,28 @@
       }
     });
 
-    var hayFiltro = textoBusqueda !== '' || categoriaActiva !== null;
+    var hayFiltro = textoBusqueda !== '' || categoriaActiva !== null || modoFavoritos;
     if (hayFiltro) {
       spanContador.textContent = visibles + ' de ' + marcadores.length;
     } else {
       spanContador.textContent = '';
     }
+  }
+
+  // Mantiene sincronizado el estado "favorito" en los dos sitios donde se ve:
+  // la estrella de la lista lateral y (si está activo) el filtro de favoritos.
+  function sincronizarFavorito(id, esFav) {
+    var li = listaLugares.querySelector('li[data-id="' + id + '"]');
+    if (li) {
+      var estrella = li.querySelector('.estrella-lista');
+      if (estrella) {
+        estrella.classList.toggle('es-favorito', esFav);
+        estrella.textContent = esFav ? '★' : '☆';
+        estrella.title = esFav ? 'Quitar de favoritos' : 'Añadir a favoritos';
+      }
+    }
+    // Si estamos viendo solo favoritos, recalculamos qué marcadores se ven
+    if (modoFavoritos) actualizarVisibilidad();
   }
 
   inputBuscador.addEventListener('input', actualizarVisibilidad);
@@ -1083,12 +1164,27 @@
   btnTodas.title = 'Mostrar todos los lugares';
   btnTodas.addEventListener('click', function() {
     categoriaActiva = null;
+    modoFavoritos = false;
     marcarBotonActivo(btnTodas);
     actualizarVisibilidad();
   });
   contenedorFiltros.appendChild(btnTodas);
 
-  var todosBotones = [btnTodas];
+  // N3-A: botón para ver SOLO los favoritos (la otra forma de "ver" tus
+  // favoritos, además de la estrella dorada en la lista lateral).
+  var btnFavoritos = document.createElement('button');
+  btnFavoritos.textContent = '★ Favoritos';
+  btnFavoritos.className = 'btn-filtro btn-filtro-favoritos';
+  btnFavoritos.title = 'Mostrar solo tus lugares favoritos';
+  btnFavoritos.addEventListener('click', function() {
+    modoFavoritos = true;
+    categoriaActiva = null;
+    marcarBotonActivo(btnFavoritos);
+    actualizarVisibilidad();
+  });
+  contenedorFiltros.appendChild(btnFavoritos);
+
+  var todosBotones = [btnTodas, btnFavoritos];
 
   Object.keys(coloresPorCategoria).forEach(function(categoria) {
     var color = coloresPorCategoria[categoria];
@@ -1101,6 +1197,7 @@
 
     btn.addEventListener('click', function() {
       categoriaActiva = categoria;
+      modoFavoritos = false;
       marcarBotonActivo(btn);
       actualizarVisibilidad();
     });
@@ -1234,6 +1331,7 @@
     inputBuscador.value = '';
     spanContador.textContent = '';
     categoriaActiva = null;
+    modoFavoritos = false;         // salir del filtro de favoritos si estaba activo
     marcarBotonActivo(btnTodas);   // marca "Todas" como activo visualmente
     // Hacemos todos los marcadores visibles (sin llamar a actualizarVisibilidad
     // con texto vacío y categoría null, que ya los muestra todos)
