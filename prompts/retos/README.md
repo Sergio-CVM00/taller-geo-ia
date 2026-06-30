@@ -1,13 +1,16 @@
-# Soluciones del Módulo 1 — un prompt por reto
+# Prompts de solución — un prompt por reto del Módulo 1
 
-Aquí tienes un **prompt de solución para cada uno de los 9 retos** del Módulo 1
-(los tres niveles, con sus retos A, B y C). Son los prompts que usamos en el Día 2
-para que **nadie se quede atrás**: si un reto se te resistió, copia su prompt, pégalo
-en el agente y compáralo con lo que tú habías intentado.
+Aquí tienes un **prompt de solución para cada uno de los 9 retos del Módulo 1** (los
+tres niveles, con sus retos A, B y C). Son la **red de seguridad**: si un reto se te
+resistió, copia su prompt, pégalo en el agente y compáralo con lo que tú habías
+intentado.
+
+> La lista de retos (qué es cada A/B/C y cómo saber que va bien) está en
+> **[`../dia1.md`](../dia1.md)**. Aquí solo viven los prompts ya escritos para resolverlos.
 
 > **Léelos cuando ya lo hayas intentado tú.** El taller va de *imagínalo → pídeselo →
-> inténtalo*. Estos prompts son la red de seguridad, no el atajo: lo bonito es
-> describir tú la mejora con tus palabras y ver que el agente la monta.
+> inténtalo*. Estos prompts no son el atajo: lo bonito es describir tú la mejora con tus
+> palabras y ver que el agente la monta.
 
 ## Cómo se usan
 
@@ -18,7 +21,7 @@ en el agente y compáralo con lo que tú habías intentado.
 4. ¿Se lía el chat tras varios cambios? Abre uno nuevo (ventana de contexto limpia) y
    recuérdale qué tienes ya.
 
-## Los 9 retos
+## Los 9 prompts
 
 **Nivel 1 · Para coger confianza**
 - `mod1-nivel1-confianza-A.txt` — color por categoría + leyenda.

@@ -4,12 +4,24 @@ tú y explícame en español qué cambias. (PAPEL)
 Ya tengo mi mapa funcionando en "modulo-1-mapa/index.html", y cada marcador abre un
 popup con el nombre y la descripción del lugar. (CONTEXTO)
 
-Quiero poder marcar un lugar como favorito desde su popup (por ejemplo, con un botón
-de estrella) y quitarle el favorito si lo pulso otra vez. Lo importante: que mis
-favoritos se recuerden aunque cierre y vuelva a abrir la página. (TAREA)
+Quiero poder marcar un lugar como favorito desde su popup, con un botón de estrella, y
+quitarle el favorito si lo pulso otra vez. La estrella debe mostrar si el lugar está o
+no en favoritos (por ejemplo, estrella llena cuando es favorito y vacía cuando no). Lo
+más importante: que mis favoritos se recuerden aunque cierre y vuelva a abrir la
+página. (TAREA)
 
-Sigue siendo un solo archivo que abro con doble clic, sin servidor. Para que se
-recuerden, guárdalos en el propio navegador (localStorage). (FORMATO)
+TRAMPA QUE DEBES EVITAR: en Leaflet, cada vez que se abre un popup se vuelve a crear su
+contenido, así que un botón al que solo le pongas el "click" una vez al cargar dejará
+de funcionar al reabrir el popup. Para evitarlo, engancha el botón de la estrella CADA
+VEZ que se abre un popup, escuchando el evento "popupopen" del mapa y buscando el botón
+dentro del popup recién abierto. Cuidado con un detalle: si enganchas el botón en
+"popupopen" sin más, cada apertura del mismo popup añade un "click" nuevo encima del
+anterior y se acaban acumulando; para evitarlo, registra el listener con la opción
+{ once: true } (o quita el anterior antes de añadir el nuevo). Para que los favoritos
+se recuerden, guárdalos en el
+propio navegador con localStorage. Sigue siendo un solo archivo que abro con doble
+clic, sin servidor. (FORMATO)
 
-Haz solo este cambio, sin tocar el resto del mapa. Explícame cómo comprobar que de
-verdad se recuerdan: marco uno, cierro la página, la vuelvo a abrir y sigue marcado. (LÍMITES)
+Haz solo este cambio, sin tocar el resto del mapa. Explícame cómo comprobar que
+funciona de verdad: marco un lugar, cierro y reabro su popup y la estrella sigue bien;
+y además cierro la página, la vuelvo a abrir y sigue marcado. (LÍMITES)

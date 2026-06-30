@@ -10,30 +10,11 @@ Un **servidor**, como un **camarero**: un programita en **Python** que **sirve**
 lista de lugares y deja **añadir** nuevos. No se ve como una web; se prueba en una
 página automática (**`/docs`**), sin escribir código.
 
-## Antes de empezar
+## 👉 Todo lo del Día 2 está en un sitio
 
-- Tu agente de IA abierto con la carpeta `taller-geo-ia` (ver
-  [`../INSTRUCCIONES.md`](../INSTRUCCIONES.md)).
-- Necesitas **uv** (para Python). Si no lo tienes, el agente lo prepara — o pega
-  [`../prompts/antes-preparar-python.txt`](../prompts/antes-preparar-python.txt).
+Abre **[`../prompts/dia2.md`](../prompts/dia2.md)** y ve a la sección **Módulo 2 · El
+servidor**. Ahí tienes el **prompt** para copiar y pegar, **cómo saber que va bien** y
+los **retos**.
 
-## El prompt de partida (cópialo y pégalo)
-
-Copia y pega **[`../prompts/dia2-servidor.txt`](../prompts/dia2-servidor.txt)**. Creará
-`modulo-2-servidor/main.py` y te enseñará cómo arrancarlo.
-
-## Cómo saber que va bien
-
-1. El agente te da una dirección tipo **`http://localhost:8722`**; le añades **`/docs`**.
-2. En `/docs` aparecen **`GET /lugares`** (devuelve los **18**) y **`POST /lugares`**
-   (tras añadir uno, hay **19**).
-3. Si paras el servidor, los nuevos **se pierden**: es "en memoria". Eso lo arregla el
-   **Módulo 3**.
-
-> ¿Sale un error? **Cópialo entero y pégaselo al agente.**
-
-## Ahora tú (retos)
-
-Súbele el nivel de una mejora en una: pedir un lugar por su id, filtrar por categoría,
-borrar, servir tu propio mapa desde el servidor… Todos los retos, con el detalle y cómo
-saber que van bien, en **[`../guia/hoja-de-ruta.md`](../guia/hoja-de-ruta.md)**.
+> Necesitas **uv** (para Python). Si no lo tienes, el agente lo prepara — el prompt para
+> dejarlo listo está en [`../INSTRUCCIONES.md`](../INSTRUCCIONES.md).

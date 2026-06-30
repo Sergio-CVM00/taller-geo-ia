@@ -2,15 +2,22 @@ Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que h
 tú y explícame en español qué cambias. (PAPEL)
 
 Ya tengo mi mapa funcionando en "modulo-1-mapa/index.html": muestra los 18 lugares
-como marcadores, y cada lugar tiene un campo "categoria". (CONTEXTO)
+como marcadores, y cada lugar tiene un campo "categoria". Las categorías que existen
+en los datos son exactamente estas 7: "Almendros o frutales", "Bancales / terrazas",
+"Camino o construcción rural", "Cultivo en uso", "Matorral / regeneración", "Olivar"
+y "Vista de valle o ladera". (CONTEXTO)
 
-Quiero que cada marcador tenga un color según su categoría (por ejemplo, los almendros
-o frutales de un color y los bancales o terrazas de otro) y, si es fácil, una pequeña
-leyenda que explique qué color es cada categoría. Si hace falta, usa círculos de
-colores en vez del marcador clásico para poder pintarlos. (TAREA)
+Quiero que cada lugar se pinte de un color según su categoría. Para poder darles
+color, usa círculos de Leaflet (L.circleMarker) en lugar del marcador clásico.
+Define un único objeto JavaScript que asocie cada una de esas 7 categorías a un color
+distinto y fácil de diferenciar; ese objeto debe ser el único sitio donde se cambian
+los colores. Si una categoría no estuviera en el objeto, usa un color gris por
+defecto. Añade además una pequeña leyenda fija en una esquina del mapa que liste las
+7 categorías, cada una con un cuadradito de su color al lado. (TAREA)
 
-Sigue siendo un solo archivo que abro con doble clic, sin servidor ni librerías
-nuevas. (FORMATO)
+Sigue siendo un solo archivo "modulo-1-mapa/index.html" que abro con doble clic, sin
+servidor ni librerías nuevas (solo Leaflet, que ya está cargado). Cada círculo debe
+mantener su popup con el nombre y la descripción, igual que antes. (FORMATO)
 
-Haz solo este cambio, sin tocar el resto del mapa. Al terminar, dime qué recargar
-para verlo. (LÍMITES)
+Haz solo este cambio, sin tocar el resto del mapa ni quitar los popups. Comenta en
+español el objeto de colores. Al terminar, dime qué archivo recargar para verlo. (LÍMITES)

@@ -45,13 +45,11 @@ peticiones sean vagas. Échale un cable sin hacerle el trabajo:
 El taller es una **escalera de retos** por niveles (confianza → interacción →
 atrévete). Cuando la persona quiera mejorar su app, oriéntala con esto:
 
-- **El mapa de todos los retos del taller** (Módulos 1, 2 y 3, como metas):
-  `guia/hoja-de-ruta.md`.
-- **Prompts listos para pegar**, uno por paso, en `prompts/` (p. ej.
-  `prompts/dia1-mapa.txt`, `prompts/dia2-servidor.txt`, `prompts/dia2-memoria.txt`,
-  `prompts/dia2-compartir.txt`).
-- **Pistas de retos del Módulo 1** en `prompts/retos/` y **prompts de solución**
-  (uno por reto) en `prompts/soluciones/`.
+- **Un fichero por día con todo** (prompts de construcción, dónde va cada archivo,
+  cómo saber que va bien y los retos por niveles): `prompts/dia1.md` (el mapa) y
+  `prompts/dia2.md` (servidor, memoria y compartir).
+- **Prompts de solución del Módulo 1**, uno por cada reto (A, B y C de los tres
+  niveles), en `prompts/retos/` (`mod1-nivel1-confianza-A.txt`…).
 - Cada módulo tiene su **README** con el reto de partida y cómo saber que va bien.
 
 ## El proyecto y dónde crear cada archivo

@@ -30,9 +30,10 @@ de IA (**Google Antigravity**) y él lo programa por ti. Tú **diriges, miras y 
   el motor que sirve los datos y la base de datos que los recuerda; y al final,
   **compartes tu app** con un enlace.
 
-> ¿Quieres el **mapa completo del viaje** (qué construyes cada día y cómo sabrás que va
-> bien)? Está en **[`guia/hoja-de-ruta.md`](guia/hoja-de-ruta.md)**. El Día 1 montas el
-> mapa; lo demás lo descubrimos en directo.
+> ¿Quieres el **mapa completo del viaje** (qué construyes cada día, los prompts y cómo
+> sabrás que va bien)? Está en los ficheros de cada día:
+> **[`prompts/dia1.md`](prompts/dia1.md)** y **[`prompts/dia2.md`](prompts/dia2.md)**.
+> El Día 1 montas el mapa; lo demás lo descubrimos en directo.
 >
 > *(Por curiosidad: el mapa usa una librería llamada Leaflet. No necesitas saber qué
 > es: el agente se encarga.)*
@@ -44,20 +45,11 @@ de IA (**Google Antigravity**) y él lo programa por ti. Tú **diriges, miras y 
    abrimos la sala a las 16:30 para echarte una mano.)
 2. **En el taller** → abre tu **agente de IA** (Antigravity u OpenCode) y carga esta
    carpeta `taller-geo-ia` (arrástrala a la ventana o usa su botón de abrir carpeta).
-3. **Sigue la guía** → abre **[`modulo-1-mapa/`](modulo-1-mapa/README.md)**: trae el
-   prompt para copiar y pegar y cómo saber que va bien.
+3. **Sigue el día** → abre **[`prompts/dia1.md`](prompts/dia1.md)**: trae el prompt
+   para copiar, dónde va tu archivo, cómo saber que va bien y los retos. Todo junto.
 
-> ¿Es tu primera vez con un agente? Suéltate con el calentamiento opcional
-> `prompts/dia1-calentamiento.txt` (una página web sencilla para perderle el miedo)
-> antes de ir al mapa.
-
-> ¿Te pierde alguna palabra (mapa, marcador, prompt…)? Tienes una
-> **chuleta** de bolsillo en **[`guia/chuleta-conceptos.md`](guia/chuleta-conceptos.md)**
-> y todos los prompts juntos en **[`guia/prompts.md`](guia/prompts.md)**.
-
-> ¿Quieres ver **el viaje completo** (qué construyes cada día y cómo sabrás que va
-> bien)? Tienes la **hoja de ruta** en
-> **[`guia/hoja-de-ruta.md`](guia/hoja-de-ruta.md)**.
+> ¿Es tu primera vez con un agente? El propio `prompts/dia1.md` empieza con un
+> **calentamiento** opcional (una página web sencilla para perderle el miedo).
 
 ## Los datos del mapa
 
@@ -74,8 +66,8 @@ el agente los usa por ti.
 - **`modulo-3-memoria/`** — Día 2: la base de datos (aquí creas tu `main.py`).
 - **`datos/`** — los 18 lugares de ejemplo.
 - **`fotos_ejemplo/`** — las fotos de esos lugares.
-- **`prompts/`** — los prompts listos para copiar y pegar (un `.txt` por paso).
-- **`guia/`** — la chuleta de conceptos, la guía y la **hoja de ruta** del taller.
+- **`prompts/`** — **un fichero por día** con todo (`dia1.md`, `dia2.md`) y, en
+  `prompts/retos/`, un prompt de solución por cada reto del Módulo 1.
 - **`ejemplo-terminado/`** — un mapa de ejemplo con los retos del Módulo 1 ya hechos.
 - **`presentacion/`** — la presentación del taller para repasarla a tu ritmo.
 
