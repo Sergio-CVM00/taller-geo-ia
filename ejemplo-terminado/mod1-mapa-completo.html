@@ -287,6 +287,22 @@
     #formulario-contenedor.abierto {
       display: block;
     }
+    /* Pista de ayuda: invita a hacer clic en el mapa para coger las coordenadas */
+    #form-ayuda-mapa {
+      margin: 0 0 8px 0;
+      padding: 6px 8px;
+      background: #eef6fb;
+      border: 1px solid #cfe3f2;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #2c5f82;
+      line-height: 1.35;
+    }
+    /* Mientras el formulario está abierto, el cursor sobre el mapa es una cruz
+       para dejar claro que se puede pinchar y capturar las coordenadas. */
+    body.capturando-coordenadas .leaflet-container {
+      cursor: crosshair;
+    }
     #formulario-contenedor h4 {
       margin: 0 0 8px 0;
       font-size: 13px;
@@ -444,6 +460,11 @@
     body.modo-oscuro #formulario-contenedor h4 {
       color: #e0e0e0;
     }
+    body.modo-oscuro #form-ayuda-mapa {
+      background: #0f3460;
+      border-color: #1a4a80;
+      color: #bcd6ec;
+    }
     body.modo-oscuro .form-fila label {
       color: #aaa;
     }
@@ -529,6 +550,7 @@
 <!-- N3-B: Formulario para añadir un lugar nuevo -->
 <div id="formulario-contenedor">
   <h4>Añadir lugar nuevo</h4>
+  <p id="form-ayuda-mapa">💡 Haz clic en el mapa para coger las coordenadas. También puedes escribirlas a mano.</p>
   <div class="form-fila">
     <label for="nuevo-nombre">Nombre *</label>
     <input type="text" id="nuevo-nombre" placeholder="Nombre del lugar" />
@@ -1223,6 +1245,9 @@
       circulo.openPopup();
     });
 
+    // El marcador definitivo ya está en el mapa: quitamos el provisional rojo
+    limpiarMarcadorTemporal();
+
     // --- Limpiar el formulario ---
     inputNombre.value = '';
     inputLat.value = '';
@@ -1261,14 +1286,59 @@
     formContenedor.style.top = (fondoBarra + 8) + 'px';
   }
 
+  // -------------------------------------------------------
+  // COGER LAS COORDENADAS CON EL RATÓN
+  // Con el formulario abierto, al hacer clic en el mapa rellenamos los campos
+  // Latitud y Longitud y dejamos un marcador provisional (rojo) en ese punto.
+  // Volver a hacer clic en el mapa lo mueve. Así el alumno no tiene que copiar
+  // coordenadas a mano: pincha donde quiere y ya están puestas.
+  // -------------------------------------------------------
+  var marcadorTemporal = null;
+
+  function limpiarMarcadorTemporal() {
+    if (marcadorTemporal) {
+      mapa.removeLayer(marcadorTemporal);
+      marcadorTemporal = null;
+    }
+  }
+
+  mapa.on('click', function(e) {
+    // Solo cogemos coordenadas mientras el formulario está abierto
+    if (!formContenedor.classList.contains('abierto')) return;
+
+    inputLat.value = e.latlng.lat.toFixed(6);
+    inputLon.value = e.latlng.lng.toFixed(6);
+
+    if (marcadorTemporal) {
+      marcadorTemporal.setLatLng(e.latlng);
+    } else {
+      marcadorTemporal = L.circleMarker(e.latlng, {
+        radius: 10,
+        fillColor: '#e74c3c',
+        color: '#fff',
+        weight: 3,
+        opacity: 1,
+        fillOpacity: 0.9,
+        dashArray: '4'
+      }).addTo(mapa);
+      marcadorTemporal.bindTooltip('Nuevo lugar aquí', { direction: 'top' });
+    }
+
+    mostrarMensaje('Coordenadas cogidas del mapa ✓', false);
+  });
+
   btnToggleForm.addEventListener('click', function() {
     var seAbre = !formContenedor.classList.contains('abierto');
     formContenedor.classList.toggle('abierto', seAbre);
     btnToggleForm.classList.toggle('activo', seAbre);
+    // Activa/desactiva el cursor de cruz sobre el mapa (modo "coger coordenadas")
+    document.body.classList.toggle('capturando-coordenadas', seAbre);
     btnToggleForm.textContent = seAbre ? '✕ Cerrar' : '➕ Añadir lugar';
     if (seAbre) {
       posicionarFormulario();   // colocarlo bajo la barra antes de mostrarlo
       inputNombre.focus();      // y llevar el foco al primer campo
+    } else {
+      limpiarMarcadorTemporal(); // al cerrar, quitamos el marcador provisional
     }
   });
 
