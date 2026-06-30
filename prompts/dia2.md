@@ -45,7 +45,7 @@ GET /lugares. (TAREA)
 Usa el entorno virtual del proyecto (si no existe, créalo con "uv venv"). Para instalar
 usa siempre "uv pip install fastapi uvicorn" (nunca .venv/bin/pip). Arráncalo desde la
 carpeta "taller-geo-ia" con este comando, en un terminal normal (no en segundo plano):
-".venv/bin/uvicorn main:app --app-dir modulo-2-servidor --port 8722"
+"uv run uvicorn main:app --app-dir modulo-2-servidor --port 8722"
 (el "--app-dir" es importante porque la carpeta lleva guiones). Al terminar, dime cómo
 abrir la página /docs. (FORMATO)
 
@@ -72,7 +72,7 @@ Añádele al MISMO archivo un POST /lugares que reciba un lugar nuevo en JSON y 
 a esa lista en memoria. No cambies lo que ya funciona. (TAREA)
 
 Vuelve a arrancarlo igual que antes, desde "taller-geo-ia":
-".venv/bin/uvicorn main:app --app-dir modulo-2-servidor --port 8722". Al terminar,
+"uv run uvicorn main:app --app-dir modulo-2-servidor --port 8722". Al terminar,
 recuérdame cómo probar el POST desde /docs. (FORMATO)
 
 Un solo archivo, comentado en español, solo fastapi y uvicorn, paso a paso. (LÍMITES)
@@ -99,7 +99,7 @@ los pida al servidor con fetch a GET /lugares. (TAREA)
 
 No dupliques los datos: el mapa debe mostrar lo que diga el servidor. Arráncalo igual
 que antes desde "taller-geo-ia":
-".venv/bin/uvicorn main:app --app-dir modulo-2-servidor --port 8722". Al terminar, dime
+"uv run uvicorn main:app --app-dir modulo-2-servidor --port 8722". Al terminar, dime
 qué dirección abrir en el navegador. (FORMATO)
 
 Comentado en español, paso a paso, sin añadir cosas que no haya pedido. (LÍMITES)
@@ -142,7 +142,7 @@ leyéndolos de la base de datos. (TAREA)
 Usa el entorno virtual (si no existe, créalo con "uv venv"). Instala con
 "uv pip install fastapi uvicorn". Usa sqlite3, que ya viene con Python: no instales
 nada más para la base de datos. Arráncalo desde "taller-geo-ia" con:
-".venv/bin/uvicorn main:app --app-dir modulo-3-memoria --port 8731"
+"uv run uvicorn main:app --app-dir modulo-3-memoria --port 8731"
 (el "--app-dir" es importante porque la carpeta lleva guiones). (FORMATO)
 
 Un solo main.py, sin subcarpetas, comentado en español, paso a paso. (LÍMITES)
@@ -167,7 +167,7 @@ await request.json(), sin Pydantic) y lo GUARDE en la base de datos. No cambies 
 ya funciona. (TAREA)
 
 Arráncalo igual que antes desde "taller-geo-ia":
-".venv/bin/uvicorn main:app --app-dir modulo-3-memoria --port 8731". Al terminar,
+"uv run uvicorn main:app --app-dir modulo-3-memoria --port 8731". Al terminar,
 recuérdame cómo probar el POST desde /docs. (FORMATO)
 
 Un solo main.py, comentado en español, sqlite3 (nada extra para la base de datos),
@@ -195,7 +195,7 @@ ahora salen de la base de datos). (TAREA)
 
 No dupliques los datos: el mapa muestra lo que hay en la base de datos. Arráncalo igual
 que antes desde "taller-geo-ia":
-".venv/bin/uvicorn main:app --app-dir modulo-3-memoria --port 8731". Al terminar, dime
+"uv run uvicorn main:app --app-dir modulo-3-memoria --port 8731". Al terminar, dime
 qué dirección abrir. (FORMATO)
 
 Comentado en español, paso a paso, sin añadir cosas que no haya pedido. (LÍMITES)
