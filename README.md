@@ -39,11 +39,11 @@ de IA (**Google Antigravity**) y él lo programa por ti. Tú **diriges, miras y 
 
 ## Cómo empezar (3 pasos)
 
-1. **Antes del taller** → lee y haz **[`00-ANTES-DEL-TALLER.md`](00-ANTES-DEL-TALLER.md)**.
-   Son 15–20 minutos y así el primer día arrancas con todo listo. (Si te atascas, no
-   pasa nada: abrimos la sala a las 16:30 para echarte una mano.)
-2. **En el taller** → abre **Google Antigravity** y carga esta carpeta
-   `taller-geo-ia` (arrástrala a la ventana, o usa su botón de abrir/añadir carpeta).
+1. **Antes del taller** → lee **[`INSTRUCCIONES.md`](INSTRUCCIONES.md)** e instala los
+   requisitos (el agente de IA, `uv`). Son 15–20 minutos. (Si te atascas, no pasa nada:
+   abrimos la sala a las 16:30 para echarte una mano.)
+2. **En el taller** → abre tu **agente de IA** (Antigravity u OpenCode) y carga esta
+   carpeta `taller-geo-ia` (arrástrala a la ventana o usa su botón de abrir carpeta).
 3. **Sigue la guía** → abre **[`modulo-1-mapa/`](modulo-1-mapa/README.md)**: trae el
    prompt para copiar y pegar y cómo saber que va bien.
 
@@ -68,7 +68,7 @@ el agente los usa por ti.
 
 ## Qué hay en esta carpeta
 
-- **`00-ANTES-DEL-TALLER.md`** — empieza aquí (preparación, en casa).
+- **`INSTRUCCIONES.md`** — empieza aquí (requisitos, pasos y retos, todo junto).
 - **`modulo-1-mapa/`** — Día 1: el mapa.
 - **`datos/`** — los 18 lugares de ejemplo.
 - **`fotos_ejemplo/`** — las fotos de esos lugares.

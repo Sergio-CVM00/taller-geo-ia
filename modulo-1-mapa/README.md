@@ -17,8 +17,8 @@ Sin instalar nada.
 
 ## Antes de empezar
 
-- Tienes Antigravity abierto con la carpeta `taller-geo-ia` (ver
-  [`../00-ANTES-DEL-TALLER.md`](../00-ANTES-DEL-TALLER.md)).
+- Tienes tu agente de IA (Antigravity u OpenCode) abierto con la carpeta
+  `taller-geo-ia` (ver [`../INSTRUCCIONES.md`](../INSTRUCCIONES.md)).
 - Los datos ya están en [`../datos/lugares.json`](../datos/lugares.json). No tienes
   que crearlos.
 - **Necesitas wifi:** el mapa (las imágenes del terreno y la librería que lo

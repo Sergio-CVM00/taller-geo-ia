@@ -14,9 +14,10 @@
   Trátala como principiante absoluto/a.
 - **Responde siempre en español (de España)**, claro y sencillo. Si usas un
   término técnico, explícalo en una frase.
-- Si aparecen errores de inicio de sesión o de permisos con Google, recuérdale que
-  Antigravity necesita una cuenta **personal `@gmail.com`** (la cuenta `@us.es` de
-  la universidad **no funciona**).
+- El alumnado usa un agente de IA: **Antigravity** o **OpenCode** (cualquiera vale).
+  Si hay errores de inicio de sesión: **Antigravity** necesita una cuenta personal
+  **`@gmail.com`** (la `@us.es` **no funciona**); **OpenCode** funciona con su capa
+  gratuita (**free tier**), sin tarjeta.
 
 ## Antes de actuar
 
