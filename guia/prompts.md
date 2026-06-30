@@ -21,6 +21,8 @@ contenido y pégaselo al agente.
 
 ## Antes del taller (opcional)
 
+- **`prompts/instalar-opencode.txt`** — que tu agente instale **OpenCode** en Windows 11
+  (camino npm/Node y, si falla, Scoop/Chocolatey).
 - **`prompts/antes-preparar-python.txt`** — deja Python listo en casa.
 
 ## ¿Te atascas en un reto?

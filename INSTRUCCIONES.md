@@ -24,6 +24,8 @@ una app web (un mapa de lugares), **hablando en español con una IA**. No progra
 > - **Requisitos:** Node.js (para la vía npm) y una terminal moderna (**Windows Terminal** vale).
 > - **Tokens (gratis):** abre OpenCode, escribe `/connect` y entra en **`opencode.ai/auth`**;
 >   elige **OpenCode Zen**, su capa gratuita para empezar.
+> - **¿Prefieres que lo instale un agente por ti?** Pega `prompts/instalar-opencode.txt`
+>   (trae los dos caminos: npm/Node y, si falla, Scoop/Chocolatey).
 > - ¿Se te resiste? Usa **Antigravity** (no instala nada) o lo vemos juntos en la sala.
 
 ---
