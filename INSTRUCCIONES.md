@@ -13,9 +13,18 @@ una app web (un mapa de lugares), **hablando en español con una IA**. No progra
 
 | Qué | Para qué | Dónde |
 |---|---|---|
-| **Un agente de IA** *(elige uno; valen los dos)* | hablarle y que construya por ti | **Antigravity** → `antigravity.google` (entra con una cuenta **`@gmail` personal**, la **`@us.es` NO** funciona) · **OpenCode** → `opencode.ai` (usa su **free tier**: gratis, sin tarjeta) |
+| **Un agente de IA** *(elige uno; valen los dos)* | hablarle y que construya por ti | **Antigravity** → `antigravity.google` (entra con una cuenta **`@gmail` personal**, la **`@us.es` NO** funciona) · **OpenCode** → `opencode.ai` (capa gratuita; pasos justo aquí abajo ↓) |
 | **uv** (de Astral) | preparar Python (Módulos 2 y 3) | `astral.sh/uv` — o pega `prompts/antes-preparar-python.txt` y el agente lo deja listo |
 | **ngrok** | compartir tu app al final | `ngrok.com/download` — el agente lo instala cuando llegues a ese reto |
+
+> **¿Eliges OpenCode? (casi todos vais con Windows 11)** · Página oficial: **`opencode.ai`**
+> - **Instalar** (abre la app **Windows Terminal**, que ya viene en Windows 11):
+>   - con **npm** → primero Node.js (`winget install OpenJS.NodeJS`), luego `npm i -g opencode-ai@latest`
+>   - o con **Scoop** (`scoop install opencode`) o **Chocolatey** (`choco install opencode`)
+> - **Requisitos:** Node.js (para la vía npm) y una terminal moderna (**Windows Terminal** vale).
+> - **Tokens (gratis):** abre OpenCode, escribe `/connect` y entra en **`opencode.ai/auth`**;
+>   elige **OpenCode Zen**, su capa gratuita para empezar.
+> - ¿Se te resiste? Usa **Antigravity** (no instala nada) o lo vemos juntos en la sala.
 
 ---
 
