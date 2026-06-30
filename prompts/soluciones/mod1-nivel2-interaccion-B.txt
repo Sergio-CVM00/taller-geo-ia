@@ -1,0 +1,22 @@
+Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
+tú y explícame en español qué cambias. (PAPEL)
+
+Ya tengo mi mapa funcionando en "mod1-frontend/index.html" con los 18 lugares. Cada
+lugar tiene un campo "categoria", y las categorías que existen son exactamente estas
+7: "Almendros o frutales", "Bancales / terrazas", "Camino o construcción rural",
+"Cultivo en uso", "Matorral / regeneración", "Olivar" y "Vista de valle o ladera". (CONTEXTO)
+
+Quiero una fila de botones encima del mapa para filtrar por categoría: un botón por
+cada una de las 7 categorías, más un botón "Todas". Al pulsar el botón de una
+categoría, que se muestren solo los marcadores de esa categoría y se oculten los
+demás. Al pulsar "Todas", que vuelvan a verse todos. Marca de forma visible (por
+ejemplo resaltando el botón) cuál es la categoría activa en cada momento. (TAREA)
+
+Genera los botones a partir de la lista de categorías (no los escribas a mano uno a
+uno, recórrelas). Para mostrar y ocultar, guarda los marcadores en una lista y
+añádelos o quítalos del mapa según la categoría. Si ya tengo un buscador por nombre,
+que el filtro de botones y el buscador no se rompan entre sí. Sigue siendo un solo
+archivo que abro con doble clic, sin servidor ni librerías nuevas. (FORMATO)
+
+Haz solo este cambio, sin romper los popups ni lo que ya funciona. Al terminar, dime
+qué recargar para probarlo. (LÍMITES)

@@ -51,6 +51,10 @@ Hoy montas la **primera pieza** de **GEOIA**: la parte que se ve.
 > **chuleta** de bolsillo en **[`guia/chuleta-conceptos.md`](guia/chuleta-conceptos.md)**
 > y todos los prompts juntos en **[`guia/prompts.md`](guia/prompts.md)**.
 
+> ¿Quieres ver **el viaje completo** (qué construyes cada día y cómo sabrás que va
+> bien)? Tienes la **hoja de ruta** en
+> **[`guia/hoja-de-ruta.md`](guia/hoja-de-ruta.md)**.
+
 ## Los datos del mapa
 
 Para no empezar con un mapa vacío, viene **sembrado con 18 lugares reales**: puntos de
@@ -65,7 +69,8 @@ el agente los usa por ti.
 - **`datos/`** — los 18 lugares de ejemplo.
 - **`fotos_ejemplo/`** — las fotos de esos lugares.
 - **`prompts/`** — los prompts listos para copiar y pegar (un `.txt` por paso).
-- **`guia/`** — la chuleta de conceptos y la guía.
+- **`guia/`** — la chuleta de conceptos, la guía y la **hoja de ruta** del taller.
+- **`presentacion/`** — la presentación del taller para repasarla a tu ritmo.
 
 ---
 

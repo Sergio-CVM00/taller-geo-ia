@@ -1,0 +1,19 @@
+Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
+tú y explícame en español qué cambias. (PAPEL)
+
+Ya tengo mi mapa funcionando en "mod1-frontend/index.html" con los 18 lugares como
+marcadores. (CONTEXTO)
+
+Quiero una cajita de texto encima del mapa para buscar por nombre. Según voy
+escribiendo, que se queden visibles solo los marcadores cuyo nombre contenga lo que
+escribo, y se oculten los demás. La búsqueda no debe distinguir mayúsculas de
+minúsculas (escribir "olivo" debe encontrar "Olivo"). Si borro el texto, que vuelvan
+a aparecer todos los marcadores. (TAREA)
+
+Para poder mostrar y ocultar marcadores, guarda los marcadores en una lista (array)
+en JavaScript cuando los creas, y recórrela al filtrar para añadirlos o quitarlos del
+mapa. Sigue siendo un solo archivo que abro con doble clic, sin servidor ni librerías
+nuevas. (FORMATO)
+
+Haz solo este cambio, sin romper lo que ya funciona (popups y, si los tengo, colores
+o fotos). Al terminar, dime qué recargar para probarlo. (LÍMITES)
