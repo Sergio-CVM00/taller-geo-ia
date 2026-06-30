@@ -1,7 +1,8 @@
 # Día 2 — El servidor, la memoria y compartir ⚙️
 
-**Todo lo del Día 2 en un sitio:** los prompts para el servidor, la memoria y el
-enlace para compartir, dónde se crea cada archivo, cómo saber que va bien y los retos.
+**Todo lo del Día 2 en un sitio.** Hoy no construyes de golpe: vas **nivel a nivel**,
+y **cada prompt suma una sola cosa** sobre el anterior. Son **6 prompts** (3 para el
+servidor, 3 para la memoria) y, aparte, el **broche final** para compartir tu app.
 
 > Empieza el Día 2 **descargando la versión nueva** del repositorio y trayendo tu
 > trabajo de ayer. Y el hábito de oro: **tarea nueva → chat nuevo**, con la cabeza
@@ -12,29 +13,34 @@ los datos; una **base de datos** (Módulo 3) es la *memoria que no se borra*; y 
 **compartes tu app** con un enlace. Necesitas **uv** instalado (ver
 [`../INSTRUCCIONES.md`](../INSTRUCCIONES.md)); si no lo tienes, el agente lo prepara.
 
+> **Cómo van los prompts:** el del **Nivel 1** crea el archivo desde cero; los del
+> **Nivel 2 y 3** le piden al agente que **modifique el archivo que ya tienes**. Pégalos
+> en orden y prueba después de cada uno antes de pasar al siguiente.
+
 ---
 
 ## Módulo 2 · El servidor 🍽️  *(suele montarlo el presentador; tú lo sigues)*
 
-**Qué es:** un programita en **Python** que **sirve** la lista de lugares y deja
-**añadir** nuevos. No se ve como una web; se prueba en una página automática
-(**`/docs`**), sin escribir código.
+**Qué es:** un programita en **Python** que **sirve** la lista de lugares. No se ve como
+una web; se prueba en una página automática (**`/docs`**), sin escribir código.
 
 **Dónde se crea:** tu archivo va en **`modulo-2-servidor/main.py`**.
 
-### El prompt (cópialo y pégalo)
+### Nivel 1 · Servir los lugares
+
+**La meta:** que el servidor arranque y entregue los 18 lugares en `GET /lugares`.
 
 ```text
 Eres un desarrollador backend que me ayuda paso a paso. No sé programar; hazlo tú y
 explícamelo en español. (PAPEL)
 
-Estoy en la carpeta "taller-geo-ia". En "datos/lugares.json" hay lugares con estos
+Estoy en la carpeta "taller-geo-ia". En "datos/lugares.json" hay 18 lugares con estos
 campos: id, nombre, lat, lon, categoria, descripcion, foto. (CONTEXTO)
 
-Quiero un archivo "modulo-2-servidor/main.py" que: (1) al arrancar, cargue los lugares
-de "datos/lugares.json" en una lista en memoria (usa la ruta
-Path(__file__).parent.parent / "datos" / "lugares.json"); (2) los devuelva en
-GET /lugares; y (3) permita añadir uno nuevo con POST /lugares. (TAREA)
+Quiero un archivo "modulo-2-servidor/main.py" que, al arrancar, cargue los lugares de
+"datos/lugares.json" en una lista en memoria (usa la ruta
+Path(__file__).parent.parent / "datos" / "lugares.json") y los devuelva en
+GET /lugares. (TAREA)
 
 Usa el entorno virtual del proyecto (si no existe, créalo con "uv venv"). Para instalar
 usa siempre "uv pip install fastapi uvicorn" (nunca .venv/bin/pip). Arráncalo desde la
@@ -47,19 +53,61 @@ Un solo archivo, sin subcarpetas, comentado en español, solo fastapi y uvicorn,
 paso enseñándome los comandos. (LÍMITES)
 ```
 
-### Cómo saber que va bien
-1. El agente te da una dirección tipo **`http://localhost:8722`**; le añades **`/docs`**.
-2. En `/docs` aparecen **`GET /lugares`** (devuelve los **18**) y **`POST /lugares`**
-   (tras añadir uno, hay **19**).
-3. Si paras el servidor, los nuevos **se pierden**: es "en memoria". Eso lo arregla el
-   Módulo 3.
+**Cómo saber que va bien:** el agente te da una dirección tipo
+**`http://localhost:8722`**; le añades **`/docs`** y ahí aparece **`GET /lugares`**, que
+al ejecutarlo devuelve los **18** lugares.
 
-### Los retos
-| Nivel | A | B | C |
-|---|---|---|---|
-| Para coger confianza | Pedir un lugar por su id (`GET /lugares/{id}`) | Un endpoint `/salud` que diga que el servidor está vivo | Cambiar el título y la descripción de `/docs` |
-| Interacción de verdad | Filtrar por categoría (`/lugares?categoria=Olivar`) | Búsqueda por texto en nombre y descripción | Borrar un lugar (`DELETE /lugares/{id}`) |
-| Atrévete | Servir tu mapa en `http://localhost:8722/` | Lista de categorías con su recuento | Conectar el mapa para que pida los lugares a la API |
+### Nivel 2 · Añadir lugares
+
+**La meta:** poder **añadir** un lugar nuevo con `POST /lugares` (de momento, en memoria).
+
+```text
+Sigues siendo mi desarrollador backend; hazlo tú y explícamelo en español. (PAPEL)
+
+En "taller-geo-ia" ya tengo "modulo-2-servidor/main.py" del paso anterior: carga los
+lugares de datos/lugares.json en una lista en memoria y los sirve en GET /lugares.
+(CONTEXTO)
+
+Añádele al MISMO archivo un POST /lugares que reciba un lugar nuevo en JSON y lo agregue
+a esa lista en memoria. No cambies lo que ya funciona. (TAREA)
+
+Vuelve a arrancarlo igual que antes, desde "taller-geo-ia":
+".venv/bin/uvicorn main:app --app-dir modulo-2-servidor --port 8722". Al terminar,
+recuérdame cómo probar el POST desde /docs. (FORMATO)
+
+Un solo archivo, comentado en español, solo fastapi y uvicorn, paso a paso. (LÍMITES)
+```
+
+**Cómo saber que va bien:** en `/docs` aparece **`POST /lugares`**; tras añadir uno y
+volver a ejecutar `GET /lugares`, hay **19**. Si **paras** el servidor, los nuevos
+**se pierden**: es "en memoria". Eso lo arregla el Módulo 3.
+
+### Nivel 3 · La app entera
+
+**La meta:** servir **tu mapa** del Día 1 en la raíz `/` y que pida los lugares al
+servidor (en vez de llevarlos escritos dentro). Por fin: **mapa + servidor, juntos.**
+
+```text
+Sigues siendo mi desarrollador backend; hazlo tú y explícamelo en español. (PAPEL)
+
+En "taller-geo-ia" tengo "modulo-2-servidor/main.py" (sirve GET /lugares y POST
+/lugares) y, del Día 1, el mapa en "modulo-1-mapa/index.html". (CONTEXTO)
+
+Quiero abrir la app entera en http://localhost:8722/ : (1) que el servidor sirva mi
+mapa en la raíz "/"; y (2) que ese mapa, en lugar de llevar los lugares escritos dentro,
+los pida al servidor con fetch a GET /lugares. (TAREA)
+
+No dupliques los datos: el mapa debe mostrar lo que diga el servidor. Arráncalo igual
+que antes desde "taller-geo-ia":
+".venv/bin/uvicorn main:app --app-dir modulo-2-servidor --port 8722". Al terminar, dime
+qué dirección abrir en el navegador. (FORMATO)
+
+Comentado en español, paso a paso, sin añadir cosas que no haya pedido. (LÍMITES)
+```
+
+**Cómo saber que va bien:** abres **`http://localhost:8722/`** (la raíz, sin `/docs`) y
+ves **tu mapa** con los 18 marcadores… **servidos por el servidor**. Si añades un lugar
+con `POST` y recargas, aparece en el mapa.
 
 ---
 
@@ -72,44 +120,90 @@ los lugares se guardan **de verdad**, así que **apagas y enciendes** el servido
 **Dónde se crea:** tu archivo va en **`modulo-3-memoria/main.py`** (y una base de datos
 `lugares.db` en la misma carpeta).
 
-### El prompt (cópialo y pégalo)
+### Nivel 1 · Guardar de verdad
+
+**La meta:** que al arrancar cree una base de datos SQLite, la siembre con los 18
+lugares y `GET /lugares` los lea **de la base de datos**.
 
 ```text
 Eres un desarrollador que me ayuda paso a paso. No sé programar; hazlo tú y
 explícamelo en español. (PAPEL)
 
-Estoy en la carpeta "taller-geo-ia". En "datos/lugares.json" hay lugares con estos
-campos: id, nombre, lat, lon, categoria, descripcion, foto. (CONTEXTO)
+Estoy en "taller-geo-ia". En "datos/lugares.json" hay 18 lugares con estos campos:
+id, nombre, lat, lon, categoria, descripcion, foto. (CONTEXTO)
 
-Quiero un archivo "modulo-3-memoria/main.py" que:
-(1) al arrancar, cree una base de datos SQLite "lugares.db" en la misma carpeta que
-main.py (usa Path(__file__).parent / "lugares.db");
-(2) si la tabla "lugares" no existe, la cree y la cargue con los 18 registros de
-datos/lugares.json; si la tabla ya tiene datos, NO inserte nada (para no duplicar);
-(3) GET /lugares devuelva todos los registros;
-(4) POST /lugares reciba un lugar en JSON (con await request.json(), sin Pydantic) y
-lo guarde. (TAREA)
+Quiero un archivo "modulo-3-memoria/main.py" que: (1) al arrancar, cree una base de
+datos SQLite "lugares.db" en la misma carpeta que main.py (usa
+Path(__file__).parent / "lugares.db"); (2) si la tabla "lugares" no existe, la cree y
+la cargue con los 18 registros de datos/lugares.json; si la tabla YA tiene datos, NO
+inserte nada (para no duplicar); y (3) GET /lugares devuelva todos los registros
+leyéndolos de la base de datos. (TAREA)
 
 Usa el entorno virtual (si no existe, créalo con "uv venv"). Instala con
-"uv pip install fastapi uvicorn". Arráncalo desde la carpeta "taller-geo-ia" con:
+"uv pip install fastapi uvicorn". Usa sqlite3, que ya viene con Python: no instales
+nada más para la base de datos. Arráncalo desde "taller-geo-ia" con:
 ".venv/bin/uvicorn main:app --app-dir modulo-3-memoria --port 8731"
-(el "--app-dir" es importante porque la carpeta lleva guiones). Usa sqlite3, que ya
-viene con Python: no instales nada más para la base de datos. (FORMATO)
+(el "--app-dir" es importante porque la carpeta lleva guiones). (FORMATO)
 
 Un solo main.py, sin subcarpetas, comentado en español, paso a paso. (LÍMITES)
 ```
 
-### Cómo saber que va bien
-1. Aparece el archivo **`lugares.db`** y en `/docs` el **`GET /lugares`** da los **18**.
-2. **El momento clave:** haces un **`POST`** con un lugar nuevo, **paras y arrancas** el
-   servidor, vuelves a pedir `GET /lugares`… y **tu lugar sigue ahí**. 🎉
+**Cómo saber que va bien:** aparece el archivo **`lugares.db`** en `modulo-3-memoria/`
+y en `/docs` el **`GET /lugares`** devuelve los **18**, esta vez leídos de la base de datos.
 
-### Los retos *(el último es el broche final del taller)*
-| Nivel | A | B | C |
-|---|---|---|---|
-| Para coger confianza | Borrar un lugar | Editar un lugar | Ver un lugar por su id |
-| Interacción de verdad | Filtrar por categoría (`/lugares?categoria=Olivar`) | Búsqueda por texto | Ordenar los lugares por nombre |
-| Atrévete | Servir tu mapa leyendo de la base de datos (**¡la app entera!**) | Guardar la fecha en que añadiste cada lugar | **Compartir tu app con un enlace (ngrok)** ↓ |
+### Nivel 2 · Persistir lo nuevo
+
+**La meta:** que `POST /lugares` **guarde en la base de datos**. Aquí llega el momento mágico.
+
+```text
+Sigues siendo mi desarrollador; hazlo tú y explícamelo en español. (PAPEL)
+
+En "taller-geo-ia" ya tengo "modulo-3-memoria/main.py" del paso anterior: crea la base
+de datos SQLite "lugares.db", la siembra con los 18 lugares y los sirve en GET /lugares
+leyéndolos de ahí. (CONTEXTO)
+
+Añádele al MISMO archivo un POST /lugares que reciba un lugar nuevo en JSON (con
+await request.json(), sin Pydantic) y lo GUARDE en la base de datos. No cambies lo que
+ya funciona. (TAREA)
+
+Arráncalo igual que antes desde "taller-geo-ia":
+".venv/bin/uvicorn main:app --app-dir modulo-3-memoria --port 8731". Al terminar,
+recuérdame cómo probar el POST desde /docs. (FORMATO)
+
+Un solo main.py, comentado en español, sqlite3 (nada extra para la base de datos),
+paso a paso. (LÍMITES)
+```
+
+**Cómo saber que va bien — el momento clave:** haces un **`POST`** con un lugar nuevo,
+**paras y arrancas** el servidor, vuelves a pedir `GET /lugares`… y **tu lugar sigue
+ahí**. 🎉
+
+### Nivel 3 · La app entera con memoria
+
+**La meta:** servir **tu mapa** en la raíz `/` leyendo de la base de datos. La app
+completa: lo que añades **se queda** y se ve en el mapa.
+
+```text
+Sigues siendo mi desarrollador; hazlo tú y explícamelo en español. (PAPEL)
+
+En "taller-geo-ia" tengo "modulo-3-memoria/main.py" (GET /lugares y POST /lugares contra
+SQLite) y, del Día 1, el mapa en "modulo-1-mapa/index.html". (CONTEXTO)
+
+Quiero abrir la app entera en http://localhost:8731/ : (1) que el servidor sirva mi
+mapa en la raíz "/"; y (2) que ese mapa pida los lugares con fetch a GET /lugares (que
+ahora salen de la base de datos). (TAREA)
+
+No dupliques los datos: el mapa muestra lo que hay en la base de datos. Arráncalo igual
+que antes desde "taller-geo-ia":
+".venv/bin/uvicorn main:app --app-dir modulo-3-memoria --port 8731". Al terminar, dime
+qué dirección abrir. (FORMATO)
+
+Comentado en español, paso a paso, sin añadir cosas que no haya pedido. (LÍMITES)
+```
+
+**Cómo saber que va bien:** abres **`http://localhost:8731/`** y ves tu mapa con los
+lugares de la base de datos. Añades uno, **reinicias** el servidor, recargas… y **sigue
+en el mapa**. Esa es la app entera: mapa + servidor + memoria.
 
 ---
 
@@ -118,8 +212,6 @@ Un solo main.py, sin subcarpetas, comentado en español, paso a paso. (LÍMITES)
 **La idea:** un **enlace temporal** para que otra persona abra tu app desde **su
 móvil**. El agente se encarga de todo; tú solo: **inicia sesión → pega el token →
 pruébalo**. Es un enlace **temporal**: deja de funcionar cuando lo cierras.
-
-### El prompt (cópialo y pégalo)
 
 ```text
 Eres un desarrollador que me ayuda paso a paso. No sé programar; hazlo tú y

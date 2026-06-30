@@ -13,8 +13,9 @@ Usas **SQLite**, que ya viene con Python (no instalas nada extra para esto).
 ## 👉 Todo lo del Día 2 está en un sitio
 
 Abre **[`../prompts/dia2.md`](../prompts/dia2.md)** y ve a la sección **Módulo 3 · La
-memoria**. Ahí tienes el **prompt** para copiar y pegar, **cómo saber que va bien**, los
-**retos** y el **broche final: compartir tu app con un enlace (ngrok)**.
+memoria**. Se monta en **3 prompts** (uno por nivel, que suman de uno en uno): cada uno
+trae el **prompt** para copiar y pegar y **cómo saber que va bien**; y al final, el
+**broche final: compartir tu app con un enlace (ngrok)**.
 
 > Necesitas **uv** (para Python). Si no lo tienes, el agente lo prepara — el prompt para
 > dejarlo listo está en [`../INSTRUCCIONES.md`](../INSTRUCCIONES.md).
