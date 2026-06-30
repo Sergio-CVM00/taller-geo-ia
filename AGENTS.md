@@ -124,10 +124,12 @@ los módulos:
 - Para instalar usa **`uv pip install fastapi uvicorn`** — **nunca** `.venv/bin/pip`.
   Para la base de datos del Módulo 3 usa **`sqlite3`** (ya viene con Python): no
   instales nada más.
-- **Arranca el servidor con `--app-dir`** porque las carpetas llevan guiones (si no,
-  Python no puede importarlas). Desde la carpeta `taller-geo-ia`:
-  - Módulo 2: `.venv/bin/uvicorn main:app --app-dir modulo-2-servidor --port 8722`
-  - Módulo 3: `.venv/bin/uvicorn main:app --app-dir modulo-3-memoria --port 8731`
+- **Arranca el servidor con `uv run` y `--app-dir`**. Usa `uv run` (no
+  `.venv/bin/uvicorn`) para que el comando sea **idéntico en Windows, Mac y Linux**; y
+  `--app-dir` porque las carpetas llevan guiones (si no, Python no puede importarlas).
+  Desde la carpeta `taller-geo-ia`:
+  - Módulo 2: `uv run uvicorn main:app --app-dir modulo-2-servidor --port 8722`
+  - Módulo 3: `uv run uvicorn main:app --app-dir modulo-3-memoria --port 8731`
   Arráncalo en un **terminal normal** (no en segundo plano) y dile cómo abrir `/docs`.
 - Un solo `main.py` por módulo, sin subcarpetas, comentado en español.
 
