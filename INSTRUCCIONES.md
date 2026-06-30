@@ -105,12 +105,13 @@ archivo, cómo saber que va bien y los retos. Ábrelo y sigue el orden. Recuerda
 
 ## 4. Los retos — súbele el nivel
 
-Cada módulo tiene retos en tres niveles (**confianza · interacción · atrévete**).
-**No son obligatorios:** sube por la escalera lo que te apetezca, una mejora cada vez.
+El taller sube por **niveles numerados** (Nivel 1 · 2 · 3). En el **Día 1** son retos
+opcionales sobre el mapa; en el **Día 2** cada módulo se monta en **3 prompts**, uno por
+nivel, que suman de uno en uno.
 
-- **Mapa:** color por categoría · foto en el popup · buscador · filtros · favoritos · modo oscuro…
-- **Servidor:** pedir un lugar por su id · filtrar por categoría · borrar · servir tu mapa…
-- **Memoria:** borrar/editar · ordenar · guardar la fecha · y el broche final: **compartir con ngrok**.
+- **Mapa (Día 1):** color por categoría · foto en el popup · buscador · filtros · favoritos · modo oscuro…
+- **Servidor (Día 2):** servir los lugares → añadir lugares → servir tu mapa entero.
+- **Memoria (Día 2):** guardar en base de datos → que persista → la app entera; y el broche final: **compartir con ngrok**.
 
 > Los retos completos, con el detalle y **cómo saber que van bien**, van en el fichero
 > de cada día: **[`prompts/dia1.md`](prompts/dia1.md)** y **[`prompts/dia2.md`](prompts/dia2.md)**.

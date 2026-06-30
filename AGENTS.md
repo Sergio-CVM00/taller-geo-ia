@@ -27,6 +27,27 @@
   resultado.
 - Tú propones; **ella acepta o rechaza** los cambios. No des nada por hecho.
 
+## Cómo operar: un nivel cada vez (importante)
+
+El taller avanza por **módulos** y, dentro de cada módulo, por **niveles numerados**.
+Guíate así, siempre:
+
+1. **Pregunta antes de empezar qué quiere hacer ahora:** *"¿Qué módulo y qué nivel
+   quieres hacer ahora?"* No empieces a construir hasta que te lo diga. Si no lo tiene
+   claro, recuérdale en qué punto se quedó y propónle el siguiente nivel.
+2. **Un nivel hasta el final.** Trabaja el **Nivel X** y **no pases al siguiente nivel
+   hasta que todas sus tareas estén completadas Y verificadas.** Cuando termines algo,
+   **dile cómo comprobar que va bien** (qué abrir, qué mirar, qué probar). Si la
+   comprobación necesita la **terminal**, ofrécele ejecutarlo tú: *"puedo lanzarlo yo,
+   no necesitas abrir una terminal"*, y hazlo en su lugar siempre que sea posible.
+   Solo cuando la persona confirme que **funciona y lo ha visto**, propón pasar al
+   siguiente nivel.
+3. **Orden transparente.** Si un nivel tiene varias tareas, hazlas **de una en una** y
+   **mantén informada a la persona del orden**: antes de empezar la siguiente, dile que
+   ya has completado la anterior. Por ejemplo: *"Listo el paso 1 (servir los lugares) y
+   verificado. Ahora voy con el paso 2 (añadir lugares)."* Que en todo momento sepa qué
+   has hecho, qué estás haciendo y qué viene después.
+
 ## Ayúdale a pedir bien (importante)
 
 La persona está aprendiendo a **describir lo que quiere en español**; puede que sus
@@ -42,15 +63,15 @@ peticiones sean vagas. Échale un cable sin hacerle el trabajo:
 
 ## Dónde están los retos (las mejoras que puede pedir)
 
-El taller es una **escalera de retos** por niveles (confianza → interacción →
-atrévete). Cuando la persona quiera mejorar su app, oriéntala con esto:
+El taller sube por **niveles numerados** (Nivel 1 → 2 → 3). Cuando la persona quiera
+avanzar o mejorar su app, oriéntala con esto:
 
-- **Un fichero por día con todo** (prompts de construcción, dónde va cada archivo,
-  cómo saber que va bien y los retos por niveles): `prompts/dia1.md` (el mapa) y
-  `prompts/dia2.md` (servidor, memoria y compartir).
+- **Un fichero por día con todo**: `prompts/dia1.md` (el mapa, con su escalera de retos
+  por niveles) y `prompts/dia2.md` (servidor, memoria y compartir; cada módulo se monta
+  en **3 prompts**, uno por nivel, que suman de uno en uno).
 - **Prompts de solución del Módulo 1**, uno por cada reto (A, B y C de los tres
-  niveles), en `prompts/retos/` (`mod1-nivel1-confianza-A.txt`…).
-- Cada módulo tiene su **README** con el reto de partida y cómo saber que va bien.
+  niveles), en `prompts/retos/` (`mod1-nivel1-A.txt`…).
+- Cada módulo tiene su **README** que apunta al fichero del día.
 
 ## El proyecto y dónde crear cada archivo
 

@@ -23,20 +23,20 @@ intentado.
 
 ## Los 9 prompts
 
-**Nivel 1 · Para coger confianza**
-- `mod1-nivel1-confianza-A.txt` — color por categoría + leyenda.
-- `mod1-nivel1-confianza-B.txt` — foto del lugar dentro del popup.
-- `mod1-nivel1-confianza-C.txt` — zoom automático para ver todos los puntos.
+**Nivel 1**
+- `mod1-nivel1-A.txt` — color por categoría + leyenda.
+- `mod1-nivel1-B.txt` — foto del lugar dentro del popup.
+- `mod1-nivel1-C.txt` — zoom automático para ver todos los puntos.
 
-**Nivel 2 · Interacción de verdad**
-- `mod1-nivel2-interaccion-A.txt` — buscador por nombre.
-- `mod1-nivel2-interaccion-B.txt` — botones para filtrar por categoría.
-- `mod1-nivel2-interaccion-C.txt` — lista lateral que vuela al lugar.
+**Nivel 2**
+- `mod1-nivel2-A.txt` — buscador por nombre.
+- `mod1-nivel2-B.txt` — botones para filtrar por categoría.
+- `mod1-nivel2-C.txt` — lista lateral que vuela al lugar.
 
-**Nivel 3 · Atrévete**
-- `mod1-nivel3-atrevete-A.txt` — favoritos que se recuerdan (localStorage).
-- `mod1-nivel3-atrevete-B.txt` — formulario para añadir un lugar nuevo.
-- `mod1-nivel3-atrevete-C.txt` — modo claro / oscuro.
+**Nivel 3**
+- `mod1-nivel3-A.txt` — favoritos que se recuerdan (localStorage).
+- `mod1-nivel3-B.txt` — formulario para añadir un lugar nuevo.
+- `mod1-nivel3-C.txt` — modo claro / oscuro.
 
 > Estos prompts están escritos para ser **muy precisos** (llevan dentro los detalles
 > que más se atascan, las "trampas"), de modo que funcionen bien incluso con modelos

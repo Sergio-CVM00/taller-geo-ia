@@ -102,7 +102,7 @@ empieza a liar, abre uno nuevo). **No necesitas saber cómo se hace: descríbelo
 español y deja que el agente lo monte.** Sube por la escalera tanto como te apetezca:
 **no son obligatorios.**
 
-### Nivel 1 · Para coger confianza
+### Nivel 1
 - **A.** *"Pon un color distinto a los marcadores según su categoría."*
 - **B.** *"Muestra la foto del lugar dentro del popup, debajo del nombre."*
   > Ojo con las carpetas: las fotos están en `fotos_ejemplo/`, que está **fuera** de
@@ -113,7 +113,7 @@ español y deja que el agente lo monte.** Sube por la escalera tanto como te ape
   > zoom. El encuadre debe salir de los propios datos; si más adelante añades un lugar
   > lejano (reto del formulario) y se sale, pídele que lo recalcule.
 
-### Nivel 2 · Interacción de verdad
+### Nivel 2
 - **A.** *"Añade una cajita para buscar lugares por nombre y que filtre el mapa."*
 - **B.** *"Pon botones para mostrar solo una categoría (olivares, bancales…)."*
 - **C.** *"Haz una lista de lugares al lado; al pulsar uno, que el mapa vaya volando a él."*
@@ -121,7 +121,7 @@ español y deja que el agente lo monte.** Sube por la escalera tanto como te ape
   > abre su popup ahí. Si el popup sale descolocado o parpadea, díselo: suele bastar con
   > que espere a que termine el desplazamiento antes de abrirlo.
 
-### Nivel 3 · Atrévete
+### Nivel 3
 - **A.** *"Deja marcar lugares como favoritos y que se recuerden aunque cierre la página."*
   > Trampa típica: la estrella funciona la primera vez, pero al volver a pulsarla ya no
   > hace nada (hasta que cierras y reabres el popup). Si te pasa, díselo con esas
@@ -145,8 +145,8 @@ español y deja que el agente lo monte.** Sube por la escalera tanto como te ape
 
 ### ¿Te atascas en un reto?
 Tienes un **prompt de solución para cada reto** (A, B y C de los tres niveles) en
-**[`retos/`](retos/)** — uno por archivo, con el nombre del nivel y la tarea
-(`mod1-nivel1-confianza-A.txt`…). Y un mapa de ejemplo con los **9 retos ya hechos** en
+**[`retos/`](retos/)** — uno por archivo, con su módulo, nivel y letra
+(`mod1-nivel1-A.txt`…). Y un mapa de ejemplo con los **9 retos ya hechos** en
 **[`../ejemplo-terminado/`](../ejemplo-terminado/)**. Míralos **cuando ya lo hayas
 intentado tú**: son la red de seguridad, no el atajo.
 
