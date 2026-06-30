@@ -18,10 +18,11 @@ una app web (un mapa de lugares), **hablando en español con una IA**. No progra
 | **ngrok** | compartir tu app al final | `ngrok.com/download` — el agente lo instala cuando llegues a ese reto |
 
 > **¿Eliges OpenCode? (casi todos vais con Windows 11)** · Descarga: **`opencode.ai/download`**
-> - **Lo más fácil (recomendado):** baja la **app de escritorio** de Windows desde
->   **`opencode.ai/download`** e instálala como cualquier programa (doble clic en el
->   instalador → *Siguiente* → *Siguiente* → abrir). Es una app directa, sin terminal
->   (está en *beta*, pero va bien).
+> - **Lo más fácil (recomendado):** descarga el instalador de Windows con este enlace
+>   directo → **`opencode.ai/download/stable/windows-x64-nsis`** e instálalo como
+>   cualquier programa (doble clic → *Siguiente* → *Siguiente* → abrir). Es una app
+>   directa, sin terminal (está en *beta*, pero va bien). *(Si el enlace no funciona,
+>   entra en `opencode.ai/download` y elige Windows.)*
 > - **Tokens (gratis):** al abrir la app, sigue el paso para **conectar tu cuenta**
 >   (te lleva a `opencode.ai/auth`) y elige **OpenCode Zen**, su capa gratuita.
 > - *Vías avanzadas (terminal), por si prefieres:* `npm i -g opencode-ai@latest` (antes
