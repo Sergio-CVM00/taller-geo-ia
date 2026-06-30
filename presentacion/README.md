@@ -8,5 +8,5 @@ ritmo después.
 
 > Es un único archivo, funciona sin internet y sin instalar nada.
 >
-> ¿Prefieres el texto? Las metas de cada paso están en
-> **[`../guia/hoja-de-ruta.md`](../guia/hoja-de-ruta.md)**.
+> ¿Prefieres el texto? El prompt, los retos y las metas de cada día están en
+> **[`../prompts/dia1.md`](../prompts/dia1.md)** y **[`../prompts/dia2.md`](../prompts/dia2.md)**.

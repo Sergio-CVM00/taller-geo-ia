@@ -57,6 +57,8 @@
       padding: 0;
     }
     #lista-lugares li {
+      display: flex;
+      align-items: center;
       padding: 8px 12px;
       cursor: pointer;
       border-bottom: 1px solid #e8e8e8;
@@ -78,6 +80,28 @@
       flex-shrink: 0;
       vertical-align: middle;
       border: 1px solid rgba(0,0,0,0.15);
+    }
+    /* El nombre ocupa el espacio libre; la estrella queda pegada a la derecha */
+    #lista-lugares li .nombre-lugar {
+      flex: 1;
+      min-width: 0;
+    }
+    /* Estrella de favorito en la lista: clic para marcar/desmarcar sin volar */
+    #lista-lugares li .estrella-lista {
+      flex-shrink: 0;
+      margin-left: 6px;
+      color: #c9c9c9;
+      font-size: 15px;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.12s, transform 0.12s;
+    }
+    #lista-lugares li .estrella-lista:hover {
+      transform: scale(1.25);
+      color: #f0c040;
+    }
+    #lista-lugares li .estrella-lista.es-favorito {
+      color: #f0c040;
     }
 
     #mapa {
@@ -131,12 +155,29 @@
       /* Si la imagen no carga, el popup no se rompe */
     }
 
-    /* ---- N2-A: caja de búsqueda por nombre ---- */
-    #buscador-contenedor {
+    /* ---- Barra superior: agrupa el buscador y los botones en una sola fila ----
+       Antes cada control estaba "fixed" con un "left" fijo (260px, 580px…) y se
+       solapaban entre ellos y con la leyenda. Al meterlos en un contenedor flex
+       se colocan solos uno al lado del otro y, si no caben, bajan de línea. El
+       hueco de la derecha (right:260px) reserva espacio para la leyenda. */
+    #barra-superior {
       position: fixed;
       top: 10px;
-      left: 260px;
+      /* left:300px deja a la izquierda un hueco para los botones +/- de zoom
+         (que Leaflet pone arriba a la izquierda); así no se solapan. */
+      left: 300px;
+      right: 260px;
       z-index: 1000;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ---- N2-A: caja de búsqueda por nombre ----
+       min-width:0 + flex-shrink permiten que la caja se encoja en pantallas
+       estrechas en lugar de desbordarse por encima de la leyenda. */
+    #buscador-contenedor {
       background: rgba(255, 255, 255, 0.95);
       border: 1px solid #ccc;
       border-radius: 6px;
@@ -147,18 +188,22 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      white-space: nowrap;
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 360px;
     }
     #buscador-contenedor label {
       font-weight: bold;
       color: #333;
+      flex-shrink: 0;
     }
     #buscador {
       border: 1px solid #aaa;
       border-radius: 4px;
       padding: 4px 8px;
       font-size: 13px;
-      width: 200px;
+      flex: 1 1 90px;
+      min-width: 0;
       outline: none;
     }
     #buscador:focus {
@@ -218,6 +263,11 @@
     .btn-filtro-todas {
       background: #34495e;
     }
+    /* El botón "Favoritos" es dorado, como las estrellas */
+    .btn-filtro-favoritos {
+      background: #f0c040;
+      color: #6b4e00;
+    }
 
     /* ---- N3-A: estilos del botón de favorito en el popup ---- */
     .btn-favorito {
@@ -246,11 +296,14 @@
       font-weight: bold;
     }
 
-    /* ---- N3-B: formulario para añadir un lugar nuevo ---- */
+    /* ---- N3-B: formulario para añadir un lugar nuevo ----
+       Empieza OCULTO (display:none) y se abre al pulsar el botón "➕ Añadir
+       lugar". Así no tapa el mapa todo el rato: aparece solo cuando lo pides.
+       El botón le pone la clase "abierto" para mostrarlo. */
     #formulario-contenedor {
       position: fixed;
-      top: 55px;
-      left: 260px;
+      top: 62px;
+      left: 300px;
       z-index: 1000;
       background: rgba(255, 255, 255, 0.97);
       border: 1px solid #ccc;
@@ -260,6 +313,26 @@
       font-size: 13px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       width: 340px;
+      display: none;
+    }
+    #formulario-contenedor.abierto {
+      display: block;
+    }
+    /* Pista de ayuda: invita a hacer clic en el mapa para coger las coordenadas */
+    #form-ayuda-mapa {
+      margin: 0 0 8px 0;
+      padding: 6px 8px;
+      background: #eef6fb;
+      border: 1px solid #cfe3f2;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #2c5f82;
+      line-height: 1.35;
+    }
+    /* Mientras el formulario está abierto, el cursor sobre el mapa es una cruz
+       para dejar claro que se puede pinchar y capturar las coordenadas. */
+    body.capturando-coordenadas .leaflet-container {
+      cursor: crosshair;
     }
     #formulario-contenedor h4 {
       margin: 0 0 8px 0;
@@ -318,13 +391,11 @@
       color: #27ae60;
     }
 
-    /* ---- N3-C: MODO OSCURO ---- */
-    /* El botón de modo oscuro: anclado justo debajo del buscador */
-    #btn-modo-oscuro {
-      position: fixed;
-      top: 10px;
-      left: 580px;
-      z-index: 1000;
+    /* ---- Botones de la barra superior (modo oscuro y abrir formulario) ----
+       Misma pinta de "pastilla" que el buscador. Ya no llevan position:fixed ni
+       un "left" fijo: viven dentro de #barra-superior, que los coloca en fila. */
+    #btn-modo-oscuro,
+    #btn-toggle-form {
       background: rgba(255, 255, 255, 0.95);
       border: 1px solid #ccc;
       border-radius: 6px;
@@ -332,13 +403,21 @@
       font-family: Arial, sans-serif;
       font-size: 13px;
       font-weight: bold;
+      color: #333;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       transition: background 0.2s, color 0.2s, border-color 0.2s;
       white-space: nowrap;
     }
-    #btn-modo-oscuro:hover {
+    #btn-modo-oscuro:hover,
+    #btn-toggle-form:hover {
       background: #f0f0f0;
+    }
+    /* Cuando el formulario está abierto, el botón se resalta en verde */
+    #btn-toggle-form.activo {
+      background: #27ae60;
+      border-color: #27ae60;
+      color: #fff;
     }
 
     /* ---- N3-C: Estilos para el modo oscuro — se activan añadiendo la clase
@@ -367,6 +446,12 @@
     body.modo-oscuro #lista-lugares li:hover {
       background: #1a4a80;
       color: #7ec8e3;
+    }
+    body.modo-oscuro #lista-lugares li .estrella-lista {
+      color: #56688f;
+    }
+    body.modo-oscuro #lista-lugares li .estrella-lista.es-favorito {
+      color: #f0c040;
     }
 
     /* Leyenda */
@@ -412,6 +497,11 @@
     body.modo-oscuro #formulario-contenedor h4 {
       color: #e0e0e0;
     }
+    body.modo-oscuro #form-ayuda-mapa {
+      background: #0f3460;
+      border-color: #1a4a80;
+      color: #bcd6ec;
+    }
     body.modo-oscuro .form-fila label {
       color: #aaa;
     }
@@ -421,14 +511,22 @@
       color: #e0e0e0;
     }
 
-    /* Botón de modo oscuro: en modo oscuro cambia su apariencia */
-    body.modo-oscuro #btn-modo-oscuro {
+    /* Botones de la barra superior: en modo oscuro cambian su apariencia */
+    body.modo-oscuro #btn-modo-oscuro,
+    body.modo-oscuro #btn-toggle-form {
       background: rgba(22, 33, 62, 0.97);
       border-color: #0f3460;
       color: #e0e0e0;
     }
-    body.modo-oscuro #btn-modo-oscuro:hover {
+    body.modo-oscuro #btn-modo-oscuro:hover,
+    body.modo-oscuro #btn-toggle-form:hover {
       background: #1a4a80;
+    }
+    /* El botón "Añadir lugar" activo mantiene su verde también en modo oscuro */
+    body.modo-oscuro #btn-toggle-form.activo {
+      background: #27ae60;
+      border-color: #27ae60;
+      color: #fff;
     }
 
     /* ---- N3-C: FILTRO CSS sobre los tiles del mapa en modo oscuro ----
@@ -459,26 +557,37 @@
 
 </div>
 
-<!-- N2-A: Caja de búsqueda por nombre, anclada a la izquierda (tras la lista) -->
-<div id="buscador-contenedor">
-  <label for="buscador">Buscar:</label>
-  <input
-    type="text"
-    id="buscador"
-    placeholder="Escribe un nombre..."
-    autocomplete="off"
-  />
-  <span id="buscador-contador"></span>
-</div>
+<!-- Barra superior: buscador + botones, todos en una fila (sin solaparse) -->
+<div id="barra-superior">
 
-<!-- N3-C: Botón de modo oscuro/claro -->
-<button id="btn-modo-oscuro" title="Cambiar entre modo claro y oscuro">
-  🌙 Modo oscuro
-</button>
+  <!-- N2-A: Caja de búsqueda por nombre -->
+  <div id="buscador-contenedor">
+    <label for="buscador">Buscar:</label>
+    <input
+      type="text"
+      id="buscador"
+      placeholder="Escribe un nombre..."
+      autocomplete="off"
+    />
+    <span id="buscador-contador"></span>
+  </div>
+
+  <!-- N3-B: Botón que abre/cierra el formulario de añadir lugar -->
+  <button id="btn-toggle-form" title="Mostrar u ocultar el formulario para añadir un lugar">
+    ➕ Añadir lugar
+  </button>
+
+  <!-- N3-C: Botón de modo oscuro/claro -->
+  <button id="btn-modo-oscuro" title="Cambiar entre modo claro y oscuro">
+    🌙 Modo oscuro
+  </button>
+
+</div>
 
 <!-- N3-B: Formulario para añadir un lugar nuevo -->
 <div id="formulario-contenedor">
   <h4>Añadir lugar nuevo</h4>
+  <p id="form-ayuda-mapa">💡 Haz clic en el mapa para coger las coordenadas. También puedes escribirlas a mano.</p>
   <div class="form-fila">
     <label for="nuevo-nombre">Nombre *</label>
     <input type="text" id="nuevo-nombre" placeholder="Nombre del lugar" />
@@ -816,15 +925,34 @@
     var color = coloresPorCategoria[lugar.categoria] || colorPorDefecto;
 
     var li = document.createElement('li');
+    li.setAttribute('data-id', lugar.id);
 
     var punto = document.createElement('span');
     punto.className = 'punto-cat';
     punto.style.background = color;
 
-    var textoNombre = document.createTextNode(lugar.nombre);
+    var nombre = document.createElement('span');
+    nombre.className = 'nombre-lugar';
+    nombre.textContent = lugar.nombre;
+
+    // Estrella de favorito: refleja el estado guardado y permite cambiarlo
+    // directamente desde la lista (sin tener que abrir el popup en el mapa).
+    var favInicial = esFavorito(lugar.id);
+    var estrella = document.createElement('span');
+    estrella.className = favInicial ? 'estrella-lista es-favorito' : 'estrella-lista';
+    estrella.textContent = favInicial ? '★' : '☆';
+    estrella.title = favInicial ? 'Quitar de favoritos' : 'Añadir a favoritos';
+    estrella.addEventListener('click', function(e) {
+      e.stopPropagation();   // que no vuele al mapa al pulsar la estrella
+      var ahoraFav = alternarFavorito(lugar.id);
+      if (typeof sincronizarFavorito === 'function') {
+        sincronizarFavorito(lugar.id, ahoraFav);
+      }
+    });
 
     li.appendChild(punto);
-    li.appendChild(textoNombre);
+    li.appendChild(nombre);
+    li.appendChild(estrella);
     li.title = lugar.categoria || 'Sin categoría';
 
     li.addEventListener('click', function() {
@@ -943,6 +1071,8 @@
         boton.textContent = '☆ Añadir a favoritos';
         boton.classList.remove('es-favorito');
       }
+      // Reflejar el cambio en la estrella de la lista y, si procede, en el filtro
+      sincronizarFavorito(id, ahoresEsFavorito);
     });
   });
 
@@ -966,8 +1096,11 @@
   // N2-B: FILTROS POR CATEGORÍA
   // -------------------------------------------------------
   var categoriaActiva = null;
+  // N3-A: cuando es true, el mapa muestra SOLO los lugares favoritos.
+  var modoFavoritos = false;
 
-  // Función central de visibilidad: aplica buscador Y filtro de categoría juntos.
+  // Función central de visibilidad: aplica buscador Y filtro (categoría o
+  // favoritos) juntos.
   function actualizarVisibilidad() {
     var textoBusqueda = inputBuscador.value.toLowerCase().trim();
     var visibles = 0;
@@ -975,8 +1108,14 @@
     marcadores.forEach(function(item) {
       var nombreMinusculas = item.lugar.nombre.toLowerCase();
       var pasaBuscador = textoBusqueda === '' || nombreMinusculas.indexOf(textoBusqueda) !== -1;
-      var pasaCategoria = categoriaActiva === null || item.lugar.categoria === categoriaActiva;
-      var debeEstarVisible = pasaBuscador && pasaCategoria;
+      // El filtro activo es "solo favoritos" o "una categoría" (o ninguno)
+      var pasaFiltro;
+      if (modoFavoritos) {
+        pasaFiltro = esFavorito(item.lugar.id);
+      } else {
+        pasaFiltro = categoriaActiva === null || item.lugar.categoria === categoriaActiva;
+      }
+      var debeEstarVisible = pasaBuscador && pasaFiltro;
 
       if (debeEstarVisible) {
         if (!mapa.hasLayer(item.marcador)) {
@@ -990,12 +1129,28 @@
       }
     });
 
-    var hayFiltro = textoBusqueda !== '' || categoriaActiva !== null;
+    var hayFiltro = textoBusqueda !== '' || categoriaActiva !== null || modoFavoritos;
     if (hayFiltro) {
       spanContador.textContent = visibles + ' de ' + marcadores.length;
     } else {
       spanContador.textContent = '';
     }
+  }
+
+  // Mantiene sincronizado el estado "favorito" en los dos sitios donde se ve:
+  // la estrella de la lista lateral y (si está activo) el filtro de favoritos.
+  function sincronizarFavorito(id, esFav) {
+    var li = listaLugares.querySelector('li[data-id="' + id + '"]');
+    if (li) {
+      var estrella = li.querySelector('.estrella-lista');
+      if (estrella) {
+        estrella.classList.toggle('es-favorito', esFav);
+        estrella.textContent = esFav ? '★' : '☆';
+        estrella.title = esFav ? 'Quitar de favoritos' : 'Añadir a favoritos';
+      }
+    }
+    // Si estamos viendo solo favoritos, recalculamos qué marcadores se ven
+    if (modoFavoritos) actualizarVisibilidad();
   }
 
   inputBuscador.addEventListener('input', actualizarVisibilidad);
@@ -1011,12 +1166,27 @@
   btnTodas.title = 'Mostrar todos los lugares';
   btnTodas.addEventListener('click', function() {
     categoriaActiva = null;
+    modoFavoritos = false;
     marcarBotonActivo(btnTodas);
     actualizarVisibilidad();
   });
   contenedorFiltros.appendChild(btnTodas);
 
-  var todosBotones = [btnTodas];
+  // N3-A: botón para ver SOLO los favoritos (la otra forma de "ver" tus
+  // favoritos, además de la estrella dorada en la lista lateral).
+  var btnFavoritos = document.createElement('button');
+  btnFavoritos.textContent = '★ Favoritos';
+  btnFavoritos.className = 'btn-filtro btn-filtro-favoritos';
+  btnFavoritos.title = 'Mostrar solo tus lugares favoritos';
+  btnFavoritos.addEventListener('click', function() {
+    modoFavoritos = true;
+    categoriaActiva = null;
+    marcarBotonActivo(btnFavoritos);
+    actualizarVisibilidad();
+  });
+  contenedorFiltros.appendChild(btnFavoritos);
+
+  var todosBotones = [btnTodas, btnFavoritos];
 
   Object.keys(coloresPorCategoria).forEach(function(categoria) {
     var color = coloresPorCategoria[categoria];
@@ -1029,6 +1199,7 @@
 
     btn.addEventListener('click', function() {
       categoriaActiva = categoria;
+      modoFavoritos = false;
       marcarBotonActivo(btn);
       actualizarVisibilidad();
     });
@@ -1162,6 +1333,7 @@
     inputBuscador.value = '';
     spanContador.textContent = '';
     categoriaActiva = null;
+    modoFavoritos = false;         // salir del filtro de favoritos si estaba activo
     marcarBotonActivo(btnTodas);   // marca "Todas" como activo visualmente
     // Hacemos todos los marcadores visibles (sin llamar a actualizarVisibilidad
     // con texto vacío y categoría null, que ya los muestra todos)
@@ -1172,6 +1344,9 @@
     mapa.once('moveend', function() {
       circulo.openPopup();
     });
+
+    // El marcador definitivo ya está en el mapa: quitamos el provisional rojo
+    limpiarMarcadorTemporal();
 
     // --- Limpiar el formulario ---
     inputNombre.value = '';
@@ -1191,6 +1366,85 @@
       }
     });
   });
+
+  // -------------------------------------------------------
+  // N3-B: ABRIR / CERRAR EL FORMULARIO DE AÑADIR LUGAR
+  // El formulario empieza oculto; este botón lo muestra u oculta
+  // añadiendo o quitando la clase "abierto".
+  // -------------------------------------------------------
+  var btnToggleForm = document.getElementById('btn-toggle-form');
+  var formContenedor = document.getElementById('formulario-contenedor');
+
+  // La barra superior puede ocupar 1, 2 o 3 filas según el ancho de la ventana.
+  // Para que el formulario nunca tape los botones, lo colocamos justo DEBAJO del
+  // borde inferior real de la barra (medido en cada momento), en vez de a una
+  // altura fija (que se solapaba con la barra en pantallas medianas).
+  var barraSuperior = document.getElementById('barra-superior');
+  function posicionarFormulario() {
+    if (!formContenedor.classList.contains('abierto')) return;
+    var fondoBarra = barraSuperior.getBoundingClientRect().bottom;
+    formContenedor.style.top = (fondoBarra + 8) + 'px';
+  }
+
+  // -------------------------------------------------------
+  // COGER LAS COORDENADAS CON EL RATÓN
+  // Con el formulario abierto, al hacer clic en el mapa rellenamos los campos
+  // Latitud y Longitud y dejamos un marcador provisional (rojo) en ese punto.
+  // Volver a hacer clic en el mapa lo mueve. Así el alumno no tiene que copiar
+  // coordenadas a mano: pincha donde quiere y ya están puestas.
+  // -------------------------------------------------------
+  var marcadorTemporal = null;
+
+  function limpiarMarcadorTemporal() {
+    if (marcadorTemporal) {
+      mapa.removeLayer(marcadorTemporal);
+      marcadorTemporal = null;
+    }
+  }
+
+  mapa.on('click', function(e) {
+    // Solo cogemos coordenadas mientras el formulario está abierto
+    if (!formContenedor.classList.contains('abierto')) return;
+
+    inputLat.value = e.latlng.lat.toFixed(6);
+    inputLon.value = e.latlng.lng.toFixed(6);
+
+    if (marcadorTemporal) {
+      marcadorTemporal.setLatLng(e.latlng);
+    } else {
+      marcadorTemporal = L.circleMarker(e.latlng, {
+        radius: 10,
+        fillColor: '#e74c3c',
+        color: '#fff',
+        weight: 3,
+        opacity: 1,
+        fillOpacity: 0.9,
+        dashArray: '4'
+      }).addTo(mapa);
+      marcadorTemporal.bindTooltip('Nuevo lugar aquí', { direction: 'top' });
+    }
+
+    mostrarMensaje('Coordenadas cogidas del mapa ✓', false);
+  });
+
+  btnToggleForm.addEventListener('click', function() {
+    var seAbre = !formContenedor.classList.contains('abierto');
+    formContenedor.classList.toggle('abierto', seAbre);
+    btnToggleForm.classList.toggle('activo', seAbre);
+    // Activa/desactiva el cursor de cruz sobre el mapa (modo "coger coordenadas")
+    document.body.classList.toggle('capturando-coordenadas', seAbre);
+    btnToggleForm.textContent = seAbre ? '✕ Cerrar' : '➕ Añadir lugar';
+    if (seAbre) {
+      posicionarFormulario();   // colocarlo bajo la barra antes de mostrarlo
+      inputNombre.focus();      // y llevar el foco al primer campo
+    } else {
+      limpiarMarcadorTemporal(); // al cerrar, quitamos el marcador provisional
+    }
+  });
+
+  // Si la ventana cambia de tamaño con el formulario abierto, lo recolocamos
+  // (la barra puede pasar de 1 a 2 filas y viceversa).
+  window.addEventListener('resize', posicionarFormulario);
 
   // -------------------------------------------------------
   // N3-C: BOTÓN DE MODO OSCURO / CLARO
