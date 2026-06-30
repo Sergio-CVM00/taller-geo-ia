@@ -163,7 +163,9 @@
     #barra-superior {
       position: fixed;
       top: 10px;
-      left: 260px;
+      /* left:300px deja a la izquierda un hueco para los botones +/- de zoom
+         (que Leaflet pone arriba a la izquierda); así no se solapan. */
+      left: 300px;
       right: 260px;
       z-index: 1000;
       display: flex;
@@ -301,7 +303,7 @@
     #formulario-contenedor {
       position: fixed;
       top: 62px;
-      left: 260px;
+      left: 300px;
       z-index: 1000;
       background: rgba(255, 255, 255, 0.97);
       border: 1px solid #ccc;
