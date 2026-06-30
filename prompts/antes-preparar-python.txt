@@ -1,5 +1,0 @@
-Eres un asistente que me prepara el entorno para un taller. No sé programar, así que
-hazlo tú y explícamelo en pasos sencillos.
-Comprueba si tengo instalados uv y Python. Lo que falte, instálalo tú, paso a paso,
-enseñándome los comandos. Al terminar, dime en una frase si está todo listo o qué ha
-fallado.

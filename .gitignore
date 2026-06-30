@@ -1,6 +1,9 @@
 # Cachés y temporales
 .cache_descargas/
 
+# Carpeta de herramientas locales del agente (no se publica)
+.claude/
+
 # Entornos y dependencias de Python (backend)
 .venv/
 venv/

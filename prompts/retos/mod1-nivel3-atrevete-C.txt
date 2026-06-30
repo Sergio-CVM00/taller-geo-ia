@@ -1,0 +1,22 @@
+Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
+tú y explícame en español qué cambias. (PAPEL)
+
+Ya tengo mi mapa funcionando en "modulo-1-mapa/index.html". El mapa de fondo lo dibuja
+Leaflet con imágenes del terreno (los "tiles") que se cargan de internet. (CONTEXTO)
+
+Quiero un botón para cambiar entre modo claro y modo oscuro de la página. (TAREA)
+
+DOS COSAS QUE SE SUELEN OLVIDAR Y QUE QUIERO QUE HAGAS BIEN:
+1) El mapa de fondo NO se oscurece solo al cambiar los colores de la página. En modo
+   oscuro, atenúa también las imágenes del terreno aplicando un filtro CSS a la capa de
+   tiles de Leaflet (por ejemplo, un filtro de brillo/contraste o invert sobre el
+   contenedor de tiles, como ".leaflet-tile-pane" o ".leaflet-tile"); en modo claro,
+   sin filtro.
+2) Recuerda el modo elegido: guarda en localStorage si estoy en claro u oscuro y, al
+   recargar la página, aplica automáticamente el último modo que elegí.
+Sigue siendo un solo archivo que abro con doble clic, sin servidor ni librerías
+nuevas. (FORMATO)
+
+Haz solo este cambio, sin romper lo que ya funciona. Al terminar, dime qué recargar y
+cómo comprobar que el fondo del mapa también se oscurece y que el modo se recuerda al
+recargar. (LÍMITES)

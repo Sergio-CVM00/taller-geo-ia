@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa de lugares — Taller Geo-IA</title>
+
+  <!-- Hoja de estilos de Leaflet 1.9.4 desde su CDN -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <style>
+    /* El mapa ocupa toda la ventana del navegador */
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ---- N2-C: layout flexbox — lista a la izquierda, mapa a la derecha ---- */
+    #contenedor-principal {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+    }
+
+    /* ---- N2-C: columna lateral con la lista de lugares ---- */
+    #lista-lateral {
+      width: 240px;
+      flex-shrink: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: #f8f8f8;
+      border-right: 1px solid #ddd;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      z-index: 500;
+    }
+    #lista-lateral h3 {
+      margin: 0;
+      padding: 10px 12px 8px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #333;
+      background: #eee;
+      border-bottom: 1px solid #ccc;
+      position: sticky;
+      top: 0;
+    }
+    #lista-lugares {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    #lista-lugares li {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-bottom: 1px solid #e8e8e8;
+      color: #333;
+      line-height: 1.3;
+      transition: background 0.12s;
+    }
+    #lista-lugares li:hover {
+      background: #e0ecf8;
+      color: #1a5f99;
+    }
+    /* Pequeño punto de color a la izquierda de cada nombre */
+    #lista-lugares li .punto-cat {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+      flex-shrink: 0;
+      vertical-align: middle;
+      border: 1px solid rgba(0,0,0,0.15);
+    }
+    /* El nombre ocupa el espacio libre; la estrella queda pegada a la derecha */
+    #lista-lugares li .nombre-lugar {
+      flex: 1;
+      min-width: 0;
+    }
+    /* Estrella de favorito en la lista: clic para marcar/desmarcar sin volar */
+    #lista-lugares li .estrella-lista {
+      flex-shrink: 0;
+      margin-left: 6px;
+      color: #c9c9c9;
+      font-size: 15px;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.12s, transform 0.12s;
+    }
+    #lista-lugares li .estrella-lista:hover {
+      transform: scale(1.25);
+      color: #f0c040;
+    }
+    #lista-lugares li .estrella-lista.es-favorito {
+      color: #f0c040;
+    }
+
+    #mapa {
+      flex: 1;
+      height: 100vh;
+      min-height: 400px;
+    }
+
+    /* ---- Leyenda de categorías (esquina superior derecha, fija en pantalla) ---- */
+    #leyenda {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-family: Arial, sans-serif;
+      line-height: 1.8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      max-width: 240px;
+    }
+    #leyenda h4 {
+      margin: 0 0 6px 0;
+      font-size: 13px;
+      font-weight: bold;
+      color: #333;
+    }
+    .leyenda-fila {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .leyenda-cuadro {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.2);
+    }
+
+    /* ---- N1-B: estilos del popup con foto ---- */
+    .popup-foto {
+      width: 220px;
+      height: auto;
+      display: block;
+      margin: 6px 0;
+      border-radius: 4px;
+      /* Si la imagen no carga, el popup no se rompe */
+    }
+
+    /* ---- Barra superior: agrupa el buscador y los botones en una sola fila ----
+       Antes cada control estaba "fixed" con un "left" fijo (260px, 580px…) y se
+       solapaban entre ellos y con la leyenda. Al meterlos en un contenedor flex
+       se colocan solos uno al lado del otro y, si no caben, bajan de línea. El
+       hueco de la derecha (right:260px) reserva espacio para la leyenda. */
+    #barra-superior {
+      position: fixed;
+      top: 10px;
+      /* left:300px deja a la izquierda un hueco para los botones +/- de zoom
+         (que Leaflet pone arriba a la izquierda); así no se solapan. */
+      left: 300px;
+      right: 260px;
+      z-index: 1000;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ---- N2-A: caja de búsqueda por nombre ----
+       min-width:0 + flex-shrink permiten que la caja se encoja en pantallas
+       estrechas en lugar de desbordarse por encima de la leyenda. */
+    #buscador-contenedor {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 360px;
+    }
+    #buscador-contenedor label {
+      font-weight: bold;
+      color: #333;
+      flex-shrink: 0;
+    }
+    #buscador {
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 13px;
+      flex: 1 1 90px;
+      min-width: 0;
+      outline: none;
+    }
+    #buscador:focus {
+      border-color: #2980b9;
+      box-shadow: 0 0 0 2px rgba(41,128,185,0.2);
+    }
+    #buscador-contador {
+      color: #555;
+      font-size: 12px;
+      min-width: 60px;
+    }
+
+    /* ---- N2-B: barra de filtros por categoría (parte inferior, fija) ---- */
+    #filtros-contenedor {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 90vw;
+    }
+    /* Cada botón de categoría */
+    .btn-filtro {
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      color: #fff;
+      background: #aaa;
+      transition: opacity 0.15s, box-shadow 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .btn-filtro:hover {
+      opacity: 0.85;
+    }
+    /* Estado activo: borde blanco grueso y sombra para resaltar */
+    .btn-filtro.activo {
+      border-color: #fff;
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.35);
+    }
+    /* El botón "Todas" tiene un color neutro oscuro */
+    .btn-filtro-todas {
+      background: #34495e;
+    }
+    /* El botón "Favoritos" es dorado, como las estrellas */
+    .btn-filtro-favoritos {
+      background: #f0c040;
+      color: #6b4e00;
+    }
+
+    /* ---- N3-A: estilos del botón de favorito en el popup ---- */
+    .btn-favorito {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #f5f5f5;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      color: #555;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      user-select: none;
+    }
+    .btn-favorito:hover {
+      background: #fffbe6;
+      border-color: #f0c040;
+    }
+    /* Cuando el lugar ya es favorito, la estrella se muestra en dorado */
+    .btn-favorito.es-favorito {
+      background: #fffbe6;
+      border-color: #f0c040;
+      color: #c07800;
+      font-weight: bold;
+    }
+
+    /* ---- N3-B: formulario para añadir un lugar nuevo ----
+       Empieza OCULTO (display:none) y se abre al pulsar el botón "➕ Añadir
+       lugar". Así no tapa el mapa todo el rato: aparece solo cuando lo pides.
+       El botón le pone la clase "abierto" para mostrarlo. */
+    #formulario-contenedor {
+      position: fixed;
+      top: 62px;
+      left: 300px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.97);
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px 14px 12px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      width: 340px;
+      display: none;
+    }
+    #formulario-contenedor.abierto {
+      display: block;
+    }
+    /* Pista de ayuda: invita a hacer clic en el mapa para coger las coordenadas */
+    #form-ayuda-mapa {
+      margin: 0 0 8px 0;
+      padding: 6px 8px;
+      background: #eef6fb;
+      border: 1px solid #cfe3f2;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #2c5f82;
+      line-height: 1.35;
+    }
+    /* Mientras el formulario está abierto, el cursor sobre el mapa es una cruz
+       para dejar claro que se puede pinchar y capturar las coordenadas. */
+    body.capturando-coordenadas .leaflet-container {
+      cursor: crosshair;
+    }
+    #formulario-contenedor h4 {
+      margin: 0 0 8px 0;
+      font-size: 13px;
+      font-weight: bold;
+      color: #333;
+    }
+    .form-fila {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .form-fila label {
+      width: 80px;
+      flex-shrink: 0;
+      color: #555;
+      font-size: 12px;
+    }
+    .form-fila input {
+      flex: 1;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      padding: 4px 7px;
+      font-size: 12px;
+      outline: none;
+    }
+    .form-fila input:focus {
+      border-color: #2980b9;
+      box-shadow: 0 0 0 2px rgba(41,128,185,0.2);
+    }
+    #btn-anadir-lugar {
+      margin-top: 4px;
+      padding: 5px 14px;
+      background: #27ae60;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    #btn-anadir-lugar:hover {
+      background: #1e8449;
+    }
+    /* Mensaje de error o confirmación bajo el formulario */
+    #formulario-mensaje {
+      margin-top: 6px;
+      font-size: 12px;
+      min-height: 16px;
+      color: #c0392b;
+    }
+    #formulario-mensaje.ok {
+      color: #27ae60;
+    }
+
+    /* ---- Botones de la barra superior (modo oscuro y abrir formulario) ----
+       Misma pinta de "pastilla" que el buscador. Ya no llevan position:fixed ni
+       un "left" fijo: viven dentro de #barra-superior, que los coloca en fila. */
+    #btn-modo-oscuro,
+    #btn-toggle-form {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    #btn-modo-oscuro:hover,
+    #btn-toggle-form:hover {
+      background: #f0f0f0;
+    }
+    /* Cuando el formulario está abierto, el botón se resalta en verde */
+    #btn-toggle-form.activo {
+      background: #27ae60;
+      border-color: #27ae60;
+      color: #fff;
+    }
+
+    /* ---- N3-C: Estilos para el modo oscuro — se activan añadiendo la clase
+       "modo-oscuro" al elemento <body>. ---- */
+
+    /* Fondo del body y texto general */
+    body.modo-oscuro {
+      background: #1a1a2e;
+      color: #e0e0e0;
+    }
+
+    /* Lista lateral */
+    body.modo-oscuro #lista-lateral {
+      background: #16213e;
+      border-right-color: #0f3460;
+    }
+    body.modo-oscuro #lista-lateral h3 {
+      background: #0f3460;
+      color: #e0e0e0;
+      border-bottom-color: #1a4a80;
+    }
+    body.modo-oscuro #lista-lugares li {
+      color: #ccc;
+      border-bottom-color: #1e2d50;
+    }
+    body.modo-oscuro #lista-lugares li:hover {
+      background: #1a4a80;
+      color: #7ec8e3;
+    }
+    body.modo-oscuro #lista-lugares li .estrella-lista {
+      color: #56688f;
+    }
+    body.modo-oscuro #lista-lugares li .estrella-lista.es-favorito {
+      color: #f0c040;
+    }
+
+    /* Leyenda */
+    body.modo-oscuro #leyenda {
+      background: rgba(22, 33, 62, 0.95);
+      border-color: #0f3460;
+      color: #e0e0e0;
+    }
+    body.modo-oscuro #leyenda h4 {
+      color: #e0e0e0;
+    }
+
+    /* Buscador */
+    body.modo-oscuro #buscador-contenedor {
+      background: rgba(22, 33, 62, 0.97);
+      border-color: #0f3460;
+      color: #e0e0e0;
+    }
+    body.modo-oscuro #buscador-contenedor label {
+      color: #ccc;
+    }
+    body.modo-oscuro #buscador {
+      background: #0f3460;
+      border-color: #1a4a80;
+      color: #e0e0e0;
+    }
+    body.modo-oscuro #buscador-contador {
+      color: #aaa;
+    }
+
+    /* Filtros */
+    body.modo-oscuro #filtros-contenedor {
+      background: rgba(22, 33, 62, 0.97);
+      border-color: #0f3460;
+    }
+
+    /* Formulario */
+    body.modo-oscuro #formulario-contenedor {
+      background: rgba(22, 33, 62, 0.97);
+      border-color: #0f3460;
+      color: #e0e0e0;
+    }
+    body.modo-oscuro #formulario-contenedor h4 {
+      color: #e0e0e0;
+    }
+    body.modo-oscuro #form-ayuda-mapa {
+      background: #0f3460;
+      border-color: #1a4a80;
+      color: #bcd6ec;
+    }
+    body.modo-oscuro .form-fila label {
+      color: #aaa;
+    }
+    body.modo-oscuro .form-fila input {
+      background: #0f3460;
+      border-color: #1a4a80;
+      color: #e0e0e0;
+    }
+
+    /* Botones de la barra superior: en modo oscuro cambian su apariencia */
+    body.modo-oscuro #btn-modo-oscuro,
+    body.modo-oscuro #btn-toggle-form {
+      background: rgba(22, 33, 62, 0.97);
+      border-color: #0f3460;
+      color: #e0e0e0;
+    }
+    body.modo-oscuro #btn-modo-oscuro:hover,
+    body.modo-oscuro #btn-toggle-form:hover {
+      background: #1a4a80;
+    }
+    /* El botón "Añadir lugar" activo mantiene su verde también en modo oscuro */
+    body.modo-oscuro #btn-toggle-form.activo {
+      background: #27ae60;
+      border-color: #27ae60;
+      color: #fff;
+    }
+
+    /* ---- N3-C: FILTRO CSS sobre los tiles del mapa en modo oscuro ----
+       ".leaflet-tile-pane" contiene todas las imágenes del terreno.
+       Invertimos colores (invert) y ajustamos matiz (hue-rotate) para
+       dar un aspecto oscuro sin que los marcadores de color se vean afectados,
+       ya que los marcadores están en un pane distinto (.leaflet-overlay-pane). */
+    body.modo-oscuro .leaflet-tile-pane {
+      filter: invert(100%) hue-rotate(180deg) brightness(0.85) contrast(0.9);
+    }
+  </style>
+</head>
+<body>
+
+<!-- N2-C: contenedor flex principal — lista lateral + mapa -->
+<div id="contenedor-principal">
+
+  <!-- N2-C: columna izquierda con la lista de lugares -->
+  <div id="lista-lateral">
+    <h3 id="titulo-lista">Lugares (18)</h3>
+    <ul id="lista-lugares">
+      <!-- Se rellena con JavaScript -->
+    </ul>
+  </div>
+
+  <!-- Contenedor donde Leaflet dibujará el mapa -->
+  <div id="mapa"></div>
+
+</div>
+
+<!-- Barra superior: buscador + botones, todos en una fila (sin solaparse) -->
+<div id="barra-superior">
+
+  <!-- N2-A: Caja de búsqueda por nombre -->
+  <div id="buscador-contenedor">
+    <label for="buscador">Buscar:</label>
+    <input
+      type="text"
+      id="buscador"
+      placeholder="Escribe un nombre..."
+      autocomplete="off"
+    />
+    <span id="buscador-contador"></span>
+  </div>
+
+  <!-- N3-B: Botón que abre/cierra el formulario de añadir lugar -->
+  <button id="btn-toggle-form" title="Mostrar u ocultar el formulario para añadir un lugar">
+    ➕ Añadir lugar
+  </button>
+
+  <!-- N3-C: Botón de modo oscuro/claro -->
+  <button id="btn-modo-oscuro" title="Cambiar entre modo claro y oscuro">
+    🌙 Modo oscuro
+  </button>
+
+</div>
+
+<!-- N3-B: Formulario para añadir un lugar nuevo -->
+<div id="formulario-contenedor">
+  <h4>Añadir lugar nuevo</h4>
+  <p id="form-ayuda-mapa">💡 Haz clic en el mapa para coger las coordenadas. También puedes escribirlas a mano.</p>
+  <div class="form-fila">
+    <label for="nuevo-nombre">Nombre *</label>
+    <input type="text" id="nuevo-nombre" placeholder="Nombre del lugar" />
+  </div>
+  <div class="form-fila">
+    <label for="nuevo-lat">Latitud *</label>
+    <input type="text" id="nuevo-lat" placeholder="Ej: 38.625" />
+  </div>
+  <div class="form-fila">
+    <label for="nuevo-lon">Longitud *</label>
+    <input type="text" id="nuevo-lon" placeholder="Ej: -0.131" />
+  </div>
+  <div class="form-fila">
+    <label for="nuevo-categoria">Categoría</label>
+    <input type="text" id="nuevo-categoria" placeholder="Opcional" />
+  </div>
+  <div class="form-fila">
+    <label for="nuevo-descripcion">Descripción</label>
+    <input type="text" id="nuevo-descripcion" placeholder="Opcional" />
+  </div>
+  <button id="btn-anadir-lugar">Añadir al mapa</button>
+  <div id="formulario-mensaje"></div>
+</div>
+
+<!-- N2-B: Barra de botones de filtro por categoría, parte inferior -->
+<!-- Los botones se generan dinámicamente con JS a partir de las categorías -->
+<div id="filtros-contenedor">
+  <!-- Se rellenará con JavaScript -->
+</div>
+
+<!-- Leyenda fuera del mapa; position:fixed la ancla a la esquina de la pantalla -->
+<!-- Las filas están en HTML estático para que sean robustas (no dependen de JS) -->
+<div id="leyenda">
+  <h4>Categorías</h4>
+  <div class="leyenda-fila"><div class="leyenda-cuadro" style="background:#e67e22"></div><span>Almendros o frutales</span></div>
+  <div class="leyenda-fila"><div class="leyenda-cuadro" style="background:#8e44ad"></div><span>Bancales / terrazas</span></div>
+  <div class="leyenda-fila"><div class="leyenda-cuadro" style="background:#7f8c8d"></div><span>Camino o construcción rural</span></div>
+  <div class="leyenda-fila"><div class="leyenda-cuadro" style="background:#27ae60"></div><span>Cultivo en uso</span></div>
+  <div class="leyenda-fila"><div class="leyenda-cuadro" style="background:#2ecc71"></div><span>Matorral / regeneración</span></div>
+  <div class="leyenda-fila"><div class="leyenda-cuadro" style="background:#16a085"></div><span>Olivar</span></div>
+  <div class="leyenda-fila"><div class="leyenda-cuadro" style="background:#2980b9"></div><span>Vista de valle o ladera</span></div>
+</div>
+
+<!-- Script previo a Leaflet: datos y lista lateral (sin depender de L) -->
+<script>
+  // -------------------------------------------------------
+  // 1. LOS 18 LUGARES — copiados directamente de datos/lugares.json
+  // -------------------------------------------------------
+  var lugares = [
+    {
+      "id": 1,
+      "nombre": "Camino entre cultivos de ladera",
+      "lat": 38.625263,
+      "lon": -0.131852,
+      "categoria": "Camino o construcción rural",
+      "descripcion": "Carretera con quitamiedos junto a un cultivo de frutales y vegetación en la ladera del fondo.",
+      "foto": "fotos_ejemplo/DSC01684.JPG"
+    },
+    {
+      "id": 2,
+      "nombre": "Bancales de frutales en ladera",
+      "lat": 38.638875,
+      "lon": -0.134108,
+      "categoria": "Bancales / terrazas",
+      "descripcion": "Ladera cultivada con frutales, escalonada en bancales sostenidos por muros de piedra seca.",
+      "foto": "fotos_ejemplo/DSC01923.JPG"
+    },
+    {
+      "id": 3,
+      "nombre": "Cítricos tras una valla de piedra",
+      "lat": 38.638955,
+      "lon": -0.134095,
+      "categoria": "Almendros o frutales",
+      "descripcion": "Cítricos con frutos amarillos tras una valla metálica, sobre un margen de piedra.",
+      "foto": "fotos_ejemplo/DSC01924.JPG"
+    },
+    {
+      "id": 4,
+      "nombre": "Frutales jóvenes con muretes de piedra",
+      "lat": 38.638998,
+      "lon": -0.134045,
+      "categoria": "Almendros o frutales",
+      "descripcion": "Plantación de frutales jóvenes sobre suelo seco, con muretes de piedra y montañas verdes al fondo.",
+      "foto": "fotos_ejemplo/DSC01925.JPG"
+    },
+    {
+      "id": 5,
+      "nombre": "Frutales con vegetación seca",
+      "lat": 38.59288,
+      "lon": -0.062098,
+      "categoria": "Almendros o frutales",
+      "descripcion": "Frutales junto a un terreno con vegetación seca y herbácea entre los árboles.",
+      "foto": "fotos_ejemplo/DSC02256.JPG"
+    },
+    {
+      "id": 6,
+      "nombre": "Olivo junto a un muro de piedra seca",
+      "lat": 38.59288,
+      "lon": -0.062098,
+      "categoria": "Olivar",
+      "descripcion": "Olivo grande junto a un muro de piedra seca, sobre suelo claro y pedregoso.",
+      "foto": "fotos_ejemplo/DSC02257.JPG"
+    },
+    {
+      "id": 7,
+      "nombre": "Frutal en bancales de piedra seca",
+      "lat": 38.59288,
+      "lon": -0.062098,
+      "categoria": "Bancales / terrazas",
+      "descripcion": "Frutal en un bancal delimitado por muros de piedra seca dispuestos en terrazas.",
+      "foto": "fotos_ejemplo/DSC02258.JPG"
+    },
+    {
+      "id": 8,
+      "nombre": "Frutal tras valla, suelo desnudo",
+      "lat": 38.657793,
+      "lon": -0.101605,
+      "categoria": "Almendros o frutales",
+      "descripcion": "Frutal tras una valla metálica con portón, sobre suelo de tierra desnuda.",
+      "foto": "fotos_ejemplo/DSC02588.JPG"
+    },
+    {
+      "id": 9,
+      "nombre": "Cultivo de frutales junto a la ladera",
+      "lat": 38.657793,
+      "lon": -0.101605,
+      "categoria": "Almendros o frutales",
+      "descripcion": "Cultivo de frutales tras valla y murete de piedra, con la ladera al fondo.",
+      "foto": "fotos_ejemplo/DSC02589.JPG"
+    },
+    {
+      "id": 10,
+      "nombre": "Frutales con la montaña al fondo",
+      "lat": 38.657908,
+      "lon": -0.101631,
+      "categoria": "Almendros o frutales",
+      "descripcion": "Frutales tras una valla metálica sobre suelo seco, con una montaña difuminada al fondo.",
+      "foto": "fotos_ejemplo/DSC02590.JPG"
+    },
+    {
+      "id": 11,
+      "nombre": "Frutales junto a un camino",
+      "lat": 38.657948,
+      "lon": -0.10166,
+      "categoria": "Bancales / terrazas",
+      "descripcion": "Frutales sobre un margen de piedra seca cubierto de hierba seca, junto a un camino.",
+      "foto": "fotos_ejemplo/DSC02591.JPG"
+    },
+    {
+      "id": 12,
+      "nombre": "Bancales cultivados y casas rurales",
+      "lat": 38.658143,
+      "lon": -0.101758,
+      "categoria": "Cultivo en uso",
+      "descripcion": "Vista, a través de una valla, de bancales cultivados con frutales y construcciones rurales.",
+      "foto": "fotos_ejemplo/DSC02592.JPG"
+    },
+    {
+      "id": 13,
+      "nombre": "Hilera de frutales ante el matorral",
+      "lat": 38.668517,
+      "lon": -0.11724,
+      "categoria": "Almendros o frutales",
+      "descripcion": "Hilera de frutales sobre suelo seco, con una ladera de matorral al fondo.",
+      "foto": "fotos_ejemplo/DSC02664.JPG"
+    },
+    {
+      "id": 14,
+      "nombre": "Matorral y árboles sobre el valle",
+      "lat": 38.669493,
+      "lon": -0.118918,
+      "categoria": "Matorral / regeneración",
+      "descripcion": "Árboles dispersos sobre suelo pedregoso con vegetación seca y vistas a un valle cultivado.",
+      "foto": "fotos_ejemplo/DSC02669.JPG"
+    },
+    {
+      "id": 15,
+      "nombre": "Frutales y muro con flores",
+      "lat": 38.63712,
+      "lon": -0.11702,
+      "categoria": "Vista de valle o ladera",
+      "descripcion": "Frutales y un muro de piedra con flores, con montañas al fondo del valle.",
+      "foto": "fotos_ejemplo/DSC02775.JPG"
+    },
+    {
+      "id": 16,
+      "nombre": "Bancales escalonados de piedra seca",
+      "lat": 38.63712,
+      "lon": -0.11702,
+      "categoria": "Bancales / terrazas",
+      "descripcion": "Muros de piedra seca escalonados en bancales, con frutales y vegetación seca encima.",
+      "foto": "fotos_ejemplo/DSC02776.JPG"
+    },
+    {
+      "id": 17,
+      "nombre": "Panorámica del valle cultivado",
+      "lat": 38.63712,
+      "lon": -0.11702,
+      "categoria": "Vista de valle o ladera",
+      "descripcion": "Panorámica de un valle con laderas cubiertas de cultivos de frutales y construcciones dispersas.",
+      "foto": "fotos_ejemplo/DSC02777.JPG"
+    },
+    {
+      "id": 18,
+      "nombre": "Frutales bajo malla en bancales",
+      "lat": 38.63712,
+      "lon": -0.11702,
+      "categoria": "Cultivo en uso",
+      "descripcion": "Cultivo de frutales cubierto con malla protectora, sobre bancales de piedra seca.",
+      "foto": "fotos_ejemplo/DSC02778.JPG"
+    }
+  ];
+
+  // -------------------------------------------------------
+  // N1-A: COLORES POR CATEGORÍA
+  // Este objeto es el ÚNICO lugar donde se definen los colores.
+  // Para cambiar el color de una categoría, basta con editar el valor aquí.
+  // -------------------------------------------------------
+  var coloresPorCategoria = {
+    "Almendros o frutales":     "#e67e22",  // naranja
+    "Bancales / terrazas":      "#8e44ad",  // morado
+    "Camino o construcción rural": "#7f8c8d", // gris medio
+    "Cultivo en uso":           "#27ae60",  // verde
+    "Matorral / regeneración":  "#2ecc71",  // verde claro
+    "Olivar":                   "#16a085",  // verde azulado
+    "Vista de valle o ladera":  "#2980b9"   // azul
+  };
+
+  // Color de reserva si la categoría no está en el objeto anterior
+  var colorPorDefecto = "#95a5a6"; // gris claro
+
+  // -------------------------------------------------------
+  // N3-A: FAVORITOS — gestión con localStorage
+  // La clave que usamos en localStorage para guardar los favoritos.
+  // El valor almacenado es un array JSON de IDs numéricos.
+  // -------------------------------------------------------
+  var CLAVE_FAVORITOS = 'taller-geo-ia-favoritos';
+
+  // Carga los favoritos guardados; si no hay nada, devuelve un array vacío.
+  function cargarFavoritos() {
+    try {
+      var datos = localStorage.getItem(CLAVE_FAVORITOS);
+      return datos ? JSON.parse(datos) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  // Guarda el array de IDs de favoritos en localStorage.
+  function guardarFavoritos(ids) {
+    try {
+      localStorage.setItem(CLAVE_FAVORITOS, JSON.stringify(ids));
+    } catch (e) {
+      // Si localStorage no está disponible, simplemente no guardamos.
+    }
+  }
+
+  // Comprueba si un lugar (por su id) está en favoritos.
+  function esFavorito(id) {
+    var ids = cargarFavoritos();
+    return ids.indexOf(id) !== -1;
+  }
+
+  // Alterna el estado favorito de un lugar: lo añade si no estaba, lo quita si estaba.
+  // Devuelve true si ahora ES favorito, false si ya no lo es.
+  function alternarFavorito(id) {
+    var ids = cargarFavoritos();
+    var posicion = ids.indexOf(id);
+    if (posicion === -1) {
+      ids.push(id);
+      guardarFavoritos(ids);
+      return true;
+    } else {
+      ids.splice(posicion, 1);
+      guardarFavoritos(ids);
+      return false;
+    }
+  }
+
+  // -------------------------------------------------------
+  // N3-C: MODO OSCURO — gestión con localStorage
+  // La clave en localStorage para recordar el modo elegido.
+  // -------------------------------------------------------
+  var CLAVE_MODO = 'taller-geo-ia-modo';
+
+  // Aplica el modo oscuro o claro al body y actualiza el botón.
+  // Se llama tanto al inicializar como al pulsar el botón.
+  function aplicarModo(oscuro) {
+    var btn = document.getElementById('btn-modo-oscuro');
+    if (oscuro) {
+      document.body.classList.add('modo-oscuro');
+      if (btn) btn.textContent = '☀️ Modo claro';
+    } else {
+      document.body.classList.remove('modo-oscuro');
+      if (btn) btn.textContent = '🌙 Modo oscuro';
+    }
+    // Guardar la preferencia en localStorage para recordarla al recargar
+    try {
+      localStorage.setItem(CLAVE_MODO, oscuro ? 'oscuro' : 'claro');
+    } catch (e) {}
+  }
+
+  // Leer el modo guardado y aplicarlo ANTES de que el usuario haga nada
+  // (se ejecuta aquí, en el primer script, para evitar el "parpadeo" de modo)
+  (function() {
+    var modoGuardado = null;
+    try { modoGuardado = localStorage.getItem(CLAVE_MODO); } catch(e) {}
+    if (modoGuardado === 'oscuro') {
+      document.body.classList.add('modo-oscuro');
+    }
+  })();
+
+  // -------------------------------------------------------
+  // N2-C: LISTA LATERAL — se construye aquí, ANTES de Leaflet,
+  // para que siempre sea visible aunque el mapa tarde en cargar.
+  // Los click handlers usan "marcadores" y "mapa" que se definen
+  // más abajo (después de cargar Leaflet); el guard "if (!item)"
+  // los protege si se pulsa antes de que Leaflet esté listo.
+  // -------------------------------------------------------
+  var marcadores = []; // se llenará tras cargar Leaflet
+  var listaLugares = document.getElementById('lista-lugares');
+
+  // -------------------------------------------------------
+  // N3-B: Contador de IDs para los lugares añadidos por el formulario.
+  // Empieza en 100 para no colisionar con los 18 originales (IDs 1-18).
+  // -------------------------------------------------------
+  var siguienteId = 100;
+
+  // -------------------------------------------------------
+  // Función reutilizable: añade un elemento <li> a la lista lateral
+  // para el lugar indicado, con el índice en el array "marcadores".
+  // Se usa tanto al inicializar (18 lugares) como al añadir uno nuevo.
+  // -------------------------------------------------------
+  function anadirItemLista(lugar, indice) {
+    var color = coloresPorCategoria[lugar.categoria] || colorPorDefecto;
+
+    var li = document.createElement('li');
+    li.setAttribute('data-id', lugar.id);
+
+    var punto = document.createElement('span');
+    punto.className = 'punto-cat';
+    punto.style.background = color;
+
+    var nombre = document.createElement('span');
+    nombre.className = 'nombre-lugar';
+    nombre.textContent = lugar.nombre;
+
+    // Estrella de favorito: refleja el estado guardado y permite cambiarlo
+    // directamente desde la lista (sin tener que abrir el popup en el mapa).
+    var favInicial = esFavorito(lugar.id);
+    var estrella = document.createElement('span');
+    estrella.className = favInicial ? 'estrella-lista es-favorito' : 'estrella-lista';
+    estrella.textContent = favInicial ? '★' : '☆';
+    estrella.title = favInicial ? 'Quitar de favoritos' : 'Añadir a favoritos';
+    estrella.addEventListener('click', function(e) {
+      e.stopPropagation();   // que no vuele al mapa al pulsar la estrella
+      var ahoraFav = alternarFavorito(lugar.id);
+      if (typeof sincronizarFavorito === 'function') {
+        sincronizarFavorito(lugar.id, ahoraFav);
+      }
+    });
+
+    li.appendChild(punto);
+    li.appendChild(nombre);
+    li.appendChild(estrella);
+    li.title = lugar.categoria || 'Sin categoría';
+
+    li.addEventListener('click', function() {
+      var item = marcadores[indice];
+      if (!item || typeof mapa === 'undefined') return;
+
+      mapa.flyTo([lugar.lat, lugar.lon], 16);
+      mapa.once('moveend', function() {
+        item.marcador.openPopup();
+      });
+    });
+
+    listaLugares.appendChild(li);
+  }
+
+  lugares.forEach(function(lugar, indice) {
+    anadirItemLista(lugar, indice);
+  });
+
+  // Actualiza el título de la lista lateral con el número actual de lugares
+  function actualizarTituloLista() {
+    var titulo = document.getElementById('titulo-lista');
+    if (titulo) {
+      titulo.textContent = 'Lugares (' + marcadores.length + ')';
+    }
+  }
+</script>
+
+<!-- Librería de Leaflet 1.9.4 desde su CDN -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
+
+<script>
+  // -------------------------------------------------------
+  // 2. CREAR EL MAPA — con centro de respaldo por si la lista estuviera vacía
+  // -------------------------------------------------------
+  var mapa = L.map('mapa').setView([38.65, -0.10], 12);
+
+  // Capa de teselas de OpenStreetMap (gratuita, sin necesidad de clave de API)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19
+  }).addTo(mapa);
+
+  // Notificamos a Leaflet que el contenedor puede haber cambiado de tamaño
+  // al estar dentro de un flex (necesario para que pinte los tiles correctamente)
+  mapa.invalidateSize();
+
+  // -------------------------------------------------------
+  // 3. AÑADIR UN CÍRCULO POR CADA LUGAR (L.circleMarker)
+  //    Al hacer clic se abre un popup con nombre, foto y descripción
+  //
+  // N2-A: Los marcadores se guardan en el array "marcadores" para poder
+  //        mostrarlos u ocultarlos desde el buscador.
+  // N2-B: El mismo array sirve también para el filtro por categoría.
+  // -------------------------------------------------------
+
+  lugares.forEach(function(lugar) {
+    var color = coloresPorCategoria[lugar.categoria] || colorPorDefecto;
+
+    var circulo = L.circleMarker([lugar.lat, lugar.lon], {
+      radius: 9,
+      fillColor: color,
+      color: "#fff",
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0.9
+    });
+
+    // -------------------------------------------------------
+    // N1-B: FOTO DENTRO DEL POPUP
+    // -------------------------------------------------------
+    var rutaFoto = '../' + lugar.foto;
+
+    function generarHtmlPopupConFoto(lug, rutaF) {
+      return function() {
+        var favorito = esFavorito(lug.id);
+        var textoEstrella = favorito ? '★ Quitar de favoritos' : '☆ Añadir a favoritos';
+        var claseEstrella = favorito ? 'btn-favorito es-favorito' : 'btn-favorito';
+
+        return '<strong>' + lug.nombre + '</strong>' +
+          '<br><img src="' + rutaF + '" alt="Foto de ' + lug.nombre + '" ' +
+          'class="popup-foto" onerror="this.style.display=\'none\'">' +
+          '<br>' + lug.descripcion +
+          '<br><button class="' + claseEstrella + '" ' +
+          'data-id="' + lug.id + '">' + textoEstrella + '</button>';
+      };
+    }
+
+    circulo.bindPopup(generarHtmlPopupConFoto(lugar, rutaFoto));
+    circulo.addTo(mapa);
+
+    marcadores.push({ marcador: circulo, lugar: lugar });
+  });
+
+  // -------------------------------------------------------
+  // N3-A: ENGANCHAR EL BOTÓN DE ESTRELLA AL ABRIR CADA POPUP
+  // -------------------------------------------------------
+  mapa.on('popupopen', function(evento) {
+    var contenedorPopup = evento.popup.getElement();
+    if (!contenedorPopup) return;
+
+    var boton = contenedorPopup.querySelector('.btn-favorito');
+    if (!boton) return;
+
+    var id = parseInt(boton.getAttribute('data-id'), 10);
+
+    boton.addEventListener('click', function() {
+      var ahoresEsFavorito = alternarFavorito(id);
+
+      if (ahoresEsFavorito) {
+        boton.textContent = '★ Quitar de favoritos';
+        boton.classList.add('es-favorito');
+      } else {
+        boton.textContent = '☆ Añadir a favoritos';
+        boton.classList.remove('es-favorito');
+      }
+      // Reflejar el cambio en la estrella de la lista y, si procede, en el filtro
+      sincronizarFavorito(id, ahoresEsFavorito);
+    });
+  });
+
+  // -------------------------------------------------------
+  // N1-C: ZOOM AUTOMÁTICO — fitBounds
+  // -------------------------------------------------------
+  if (lugares.length > 0) {
+    var todasLasPosiciones = lugares.map(function(lugar) {
+      return [lugar.lat, lugar.lon];
+    });
+    mapa.fitBounds(todasLasPosiciones, { padding: [40, 40] });
+  }
+
+  // -------------------------------------------------------
+  // N2-A: BUSCADOR POR NOMBRE
+  // -------------------------------------------------------
+  var inputBuscador = document.getElementById('buscador');
+  var spanContador  = document.getElementById('buscador-contador');
+
+  // -------------------------------------------------------
+  // N2-B: FILTROS POR CATEGORÍA
+  // -------------------------------------------------------
+  var categoriaActiva = null;
+  // N3-A: cuando es true, el mapa muestra SOLO los lugares favoritos.
+  var modoFavoritos = false;
+
+  // Función central de visibilidad: aplica buscador Y filtro (categoría o
+  // favoritos) juntos.
+  function actualizarVisibilidad() {
+    var textoBusqueda = inputBuscador.value.toLowerCase().trim();
+    var visibles = 0;
+
+    marcadores.forEach(function(item) {
+      var nombreMinusculas = item.lugar.nombre.toLowerCase();
+      var pasaBuscador = textoBusqueda === '' || nombreMinusculas.indexOf(textoBusqueda) !== -1;
+      // El filtro activo es "solo favoritos" o "una categoría" (o ninguno)
+      var pasaFiltro;
+      if (modoFavoritos) {
+        pasaFiltro = esFavorito(item.lugar.id);
+      } else {
+        pasaFiltro = categoriaActiva === null || item.lugar.categoria === categoriaActiva;
+      }
+      var debeEstarVisible = pasaBuscador && pasaFiltro;
+
+      if (debeEstarVisible) {
+        if (!mapa.hasLayer(item.marcador)) {
+          item.marcador.addTo(mapa);
+        }
+        visibles++;
+      } else {
+        if (mapa.hasLayer(item.marcador)) {
+          mapa.removeLayer(item.marcador);
+        }
+      }
+    });
+
+    var hayFiltro = textoBusqueda !== '' || categoriaActiva !== null || modoFavoritos;
+    if (hayFiltro) {
+      spanContador.textContent = visibles + ' de ' + marcadores.length;
+    } else {
+      spanContador.textContent = '';
+    }
+  }
+
+  // Mantiene sincronizado el estado "favorito" en los dos sitios donde se ve:
+  // la estrella de la lista lateral y (si está activo) el filtro de favoritos.
+  function sincronizarFavorito(id, esFav) {
+    var li = listaLugares.querySelector('li[data-id="' + id + '"]');
+    if (li) {
+      var estrella = li.querySelector('.estrella-lista');
+      if (estrella) {
+        estrella.classList.toggle('es-favorito', esFav);
+        estrella.textContent = esFav ? '★' : '☆';
+        estrella.title = esFav ? 'Quitar de favoritos' : 'Añadir a favoritos';
+      }
+    }
+    // Si estamos viendo solo favoritos, recalculamos qué marcadores se ven
+    if (modoFavoritos) actualizarVisibilidad();
+  }
+
+  inputBuscador.addEventListener('input', actualizarVisibilidad);
+
+  // -------------------------------------------------------
+  // N2-B: GENERAR BOTONES DE CATEGORÍA DINÁMICAMENTE
+  // -------------------------------------------------------
+  var contenedorFiltros = document.getElementById('filtros-contenedor');
+
+  var btnTodas = document.createElement('button');
+  btnTodas.textContent = 'Todas';
+  btnTodas.className = 'btn-filtro btn-filtro-todas activo';
+  btnTodas.title = 'Mostrar todos los lugares';
+  btnTodas.addEventListener('click', function() {
+    categoriaActiva = null;
+    modoFavoritos = false;
+    marcarBotonActivo(btnTodas);
+    actualizarVisibilidad();
+  });
+  contenedorFiltros.appendChild(btnTodas);
+
+  // N3-A: botón para ver SOLO los favoritos (la otra forma de "ver" tus
+  // favoritos, además de la estrella dorada en la lista lateral).
+  var btnFavoritos = document.createElement('button');
+  btnFavoritos.textContent = '★ Favoritos';
+  btnFavoritos.className = 'btn-filtro btn-filtro-favoritos';
+  btnFavoritos.title = 'Mostrar solo tus lugares favoritos';
+  btnFavoritos.addEventListener('click', function() {
+    modoFavoritos = true;
+    categoriaActiva = null;
+    marcarBotonActivo(btnFavoritos);
+    actualizarVisibilidad();
+  });
+  contenedorFiltros.appendChild(btnFavoritos);
+
+  var todosBotones = [btnTodas, btnFavoritos];
+
+  Object.keys(coloresPorCategoria).forEach(function(categoria) {
+    var color = coloresPorCategoria[categoria];
+
+    var btn = document.createElement('button');
+    btn.textContent = categoria;
+    btn.className = 'btn-filtro';
+    btn.style.background = color;
+    btn.title = 'Mostrar solo: ' + categoria;
+
+    btn.addEventListener('click', function() {
+      categoriaActiva = categoria;
+      modoFavoritos = false;
+      marcarBotonActivo(btn);
+      actualizarVisibilidad();
+    });
+
+    contenedorFiltros.appendChild(btn);
+    todosBotones.push(btn);
+  });
+
+  function marcarBotonActivo(botonPulsado) {
+    todosBotones.forEach(function(b) {
+      b.classList.remove('activo');
+    });
+    botonPulsado.classList.add('activo');
+  }
+
+  // -------------------------------------------------------
+  // N3-B: FORMULARIO PARA AÑADIR UN LUGAR NUEVO
+  //
+  // Al pulsar "Añadir al mapa":
+  // 1. Validamos que nombre, latitud y longitud sean correctos.
+  // 2. Creamos un marcador nuevo en esas coordenadas.
+  // 3. Lo añadimos al array "marcadores" y a la lista lateral.
+  // 4. ANTI-TRAMPA: reseteamos el buscador y el filtro de categoría
+  //    para que el nuevo lugar sea visible siempre, aunque hubiera
+  //    un filtro activo antes de añadirlo.
+  // 5. Volamos hasta el nuevo punto y abrimos su popup.
+  // -------------------------------------------------------
+  var btnAnadir      = document.getElementById('btn-anadir-lugar');
+  var inputNombre    = document.getElementById('nuevo-nombre');
+  var inputLat       = document.getElementById('nuevo-lat');
+  var inputLon       = document.getElementById('nuevo-lon');
+  var inputCategoria = document.getElementById('nuevo-categoria');
+  var inputDescripcion = document.getElementById('nuevo-descripcion');
+  var divMensaje     = document.getElementById('formulario-mensaje');
+
+  function mostrarMensaje(texto, esError) {
+    divMensaje.textContent = texto;
+    divMensaje.className = esError ? '' : 'ok';
+  }
+
+  btnAnadir.addEventListener('click', function() {
+    divMensaje.textContent = '';
+    divMensaje.className = '';
+
+    // --- Validación del nombre ---
+    var nombre = inputNombre.value.trim();
+    if (!nombre) {
+      mostrarMensaje('El nombre es obligatorio.', true);
+      inputNombre.focus();
+      return;
+    }
+
+    // --- Validación de latitud ---
+    var latTexto = inputLat.value.trim().replace(',', '.');
+    var lat = parseFloat(latTexto);
+    if (isNaN(lat) || latTexto === '') {
+      mostrarMensaje('La latitud no es un número válido. Ej: 38.625', true);
+      inputLat.focus();
+      return;
+    }
+    if (lat < -90 || lat > 90) {
+      mostrarMensaje('La latitud debe estar entre -90 y 90.', true);
+      inputLat.focus();
+      return;
+    }
+
+    // --- Validación de longitud ---
+    var lonTexto = inputLon.value.trim().replace(',', '.');
+    var lon = parseFloat(lonTexto);
+    if (isNaN(lon) || lonTexto === '') {
+      mostrarMensaje('La longitud no es un número válido. Ej: -0.131', true);
+      inputLon.focus();
+      return;
+    }
+    if (lon < -180 || lon > 180) {
+      mostrarMensaje('La longitud debe estar entre -180 y 180.', true);
+      inputLon.focus();
+      return;
+    }
+
+    // --- Campos opcionales ---
+    var categoria   = inputCategoria.value.trim() || 'Sin categoría';
+    var descripcion = inputDescripcion.value.trim() || '';
+
+    // --- Crear el objeto lugar ---
+    var nuevoLugar = {
+      id: siguienteId++,
+      nombre: nombre,
+      lat: lat,
+      lon: lon,
+      categoria: categoria,
+      descripcion: descripcion,
+      foto: null   // los lugares añadidos no tienen foto
+    };
+
+    // --- Color del marcador: usa el del mapa de colores si coincide, si no gris ---
+    var color = coloresPorCategoria[nuevoLugar.categoria] || colorPorDefecto;
+
+    // --- Crear el marcador en el mapa ---
+    var circulo = L.circleMarker([lat, lon], {
+      radius: 9,
+      fillColor: color,
+      color: "#fff",
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0.9
+    });
+
+    // Popup sin foto (el lugar fue añadido a mano)
+    var htmlPopup = '<strong>' + nuevoLugar.nombre + '</strong>';
+    if (descripcion) {
+      htmlPopup += '<br>' + descripcion;
+    }
+    htmlPopup += '<br><small style="color:#888">Lat: ' + lat.toFixed(5) +
+                 ' · Lon: ' + lon.toFixed(5) + '</small>';
+
+    circulo.bindPopup(htmlPopup);
+    circulo.addTo(mapa);
+
+    // --- Guardar en el array de marcadores ---
+    var nuevoIndice = marcadores.length;
+    marcadores.push({ marcador: circulo, lugar: nuevoLugar });
+
+    // --- Añadir a la lista lateral ---
+    anadirItemLista(nuevoLugar, nuevoIndice);
+    actualizarTituloLista();
+
+    // --- ANTI-TRAMPA: limpiar buscador y filtro para que el punto sea visible ---
+    // Si hubiera un buscador activo o un filtro de categoría, el nuevo marcador
+    // podría quedar oculto. Lo evitamos reseteando ambos a su estado inicial.
+    inputBuscador.value = '';
+    spanContador.textContent = '';
+    categoriaActiva = null;
+    modoFavoritos = false;         // salir del filtro de favoritos si estaba activo
+    marcarBotonActivo(btnTodas);   // marca "Todas" como activo visualmente
+    // Hacemos todos los marcadores visibles (sin llamar a actualizarVisibilidad
+    // con texto vacío y categoría null, que ya los muestra todos)
+    actualizarVisibilidad();
+
+    // --- Volar al nuevo punto y abrir su popup ---
+    mapa.flyTo([lat, lon], 15);
+    mapa.once('moveend', function() {
+      circulo.openPopup();
+    });
+
+    // El marcador definitivo ya está en el mapa: quitamos el provisional rojo
+    limpiarMarcadorTemporal();
+
+    // --- Limpiar el formulario ---
+    inputNombre.value = '';
+    inputLat.value = '';
+    inputLon.value = '';
+    inputCategoria.value = '';
+    inputDescripcion.value = '';
+
+    mostrarMensaje('Lugar añadido correctamente.', false);
+  });
+
+  // Permitir enviar el formulario pulsando Enter en cualquier campo
+  [inputNombre, inputLat, inputLon, inputCategoria, inputDescripcion].forEach(function(campo) {
+    campo.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        btnAnadir.click();
+      }
+    });
+  });
+
+  // -------------------------------------------------------
+  // N3-B: ABRIR / CERRAR EL FORMULARIO DE AÑADIR LUGAR
+  // El formulario empieza oculto; este botón lo muestra u oculta
+  // añadiendo o quitando la clase "abierto".
+  // -------------------------------------------------------
+  var btnToggleForm = document.getElementById('btn-toggle-form');
+  var formContenedor = document.getElementById('formulario-contenedor');
+
+  // La barra superior puede ocupar 1, 2 o 3 filas según el ancho de la ventana.
+  // Para que el formulario nunca tape los botones, lo colocamos justo DEBAJO del
+  // borde inferior real de la barra (medido en cada momento), en vez de a una
+  // altura fija (que se solapaba con la barra en pantallas medianas).
+  var barraSuperior = document.getElementById('barra-superior');
+  function posicionarFormulario() {
+    if (!formContenedor.classList.contains('abierto')) return;
+    var fondoBarra = barraSuperior.getBoundingClientRect().bottom;
+    formContenedor.style.top = (fondoBarra + 8) + 'px';
+  }
+
+  // -------------------------------------------------------
+  // COGER LAS COORDENADAS CON EL RATÓN
+  // Con el formulario abierto, al hacer clic en el mapa rellenamos los campos
+  // Latitud y Longitud y dejamos un marcador provisional (rojo) en ese punto.
+  // Volver a hacer clic en el mapa lo mueve. Así el alumno no tiene que copiar
+  // coordenadas a mano: pincha donde quiere y ya están puestas.
+  // -------------------------------------------------------
+  var marcadorTemporal = null;
+
+  function limpiarMarcadorTemporal() {
+    if (marcadorTemporal) {
+      mapa.removeLayer(marcadorTemporal);
+      marcadorTemporal = null;
+    }
+  }
+
+  mapa.on('click', function(e) {
+    // Solo cogemos coordenadas mientras el formulario está abierto
+    if (!formContenedor.classList.contains('abierto')) return;
+
+    inputLat.value = e.latlng.lat.toFixed(6);
+    inputLon.value = e.latlng.lng.toFixed(6);
+
+    if (marcadorTemporal) {
+      marcadorTemporal.setLatLng(e.latlng);
+    } else {
+      marcadorTemporal = L.circleMarker(e.latlng, {
+        radius: 10,
+        fillColor: '#e74c3c',
+        color: '#fff',
+        weight: 3,
+        opacity: 1,
+        fillOpacity: 0.9,
+        dashArray: '4'
+      }).addTo(mapa);
+      marcadorTemporal.bindTooltip('Nuevo lugar aquí', { direction: 'top' });
+    }
+
+    mostrarMensaje('Coordenadas cogidas del mapa ✓', false);
+  });
+
+  btnToggleForm.addEventListener('click', function() {
+    var seAbre = !formContenedor.classList.contains('abierto');
+    formContenedor.classList.toggle('abierto', seAbre);
+    btnToggleForm.classList.toggle('activo', seAbre);
+    // Activa/desactiva el cursor de cruz sobre el mapa (modo "coger coordenadas")
+    document.body.classList.toggle('capturando-coordenadas', seAbre);
+    btnToggleForm.textContent = seAbre ? '✕ Cerrar' : '➕ Añadir lugar';
+    if (seAbre) {
+      posicionarFormulario();   // colocarlo bajo la barra antes de mostrarlo
+      inputNombre.focus();      // y llevar el foco al primer campo
+    } else {
+      limpiarMarcadorTemporal(); // al cerrar, quitamos el marcador provisional
+    }
+  });
+
+  // Si la ventana cambia de tamaño con el formulario abierto, lo recolocamos
+  // (la barra puede pasar de 1 a 2 filas y viceversa).
+  window.addEventListener('resize', posicionarFormulario);
+
+  // -------------------------------------------------------
+  // N3-C: BOTÓN DE MODO OSCURO / CLARO
+  //
+  // El botón alterna la clase "modo-oscuro" en el <body>.
+  // Los estilos CSS que dependen de esa clase se encargan de:
+  //   - Cambiar colores de fondo y texto de todos los paneles.
+  //   - Aplicar un filtro CSS sobre ".leaflet-tile-pane" para oscurecer
+  //     las imágenes del terreno (los tiles de OpenStreetMap).
+  // El modo elegido se guarda en localStorage y se aplica al recargar.
+  // -------------------------------------------------------
+  var btnModo = document.getElementById('btn-modo-oscuro');
+
+  // Actualizar el texto del botón según el modo actual (puede haberse
+  // activado el modo oscuro ya en el primer script, antes de Leaflet)
+  (function() {
+    var esOscuro = document.body.classList.contains('modo-oscuro');
+    if (btnModo) btnModo.textContent = esOscuro ? '☀️ Modo claro' : '🌙 Modo oscuro';
+  })();
+
+  btnModo.addEventListener('click', function() {
+    var ahoraOscuro = !document.body.classList.contains('modo-oscuro');
+    aplicarModo(ahoraOscuro);
+  });
+</script>
+
+</body>
+</html>

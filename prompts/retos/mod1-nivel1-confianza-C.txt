@@ -1,0 +1,20 @@
+Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
+tú y explícame en español qué cambias. (PAPEL)
+
+Ya tengo mi mapa funcionando en "modulo-1-mapa/index.html" con los 18 lugares. Ahora
+mismo el mapa arranca con un centro y un zoom fijos que escribí al crearlo. (CONTEXTO)
+
+Quiero que, al abrir la página, el mapa ajuste solo el centro y el zoom para que se
+vean TODOS los marcadores a la vez en pantalla, sin que yo tenga que alejar el zoom.
+Para eso, calcula el encuadre a partir de las coordenadas de todos los lugares (por
+ejemplo, reúne todas las posiciones y usa map.fitBounds con un pequeño margen/padding
+para que ningún punto quede pegado al borde). (TAREA)
+
+El encuadre debe salir SIEMPRE de los datos actuales, no de números fijos: si en el
+futuro añado un lugar nuevo (aunque esté lejos), al recargar debería recalcularse y
+seguir entrando todo en pantalla. Puedes dejar el center/zoom anterior solo como
+respaldo por si la lista estuviera vacía. Sigue siendo un solo archivo que abro con
+doble clic, sin servidor ni librerías nuevas. (FORMATO)
+
+Haz solo este cambio, sin tocar el resto del mapa. Al terminar, dime qué recargar y
+cómo comprobar que al abrir caben todos los puntos. (LÍMITES)

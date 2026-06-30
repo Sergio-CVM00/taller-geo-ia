@@ -1,7 +1,9 @@
-# Construye tu primera app web hablando en español 🌍🗺️
+![GEOIA - Taller de la Universidad de Sevilla](portada-readme.svg)
+
+# Construye tu primera app web hablando en español
 
 **Universidad de Sevilla · Cátedra de IA US-Google · Cactus Accelerative Innovation**
-📅 29 y 30 de junio de 2026 · 🕔 17:00 · Facultad de Geografía e Historia
+29 y 30 de junio de 2026 · 17:00 · Facultad de Geografía e Historia
 
 ---
 
@@ -17,44 +19,37 @@ de IA (**Google Antigravity**) y él lo programa por ti. Tú **diriges, miras y 
 > programar; es lo que te atrevas a imaginar.
 > **Imagínalo → pídeselo → inténtalo.**
 
-## El plan, en dos días
+## El plan del taller
 
-Montas **GEOIA** en **tres piezas**, de lo más visible a lo más profundo. Cada una en
-su carpeta, con su guía y su prompt listo para pegar:
+**GEOIA** se construye por piezas, una por módulo:
 
-- 🗺️ **Día 1 — El mapa** (`mod1-frontend/`): la parte que se ve. Un mapa en el
-  navegador con los lugares marcados; pulsas uno y ves su nombre y su descripción.
-- ⚙️ **Día 2 — El servidor** (`mod2-backend/`): la parte que no se ve pero hace el
-  trabajo. Un programita que entrega y recibe lugares (como un camarero que te trae
-  lo que le pides).
-- 💾 **Día 2 — La memoria** (`mod3-base-de-datos/`): donde los lugares se **guardan
-  de verdad** y no se pierden aunque apagues todo.
+- **Día 1 — El mapa** (`modulo-1-mapa/`): un mapa en el navegador con los lugares
+  marcados; pulsas uno y ves su nombre y su descripción. Su guía trae el prompt listo
+  para pegar.
+- **Día 2 — El servidor y la memoria** (`modulo-2-servidor/`, `modulo-3-memoria/`):
+  el motor que sirve los datos y la base de datos que los recuerda; y al final,
+  **compartes tu app** con un enlace.
 
-Y el broche del Día 2: 🌍 **comparte GEOIA** con un enlace temporal para que otra
-persona la abra desde su móvil (guía en [`guia/compartir-tu-app.md`](guia/compartir-tu-app.md)).
-
-> 💡 Cada pieza es **independiente**: todas parten de los mismos datos de ejemplo
-> (`datos/`). Puedes hacerlas en orden o **saltar a la siguiente** aunque no hayas
-> terminado la anterior. No te quedas atascado/a.
+> ¿Quieres el **mapa completo del viaje** (qué construyes cada día, los prompts y cómo
+> sabrás que va bien)? Está en los ficheros de cada día:
+> **[`prompts/dia1.md`](prompts/dia1.md)** y **[`prompts/dia2.md`](prompts/dia2.md)**.
+> El Día 1 montas el mapa; lo demás lo descubrimos en directo.
 >
-> *(Por curiosidad: el mapa usa una librería llamada Leaflet; el servidor, Python;
-> la memoria, SQLite. No necesitas saber qué son: el agente se encarga.)*
+> *(Por curiosidad: el mapa usa una librería llamada Leaflet. No necesitas saber qué
+> es: el agente se encarga.)*
 
 ## Cómo empezar (3 pasos)
 
-1. **Antes del taller** → lee y haz **[`00-ANTES-DEL-TALLER.md`](00-ANTES-DEL-TALLER.md)**.
-   Son 15–20 minutos y así el primer día arrancas con todo listo. (Si te atascas, no
-   pasa nada: abrimos la sala a las 16:30 para echarte una mano.)
-2. **En el taller** → abre **Google Antigravity** y carga esta carpeta
-   `taller-geo-ia` (arrástrala a la ventana, o usa su botón de abrir/añadir carpeta).
-3. **Sigue la guía de cada pieza** → empieza por **[`mod1-frontend/`](mod1-frontend/README.md)**
-   el Día 1; sigue con **[`mod2-backend/`](mod2-backend/README.md)** y
-   **[`mod3-base-de-datos/`](mod3-base-de-datos/README.md)** el Día 2. Cada guía trae
-   el prompt para copiar y pegar.
+1. **Antes del taller** → lee **[`INSTRUCCIONES.md`](INSTRUCCIONES.md)** e instala los
+   requisitos (el agente de IA, `uv`). Son 15–20 minutos. (Si te atascas, no pasa nada:
+   abrimos la sala a las 16:30 para echarte una mano.)
+2. **En el taller** → abre tu **agente de IA** (Antigravity u OpenCode) y carga esta
+   carpeta `taller-geo-ia` (arrástrala a la ventana o usa su botón de abrir carpeta).
+3. **Sigue el día** → abre **[`prompts/dia1.md`](prompts/dia1.md)**: trae el prompt
+   para copiar, dónde va tu archivo, cómo saber que va bien y los retos. Todo junto.
 
-> 🧭 ¿Te pierde alguna palabra (mapa, servidor, base de datos, prompt…)? Tienes una
-> **chuleta** de bolsillo en **[`guia/chuleta-conceptos.md`](guia/chuleta-conceptos.md)**
-> y todos los prompts juntos en **[`guia/prompts.md`](guia/prompts.md)**.
+> ¿Es tu primera vez con un agente? El propio `prompts/dia1.md` empieza con un
+> **calentamiento** opcional (una página web sencilla para perderle el miedo).
 
 ## Los datos del mapa
 
@@ -65,18 +60,23 @@ el agente los usa por ti.
 
 ## Qué hay en esta carpeta
 
-- 📄 **`00-ANTES-DEL-TALLER.md`** — empieza aquí (preparación, en casa).
-- 🗺️ **`mod1-frontend/`** — Día 1: el mapa.
-- ⚙️ **`mod2-backend/`** — Día 2: el servidor.
-- 💾 **`mod3-base-de-datos/`** — Día 2: la memoria.
-- 📊 **`datos/`** — los 18 lugares de ejemplo.
-- 📸 **`fotos_ejemplo/`** — las fotos de esos lugares.
-- 📝 **`prompts/`** — los prompts listos para copiar y pegar (un `.txt` por paso).
-- 🧭 **`guia/`** — la chuleta de conceptos, el **mapa de módulos** (qué hacemos en cada
-  paso) y cómo **compartir GEOIA**.
+- **`INSTRUCCIONES.md`** — empieza aquí (requisitos, pasos y retos, todo junto).
+- **`modulo-1-mapa/`** — Día 1: el mapa (aquí creas tu `index.html`).
+- **`modulo-2-servidor/`** — Día 2: el servidor (aquí creas tu `main.py`).
+- **`modulo-3-memoria/`** — Día 2: la base de datos (aquí creas tu `main.py`).
+- **`datos/`** — los 18 lugares de ejemplo.
+- **`fotos_ejemplo/`** — las fotos de esos lugares.
+- **`prompts/`** — **un fichero por día** con todo (`dia1.md`, `dia2.md`) y, en
+  `prompts/retos/`, un prompt de solución por cada reto del Módulo 1.
+- **`ejemplo-terminado/`** — un mapa de ejemplo con los retos del Módulo 1 ya hechos.
+- **`presentacion/`** — la presentación del taller para repasarla a tu ritmo.
+
+> Cada módulo **ya tiene su carpeta con un `README`** que te dice qué construir ahí.
+> Las de los Módulos 2 y 3 empiezan vacías (solo el `README`): el archivo lo creas tú
+> el Día 2 hablando con el agente.
 
 ---
 
-📷 Las fotos y coordenadas de ejemplo son de **B. Zaragozí (Alicante)** —
+Las fotos y coordenadas de ejemplo son de **B. Zaragozí (Alicante)** —
 gracias por compartirlas. Los materiales del taller son de uso libre. Los detalles
 están en [`ATRIBUCION-DATOS.md`](ATRIBUCION-DATOS.md).

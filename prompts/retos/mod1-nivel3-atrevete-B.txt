@@ -1,0 +1,23 @@
+Eres un desarrollador web que me ayuda paso a paso. No sé programar, así que hazlo
+tú y explícame en español qué cambias. (PAPEL)
+
+Ya tengo mi mapa funcionando en "modulo-1-mapa/index.html" con los 18 lugares. Es
+posible que ya tenga también un buscador por nombre o botones para filtrar por
+categoría. (CONTEXTO)
+
+Quiero un pequeño formulario en la página para añadir un lugar nuevo escribiendo su
+nombre, su latitud y su longitud (la categoría y la descripción pueden ser opcionales).
+Al enviar el formulario, que aparezca un marcador nuevo en el mapa en esas coordenadas,
+con su popup de nombre (y descripción si la escribí). (TAREA)
+
+Detalles importantes: comprueba que la latitud y la longitud son números válidos antes
+de añadir el punto y, si no lo son, avísame con un mensaje sencillo en vez de romperse.
+Y EVITA ESTA TRAMPA: si en ese momento tengo un buscador o un filtro de categoría
+activo, el lugar recién añadido puede quedar oculto y parecer que "no se ha añadido".
+Haz que, al añadir un lugar, el mapa y la lista queden coherentes: por ejemplo, quita
+el filtro/búsqueda activos (o asegúrate de que el lugar nuevo se muestre igualmente),
+de modo que el punto nuevo se vea siempre. Sigue siendo un solo archivo que abro con
+doble clic, sin servidor ni librerías nuevas. (FORMATO)
+
+Haz solo este cambio, sin romper los popups ni lo que ya funciona. Al terminar, dime
+qué recargar y cómo probar que el lugar nuevo aparece aunque tenga un filtro puesto. (LÍMITES)
