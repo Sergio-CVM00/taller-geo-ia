@@ -15,8 +15,8 @@ contenido y pégaselo al agente.
 
 ## Día 2 — el servidor, la memoria y compartir
 
-- **`prompts/dia2-servidor.txt`** — el servidor (Módulo 2) → crea `modulo-2-servidor/`.
-- **`prompts/dia2-memoria.txt`** — la base de datos (Módulo 3) → crea `modulo-3-memoria/`.
+- **`prompts/dia2-servidor.txt`** — el servidor (Módulo 2) → tu `main.py` en `modulo-2-servidor/`.
+- **`prompts/dia2-memoria.txt`** — la base de datos (Módulo 3) → tu `main.py` en `modulo-3-memoria/`.
 - **`prompts/dia2-compartir.txt`** — comparte tu app con un enlace temporal (ngrok).
 
 ## Antes del taller (opcional)

@@ -69,9 +69,11 @@ Se construye **GEOIA** (de *Geo* + *IA*), una app de **mapa de lugares**, por pi
   Como el Módulo 2 pero guardando en una base de datos **SQLite** (`lugares.db`), que
   ya viene con Python, para que los datos **no se pierdan** al apagar el servidor.
 
-> **Trabaja solo el módulo que te pidan.** No te adelantes ni hagas spoilers de otros
-> módulos: si la persona está en el mapa, no le montes el servidor. Crea **solo** la
-> carpeta del módulo en el que estáis; si otra no existe todavía, es que **aún no toca**.
+> **Las tres carpetas ya existen** (`modulo-1-mapa/`, `modulo-2-servidor/`,
+> `modulo-3-memoria/`), cada una con su `README.md`. **Crea los archivos del alumno
+> DENTRO de la carpeta de su módulo** (`index.html` o `main.py`, según toque).
+> **Trabaja solo el módulo que te pidan** y no toques las demás carpetas: si la persona
+> está en el mapa, no le montes el servidor. No te adelantes ni hagas spoilers.
 
 ## El modelo de datos (un "lugar")
 

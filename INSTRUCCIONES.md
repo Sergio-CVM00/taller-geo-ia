@@ -43,11 +43,13 @@ Botón verde **`Code` → `Download ZIP`** → **descomprime** → abre la carpe
 Copia el prompt de cada paso y **pégaselo al agente**. De uno en uno, y recuerda:
 **tarea nueva → chat nuevo**.
 
-1. **Día 1 · El mapa** → `prompts/dia1-mapa.txt` *(crea `modulo-1-mapa/`)*.
+1. **Día 1 · El mapa** → `prompts/dia1-mapa.txt` *(tu archivo va en `modulo-1-mapa/`)*.
    ¿Primera vez con un agente? Calienta con `prompts/dia1-calentamiento.txt`.
-2. **Día 2 · El servidor** → `prompts/dia2-servidor.txt` *(crea `modulo-2-servidor/`)*.
-3. **Día 2 · La memoria** → `prompts/dia2-memoria.txt` *(crea `modulo-3-memoria/`)*.
+2. **Día 2 · El servidor** → `prompts/dia2-servidor.txt` *(en `modulo-2-servidor/`)*.
+3. **Día 2 · La memoria** → `prompts/dia2-memoria.txt` *(en `modulo-3-memoria/`)*.
 4. **Día 2 · Compártelo** → `prompts/dia2-compartir.txt` *(un enlace temporal con ngrok)*.
+
+> Cada módulo tiene su **carpeta con un `README`** que explica qué construir ahí.
 
 ---
 

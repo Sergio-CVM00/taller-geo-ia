@@ -1,5 +1,5 @@
-# Módulo 1 — El frontend de GEOIA: tu mapa en el navegador
-**Día 1 · lo construyes con Antigravity, sin escribir código**
+# Módulo 1 — El mapa de GEOIA: tu mapa en el navegador
+**Día 1 · lo construyes con tu agente de IA, sin escribir código**
 
 > **Pieza independiente.** Solo usa los datos de
 > [`../datos/lugares.json`](../datos/lugares.json). Aunque empieces por aquí, funciona.

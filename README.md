@@ -69,7 +69,9 @@ el agente los usa por ti.
 ## Qué hay en esta carpeta
 
 - **`INSTRUCCIONES.md`** — empieza aquí (requisitos, pasos y retos, todo junto).
-- **`modulo-1-mapa/`** — Día 1: el mapa.
+- **`modulo-1-mapa/`** — Día 1: el mapa (aquí creas tu `index.html`).
+- **`modulo-2-servidor/`** — Día 2: el servidor (aquí creas tu `main.py`).
+- **`modulo-3-memoria/`** — Día 2: la base de datos (aquí creas tu `main.py`).
 - **`datos/`** — los 18 lugares de ejemplo.
 - **`fotos_ejemplo/`** — las fotos de esos lugares.
 - **`prompts/`** — los prompts listos para copiar y pegar (un `.txt` por paso).
@@ -77,8 +79,9 @@ el agente los usa por ti.
 - **`ejemplo-terminado/`** — un mapa de ejemplo con los retos del Módulo 1 ya hechos.
 - **`presentacion/`** — la presentación del taller para repasarla a tu ritmo.
 
-> El **Día 2** crearás dos carpetas más hablando con el agente: `modulo-2-servidor/`
-> (el servidor) y `modulo-3-memoria/` (la base de datos). Aún no están: las montas tú.
+> Cada módulo **ya tiene su carpeta con un `README`** que te dice qué construir ahí.
+> Las de los Módulos 2 y 3 empiezan vacías (solo el `README`): el archivo lo creas tú
+> el Día 2 hablando con el agente.
 
 ---
 
