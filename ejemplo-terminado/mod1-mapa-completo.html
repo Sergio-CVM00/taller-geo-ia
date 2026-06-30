@@ -1250,14 +1250,31 @@
   var btnToggleForm = document.getElementById('btn-toggle-form');
   var formContenedor = document.getElementById('formulario-contenedor');
 
+  // La barra superior puede ocupar 1, 2 o 3 filas según el ancho de la ventana.
+  // Para que el formulario nunca tape los botones, lo colocamos justo DEBAJO del
+  // borde inferior real de la barra (medido en cada momento), en vez de a una
+  // altura fija (que se solapaba con la barra en pantallas medianas).
+  var barraSuperior = document.getElementById('barra-superior');
+  function posicionarFormulario() {
+    if (!formContenedor.classList.contains('abierto')) return;
+    var fondoBarra = barraSuperior.getBoundingClientRect().bottom;
+    formContenedor.style.top = (fondoBarra + 8) + 'px';
+  }
+
   btnToggleForm.addEventListener('click', function() {
     var seAbre = !formContenedor.classList.contains('abierto');
     formContenedor.classList.toggle('abierto', seAbre);
     btnToggleForm.classList.toggle('activo', seAbre);
     btnToggleForm.textContent = seAbre ? '✕ Cerrar' : '➕ Añadir lugar';
-    // Al abrir, llevamos el foco al primer campo para escribir directamente
-    if (seAbre) inputNombre.focus();
+    if (seAbre) {
+      posicionarFormulario();   // colocarlo bajo la barra antes de mostrarlo
+      inputNombre.focus();      // y llevar el foco al primer campo
+    }
   });
+
+  // Si la ventana cambia de tamaño con el formulario abierto, lo recolocamos
+  // (la barra puede pasar de 1 a 2 filas y viceversa).
+  window.addEventListener('resize', posicionarFormulario);
 
   // -------------------------------------------------------
   // N3-C: BOTÓN DE MODO OSCURO / CLARO
