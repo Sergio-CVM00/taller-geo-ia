@@ -14,7 +14,7 @@ una app web (un mapa de lugares), **hablando en español con una IA**. No progra
 | Qué | Para qué | Dónde |
 |---|---|---|
 | **Un agente de IA** *(elige uno; valen los dos)* | hablarle y que construya por ti | **Antigravity** → `antigravity.google` (entra con una cuenta **`@gmail` personal**, la **`@us.es` NO** funciona) · **OpenCode** → `opencode.ai/download` (app de escritorio, lo más fácil; pasos abajo ↓) |
-| **uv** (de Astral) | preparar Python (Módulos 2 y 3) | `astral.sh/uv` — o deja que lo haga el agente con el prompt de abajo ↓ |
+| **uv** (de Astral) | preparar Python (Módulos 2 y 3) | **deja que lo instale el agente** con el prompt de abajo ↓ (lo pone con `winget`, sin que toques nada) |
 | **ngrok** | compartir tu app al final | `ngrok.com/download` — el agente lo instala cuando llegues a ese reto |
 
 <details>
@@ -23,60 +23,24 @@ una app web (un mapa de lugares), **hablando en español con una IA**. No progra
 ```text
 Eres un asistente que me prepara el entorno para un taller. No sé programar, así que
 hazlo tú y explícamelo en pasos sencillos.
-Comprueba si tengo instalados uv y Python (para los módulos 2 y 3). Lo que falte, instálalo tú, paso a paso,
-enseñándome los comandos. Al terminar, dime en una frase si está todo listo o qué ha
-fallado.
+Estoy en Windows 11. Comprueba si tengo uv instalado (con "uv --version"). Si no lo
+tengo, instálalo tú con winget: "winget install --id=astral-sh.uv -e" (es el
+instalador oficial de uv, https://docs.astral.sh/uv/getting-started/installation/).
+Enséñame cada comando antes de ejecutarlo y, al terminar, vuelve a comprobar con
+"uv --version" y dime en una frase si está todo listo o qué ha fallado.
 ```
 </details>
 
 > **¿Eliges OpenCode? (casi todos vais con Windows 11)** · Descarga: **`opencode.ai/download`**
-> - **Lo más fácil (recomendado):** descarga el instalador de Windows con este enlace
->   directo → **`opencode.ai/download/stable/windows-x64-nsis`** e instálalo como
->   cualquier programa (doble clic → *Siguiente* → *Siguiente* → abrir). Es una app
->   directa, sin terminal (está en *beta*, pero va bien). *(Si el enlace no funciona,
->   entra en `opencode.ai/download` y elige Windows.)*
+> - **Instálalo como cualquier programa (sin terminal, sin Node):** descarga el
+>   instalador `.exe` de Windows con este enlace directo →
+>   **`opencode.ai/download/stable/windows-x64-nsis`** y ábrelo (doble clic →
+>   *Siguiente* → *Siguiente* → abrir). Es la app de escritorio (está en *beta*, pero
+>   va bien). *(Si el enlace no funciona, entra en `opencode.ai/download` y elige
+>   Windows.)*
 > - **Tokens (gratis):** al abrir la app, sigue el paso para **conectar tu cuenta**
 >   (te lleva a `opencode.ai/auth`) y elige **OpenCode Zen**, su capa gratuita.
-> - *Vías avanzadas (terminal), por si prefieres:* `npm i -g opencode-ai@latest` (antes
->   Node.js), o Scoop/Chocolatey — o deja que lo haga el agente con el prompt de abajo ↓.
 > - ¿Se te resiste? Usa **Antigravity** (no instala nada) o lo vemos juntos en la sala.
-
-<details>
-<summary><b>Prompt: instala OpenCode por terminal en Windows 11</b> (solo si vas por la vía avanzada — cópialo y pégaselo al agente)</summary>
-
-```text
-Eres un experto que instala programas en Windows 11 paso a paso. No sé programar, así
-que hazlo tú, enséñame cada comando y explícame en español qué hace antes de
-ejecutarlo. (PAPEL)
-
-Estoy en Windows 11 y quiero instalar OpenCode, el agente de IA del taller (de la
-página opencode.ai). Voy a abrir la aplicación "Windows Terminal" (ya viene con
-Windows 11) y partir de cero: no tengo nada instalado. (CONTEXTO)
-
-Quiero terminar con OpenCode funcionando. Sigue el CAMINO 1 y, solo si algo falla,
-pásate al CAMINO 2:
-
-CAMINO 1 (recomendado) — con npm:
-  1) Instala Node.js (incluye "npm"): primero comprueba si ya lo tengo con
-     "node --version"; si no aparece, instálalo con "winget install OpenJS.NodeJS" y
-     luego cierra y vuelve a abrir Windows Terminal.
-  2) Instala OpenCode con "npm i -g opencode-ai@latest".
-
-CAMINO 2 (si el camino 1 da error) — con un gestor de paquetes:
-  - con Scoop: "scoop install opencode", o
-  - con Chocolatey: "choco install opencode".
-
-Cuando termines, comprueba que ha quedado instalado con "opencode --version". (TAREA)
-
-Ejecuta los comandos de uno en uno, esperando a que acabe cada uno antes del
-siguiente, y dime qué debería ver si va bien. Al final, ayúdame a entrar para tener
-modelos gratis: abro OpenCode, escribo "/connect" y me logueo en opencode.ai/auth
-eligiendo "OpenCode Zen" (su capa gratuita). (FORMATO)
-
-No instales nada que no haga falta para esto. Si un comando da error, explícamelo en
-una frase, prueba el otro camino y dime cómo ha quedado. (LÍMITES)
-```
-</details>
 
 ---
 
